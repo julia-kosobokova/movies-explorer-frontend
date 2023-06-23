@@ -1,0 +1,55 @@
+/* 320 Использованные технологии */
+.techs {
+    background-color: darkcyan;
+    margin:0 auto;
+    padding: 70px 18px;
+}
+.techs__title {
+    margin: 0;
+    padding: 60px 0 0 0;
+    line-height: 1.2;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    text-align: center;
+}
+.techs__text {
+    margin: 0;
+    padding-top: 24px;
+    font-size: 11px;
+    line-height: 1.45;
+    text-align: center;
+}
+
+/* Разрешение экрана 768 */
+@media (min-width: 768px) {
+    .techs {
+        padding: 90px 50px;
+        background-color: #f5f5f5;
+    }
+    .techs__title {
+        padding-top: 80px;
+        font-size: 50px;
+        line-height: 1.16;
+    }
+    .techs__text {
+        padding-top: 22px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+}
+
+/* Разрешение экрана 1280 */
+@media (min-width: 1280px) {
+    .techs {
+        padding: 100px 70px;
+    }
+    .techs__title {
+        padding-top: 90px;
+    }
+    .techs__text {
+        padding-top: 26px;
+        font-size: 14px;
+        line-height: 1.43;
+    }
+} 

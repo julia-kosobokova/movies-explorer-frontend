@@ -1,0 +1,51 @@
+/* 320 Описание дипломного проекта */
+.about-project {
+    background-color: blue;
+    margin: 0 auto;
+    padding: 70px 18px;
+}
+.about-project__title {
+    margin: 0;
+    padding: 60px 0 0 0;
+    line-height: 1.22;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    text-align: left;
+}
+.about-project__text {
+    margin: 0;
+    padding-top: 16px;
+    font-size: 11px;
+    line-height: 1.45;
+    text-align: left;
+}
+
+/* Разрешение экрана 768 */
+@media (min-width: 768px) {
+    .about-project {
+        padding: 90px 50px;
+    }
+    .about-project__title {
+        padding-top: 70px;
+        font-size: 20px;
+        line-height: 1.2;
+    }
+    .about-project__text {
+        padding-top: 22px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+}
+
+/* Разрешение экрана 1280 */
+@media (min-width: 1280px) {
+    .about-project {
+        padding: 110px 70px;
+    }
+    .about-project__text {
+        padding-top: 26px;
+        font-size: 14px;
+        line-height: 1.43;
+    }
+} 
