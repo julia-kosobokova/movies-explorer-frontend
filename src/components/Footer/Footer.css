@@ -56,7 +56,6 @@
     .footer {
         padding-left: 30px;
         padding-right: 30px;
-        /* min-height: 172px; */
         line-height: 1.23;
         font-size: 13px;
     }
@@ -68,7 +67,6 @@
     .footer__bottom {
         flex-direction: row;
         justify-content: space-between;
-        /* min-height: 56px; */
         padding-top: 20px;
     }
 
@@ -95,7 +93,6 @@
     .footer {
         padding-left: 70px;
         padding-right: 70px;
-        /* height: 172px; */
         background-color: #fafafa;
     }
 }

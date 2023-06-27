@@ -10,8 +10,8 @@ function Footer() {
             <li className="footer__list-item">
               <a href="https://practicum.yandex.ru/" className="footer__link">Яндекс.Практикум</a>
             </li>
-            <li className="footer__list-item" lang="en">
-              <a href="https://github.com/julia-kosobokova/" className="footer__link">Github</a>
+            <li className="footer__list-item">
+              <a href="https://github.com/julia-kosobokova/" className="footer__link"  lang="en">Github</a>
             </li>
           </ul>
         </div>
