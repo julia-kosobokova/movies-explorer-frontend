@@ -5,7 +5,7 @@
 }
 .promo__container {
     padding: 220px 0 0 0;
-    width: calc(100vw - 28px);
+    width: 100%;
     background-color: #f5f5f5;
     border-radius: 10px;
 }
@@ -27,7 +27,6 @@
     }
     .promo__container {
         padding-top: 350px;
-        width: calc(100vw - 40px);
     }
     .promo__header {
         line-height: 1.3;
