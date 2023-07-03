@@ -9,6 +9,7 @@ function App() {
         <div className="page">
           
           <Header>
+            
           </Header>
 
           <Main />
