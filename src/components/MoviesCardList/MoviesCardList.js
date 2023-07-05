@@ -1,8 +1,15 @@
+import MoviesCard from "../MoviesCard/MoviesCard";
+
 function MoviesCardList() {
     return (
-        <div>
-
-        </div>
+        <ul className="movies-card-list">
+            <li><MoviesCard /></li>
+            <li><MoviesCard /></li>
+            <li><MoviesCard /></li>
+            <li><MoviesCard /></li>
+            <li><MoviesCard /></li>
+            <li><MoviesCard /></li>
+        </ul>
     )
 }
 
