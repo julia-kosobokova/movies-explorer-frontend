@@ -66,3 +66,23 @@
 .card__save-button_active {
 background-image: url(../../images/save.svg);
 }
+
+@media (min-width: 768px) {
+  .card {
+    width: 339px;
+    height: 257px;
+  }
+  .card__image {
+    height: 190px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .card {
+    width: 270px;
+    height: 218px;
+  }
+  .card__image {
+    height: 151px;
+  }
+}
