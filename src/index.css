@@ -16,7 +16,7 @@
 @import url("./components/SectionHeader/SectionHeader.css");
 
 @import url("./components/Movies/Movies.css");
+@import url("./components/SavedMovies/SavedMovies.css");
 @import url("./components/SearchForm/SearchForm.css");
 @import url("./components/MoviesCardList/MoviesCardList.css");
 @import url("./components/MoviesCard/MoviesCard.css");
-/* @import url("./components/More/More.css"); */

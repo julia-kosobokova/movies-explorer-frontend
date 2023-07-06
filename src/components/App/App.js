@@ -17,7 +17,7 @@ function App() {
     <div className="background">
       <div className="page">
         <Routes>
-          
+
           <Route path="/sign-up" element={<Register />} />
           <Route path="/sign-in" element={<Login />} />
 
@@ -49,7 +49,6 @@ function App() {
             <>
               <Header />
               <Profile />
-              <Footer />
             </>
           }/>     
         

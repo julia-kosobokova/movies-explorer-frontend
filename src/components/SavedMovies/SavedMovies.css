@@ -1,0 +1,9 @@
+.saved-movies {
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
+.saved-movies__devider {
+    height: 140px;
+    /* box-sizing: border-box; */
+}
