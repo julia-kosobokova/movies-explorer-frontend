@@ -9,7 +9,9 @@ function Movies() {
         <main className="movies">
             <SearchForm />
             <MoviesCardList />
-            <More />
+            <div className="movies__more">
+                <button type="button" className="movies__more-button">Ещё</button>
+            </div>
         </main>
     )
 }

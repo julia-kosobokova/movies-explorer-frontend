@@ -1,4 +1,4 @@
-function MoviesCard() {
+function MoviesCard(props) {
     return (
         <li className="card">
             <img
@@ -12,7 +12,13 @@ function MoviesCard() {
                     <p className="card__duration">1ч2м</p>
                 </div>
 
-                <button type="button" className="card__save-button"></button>
+                <button type="button" className={
+                    props.isSaved===true
+                    ? "card__save-button card__save-button_active"
+                    : "card__save-button" 
+                }>
+
+                </button>
             </div>
         </li>
     )

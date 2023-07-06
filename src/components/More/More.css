@@ -19,9 +19,3 @@
     text-align: center;
     cursor: pointer;
 }
-
-@media (min-width: 768px) {
-    .more__button {
-        width: 320px;
-    }
-}

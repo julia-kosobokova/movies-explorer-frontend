@@ -3,12 +3,12 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 function MoviesCardList() {
     return (
         <ul className="movies-card-list">
-            <li><MoviesCard /></li>
-            <li><MoviesCard /></li>
-            <li><MoviesCard /></li>
-            <li><MoviesCard /></li>
-            <li><MoviesCard /></li>
-            <li><MoviesCard /></li>
+            <MoviesCard isSaved={true} />
+            <MoviesCard />
+            <MoviesCard />
+            <MoviesCard />
+           <MoviesCard />
+           <MoviesCard />
         </ul>
     )
 }
