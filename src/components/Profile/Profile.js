@@ -1,4 +1,5 @@
 import Header from "../Header/Header";
+import Menu from "../Menu/Menu";
 
 function Profile() {
     return (
@@ -6,7 +7,7 @@ function Profile() {
             <Header />
             <main className="profile">
                 <h1 className="profile__title">Привет, Виталий!</h1>
-                <div className="profile__body">
+                <section className="profile__body">
                     <div className="profile__info">
                         <p>Имя</p>
                         <p>Виталий</p>
@@ -15,13 +16,13 @@ function Profile() {
                         <p>E-mail</p>
                         <p>pochta@yandex.ru</p>
                     </div>
-                </div>
-                <div className="profile__buttons">
+                </section>
+                <section className="profile__buttons">
                     <button type="submit">Редактировать</button>
                     <button type="submit">Выйти из аккаунта</button>
-                </div>
+                </section>
             </main>
-            
+            <Menu isVisible={true} />
         </>
     )
 }

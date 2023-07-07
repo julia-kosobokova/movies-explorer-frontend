@@ -15,4 +15,5 @@
     display: flex;
     flex-direction: column;
     background-color: #b11616;
+    position: relative;
   }

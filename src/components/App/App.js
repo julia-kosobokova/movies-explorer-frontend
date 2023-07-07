@@ -10,6 +10,7 @@ import Footer from "../Footer/Footer";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
+import Error from "../Error/Error";
 
 function App() {
   return (
@@ -43,7 +44,11 @@ function App() {
 
           <Route path="/profile" element={
               <Profile />
-          }/>     
+          }/>  
+
+          <Route path="/error" element={
+              <Error />
+          }/>  
         
         </Routes>
       </div>

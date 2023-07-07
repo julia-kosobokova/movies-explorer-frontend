@@ -1,0 +1,21 @@
+.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+.menu_hidden {
+    display: none;
+}
+.menu__close-button {
+    width: 24px;
+    height: 24px;
+}
+.menu__links {
+    flex-grow: 1;
+}
+
