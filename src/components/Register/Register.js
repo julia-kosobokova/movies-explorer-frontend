@@ -1,8 +1,18 @@
+import Header from "../Header/Header";
+import Auth from "../Auth/Auth";
+
 function Register() {
     return (
-        <div>
-
-        </div>
+    <>
+        <Header />
+        <Auth 
+            hasName={true}
+            title="Добро пожаловать!"
+            button="Зарегистрироваться"
+            footerText="Уже зарегистрированы?"
+            footerLink="Войти"
+        />
+    </>
     )
 }
 
