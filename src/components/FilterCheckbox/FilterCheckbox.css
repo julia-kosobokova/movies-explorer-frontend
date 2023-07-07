@@ -1,0 +1,50 @@
+.filter {
+    /* background-color: blue; */
+    margin: 0 auto;
+    padding: 45px 0 44px;
+    box-sizing: border-box;
+    height: 120px;
+    /* border-bottom: 1px solid #e8e8e8; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.filter__tumbler {
+  margin: 0;
+  padding: 0;
+  width: 36px;
+  height: 20px;
+  background: none;
+  border: none;
+  background-image: url(../../images/smalltumb.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+.filter__tumbler_active {
+    background-image: url(../../images/smalltumboff.svg);
+}
+.filter__text {
+    margin: 0;
+    padding: 0;
+    padding-left: 13px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.64;
+}
+
+@media (min-width: 768px) {
+    .filter {
+        padding: 16px 0 16px 19px;
+        height: 72px;
+        /* border-bottom: none; */
+        /* border-left: 1px solid #cbcbcb; */
+        justify-content: flex-start;
+    }
+    .filter__text {
+        padding-left: 15px;
+        font-size: 13px;
+        line-height: 1.39;
+    }
+}

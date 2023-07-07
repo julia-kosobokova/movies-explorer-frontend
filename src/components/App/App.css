@@ -13,7 +13,6 @@
     text-rendering: optimizeLegibility;
     min-height: 100vh;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
     background-color: #b11616;
   }
