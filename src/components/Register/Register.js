@@ -1,10 +1,7 @@
-import Header from "../Header/Header";
 import Auth from "../Auth/Auth";
 
 function Register() {
     return (
-    <>
-        <Header />
         <Auth 
             hasName={true}
             title="Добро пожаловать!"
@@ -12,7 +9,6 @@ function Register() {
             footerText="Уже зарегистрированы?"
             footerLink="Войти"
         />
-    </>
     )
 }
 

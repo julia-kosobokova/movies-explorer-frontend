@@ -1,10 +1,18 @@
+import logo from "../../images/header-logo.svg";
+
 function Auth(props) {
     return (
         <main className="auth">
-            <h1 className="auth__title">{props.title}</h1>
+            <header className="auth__header">
+                <a href="/" className="auth__link">
+                    <img src={logo} alt="Логотип проекта" className="auth__logo" />
+                </a>  
+                <h1 className="auth__title">{props.title}</h1>
+            </header>
+            
             <form
-            name="loginForm"
-            className="form auth__form"
+            name="authForm"
+            className="auth__form"
             // onSubmit={handleSubmit}
             >
                 <fieldset className="auth__form-set">
@@ -13,7 +21,7 @@ function Auth(props) {
                         ? "auth__name"
                         : "auth__name  auth__name_hidden"
                     }>
-                        <label>Имя</label>
+                        <label className="auth__label">Имя</label>
                         <input
                         type="name"
                         name="name"
@@ -24,7 +32,7 @@ function Auth(props) {
                         />
                     </div>
 
-                    <label>E-mail</label>
+                    <label className="auth__label">E-mail</label>
                     <input
                     type="email"
                     name="email"
@@ -34,7 +42,7 @@ function Auth(props) {
                     // value={formData.email}
                     />
 
-                    <label>Пароль</label>
+                    <label className="auth__label">Пароль</label>
                     <input
                     type="password"
                     name="password"
