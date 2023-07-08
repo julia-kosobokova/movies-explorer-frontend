@@ -1,11 +1,12 @@
 .error {
-    height: 780px;
-    margin: 0 auto;
+    height: 100%;
+    margin: auto;
     padding: 329px 10px 30px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center;
 }
 .error__title {
     margin: 0;
@@ -13,25 +14,48 @@
     padding: 0;
     font-size: 80px;
     font-weight: 400;
-    text-align: center;
 }
 .error__subtitle {
     margin: 0;
+    margin-bottom: 284px;
     padding: 0;
     font-size: 12px;
     font-weight: 400;
-    text-align: center;
 }
-
+.error__link {
+    padding: 0;
+    color: #2be080;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.error__link:hover {
+    opacity: 0.6;
+    transition: opacity 0.5s linear 0.2s;
+}
 
 @media (min-width: 768px) {
     .error {
-        height: 1024px;
+        padding-top: 408px;
+    }
+    .error__title {
+        margin-bottom: 5px;
+        font-size: 140px;
+    }
+    .error__subtitle {
+        margin-bottom: 184px;
+        font-size: 16px;
+    }
+    .error__link {
+        font-size: 14px;
     }
 }
 
 @media (min-width: 1280px) {
     .error {
-        height: 700px;
+        padding-top: 246px;
     }
 }

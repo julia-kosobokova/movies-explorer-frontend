@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 import logo from "../../images/header-logo.svg";
 
 function Auth(props) {
     return (
         <main className="auth">
             <header className="auth__header">
-                <a href="/" className="auth__link">
+                <Link to="/" className="auth__link">
                     <img src={logo} alt="Логотип проекта" className="auth__logo" />
-                </a>  
+                </Link>  
                 <h1 className="auth__title">{props.title}</h1>
             </header>
             
@@ -56,10 +57,10 @@ function Auth(props) {
                     {props.button}
                     </button>
 
-                    <p className="auth__auth-footer">
+                    <p className="auth__footer">
                         {props.footerText}{" "}
                         <button
-                            className="auth__auth-link"
+                            className="auth__footer-link"
                             type="button"
                             // onClick={handleLoginButton}
                         >

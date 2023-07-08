@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Navigation(props) {
     return (
         <>
@@ -6,8 +8,16 @@ function Navigation(props) {
             ? "nav__sign nav__sign_hidden"
             : "nav__sign"
         }>
-            Регистрация
-            Войти
+            <li>
+                <Link to="/signup" className="nav__link">
+                    <button className="nav__button">Регистрация</button>
+                </Link>
+            </li>
+            <li>
+                <Link to="/signin" className="nav__link nav__link_green">
+                    <button className="nav__button nav__button-green">Войти</button>
+                </Link>
+            </li>
         </nav>
 
         <nav className={
@@ -15,8 +25,12 @@ function Navigation(props) {
             ? "nav__movies"
             : "nav__movies nav__movies_hidden"
             }>
-            Фильмы
-            Сохраненные фильмы
+            <Link to="/movies" className="nav__link">
+                <button className="nav__button">Фильмы</button>
+            </Link>
+            <Link to="/saved-movies" className="nav__link">
+                <button className="nav__button">Сохраненные фильмы</button>
+            </Link>
         </nav>
 
         <div className={
@@ -24,7 +38,9 @@ function Navigation(props) {
             ? "nav__profile"
             : "nav__profile nav__profile_hidden"
             }>
-            Аккаунт
+            <Link to="/profile" className="nav__link">
+                <button type="button" className="nav__profile" />
+            </Link>
         </div>
         </>
     )

@@ -27,4 +27,24 @@
 }
 .profile__buttons {
     padding-bottom: 40px;
+    display: block;
+}
+.profile__link {
+    padding: 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.profile__link:hover {
+    opacity: 0.6;
+    transition: opacity 0.5s linear 0.2s;
+}
+.profile__link_pink {
+    color: #ee3465;
+    font-weight: 500;
 }
