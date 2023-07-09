@@ -11,12 +11,12 @@ function Navigation(props) {
             <ul className="nav__links">
                 <li className="nav__list-item nav__list-item_movies">
                     <Link to="/movies" className="nav__link">
-                        <button className="nav__button">Фильмы</button>
+                        <button className={`nav__button ${props.activeLink === 'movies' ? 'nav__button_active' : ''}`}>Фильмы</button>
                     </Link>
                 </li>
                 <li className="nav__list-item nav__list-item_movies">
                     <Link to="/saved-movies" className="nav__link">
-                        <button className="nav__button">Сохраненные фильмы</button>
+                        <button className={`nav__button ${props.activeLink === 'saved-movies' ? 'nav__button_active' : ''}`}>Сохраненные фильмы</button>
                     </Link>
                 </li>
             </ul>

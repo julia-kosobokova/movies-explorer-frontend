@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 function SavedMovies() {
     return (
         <>
-            <Header loggedIn={true} />
+            <Header loggedIn={true} activeLink="saved-movies" />
 
             <main className="saved-movies">
                 <SearchForm />
