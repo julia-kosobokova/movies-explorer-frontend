@@ -13,6 +13,9 @@
 .nav__profile_hidden {
     display: none;
 }
+.nav__empty_hidden {
+    display: none;
+}
 
 .nav__links {
     margin: 0;

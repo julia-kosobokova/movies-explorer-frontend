@@ -24,6 +24,12 @@ function Navigation(props) {
 
         <nav className={
             props.loggedIn
+            ? "nav__empty nav__empty_hidden"
+            : "nav__empty"
+        }></nav>
+
+        <nav className={
+            props.loggedIn
             ? "nav__sign nav__sign_hidden"
             : "nav__sign"
         }>
