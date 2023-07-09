@@ -1,6 +1,7 @@
 .profile {
     margin: 0 auto;
     padding: 70px 30px 40px;
+    min-width: 260px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -70,4 +71,8 @@
 .profile__link_pink {
     color: #ee3465;
     font-weight: 500;
+}
+
+@media (min-width: 768px) {
+    
 }
