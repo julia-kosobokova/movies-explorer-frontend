@@ -44,6 +44,10 @@
     color: #000;
     text-decoration: none;
 }
+.footer__link:hover {
+    opacity: 0.6;
+    transition: opacity 0.5s linear 0.2s;
+}
 
 @media (min-width: 768px) {
     .footer {

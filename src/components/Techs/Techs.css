@@ -46,6 +46,12 @@
     height: 13px;
     border-radius: 10px;
     background-color: #e8e8e8;
+    cursor: pointer;
+}
+
+.techs__list-item:hover {
+    opacity: 0.8;
+    transition: opacity 0.5s linear 0.2s;
 }
 
 .techs__link {

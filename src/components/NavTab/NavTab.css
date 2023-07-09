@@ -40,6 +40,11 @@
     text-decoration: none;
 }
 
+.nav-tab__list-item:hover {
+    opacity: 0.8;
+    transition: opacity 0.5s linear 0.2s;
+}
+
 @media (min-width: 768px) {
     .nav-tab {
         padding-top: 314px;
