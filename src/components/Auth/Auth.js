@@ -43,15 +43,19 @@ function Auth(props) {
                     // value={formData.email}
                     />
 
-                    <label className="auth__label">Пароль</label>
-                    <input
-                    type="password"
-                    name="password"
-                    required
-                    // onChange={onPasswordChange}
-                    className="auth__input"
-                    // value={formData.password}
-                    />
+                    <div className="auth__input-group auth__input-group_error">
+                        <label className="auth__label">Пароль</label>
+                        <input
+                        type="password"
+                        name="password"
+                        required
+                        // onChange={onPasswordChange}
+                        className="auth__input auth__input_error"
+                        // value={formData.password}
+                        />
+                        <span className="auth__input-error">Что-то пошло не так...</span>
+                    </div>
+
 
                     <button type="submit" className="auth__button">
                     {props.button}

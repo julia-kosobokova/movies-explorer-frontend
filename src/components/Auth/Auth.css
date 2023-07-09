@@ -54,6 +54,16 @@
     font-weight: 400;
     color: #a0a0a0;
 }
+.auth__input-group {
+    display: flex;
+    flex-direction: column;
+}
+.auth__input-group_error {
+    color: #ee3465;
+}
+.auth__input_error {
+    color: #ee3465;
+}
 .auth__input {
     height: 27px;
     font-size: 14px;
@@ -63,6 +73,11 @@
     border: none;
     border-bottom: 1px solid #e8e8e8;
     margin: 0 0 24px;
+}
+.auth__input-error {
+    font-size: 10px;
+    position: relative;
+    top: -18px;
 }
 .auth__button {
     height: 45px;
