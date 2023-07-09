@@ -8,7 +8,8 @@
 
 .auth {
     padding: 0 30px 30px;
-    height: 694px;
+    background-color: #fff;
+    /* height: 694px; */
 }
 .auth__header {
     padding-top: 56px;
@@ -31,14 +32,14 @@
     text-align: center;
 }
 .auth__form {
-    position: relative;
-    min-height: 156px;
-    max-height: 266px;
+    /* position: relative; */
+    /* min-height: 156px;
+    max-height: 266px; */
     width: 260px;
     margin: 0 auto;
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
-    align-content: flex-start;
+    align-content: flex-start; */
 }
 .auth__form-set {
     margin: 0;
@@ -104,7 +105,7 @@
 @media (min-width: 768px) {
     .auth {
         margin: auto;
-        height: 560px;
+        /* height: 560px; */
     }
     .auth__header {
         padding-top: 232px;

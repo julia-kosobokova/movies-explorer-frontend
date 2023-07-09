@@ -8,16 +8,18 @@ function Navigation(props) {
             ? "nav__sign nav__sign_hidden"
             : "nav__sign"
         }>
-            <li>
-                <Link to="/signup" className="nav__link">
-                    <button className="nav__button">Регистрация</button>
-                </Link>
-            </li>
-            <li>
-                <Link to="/signin" className="nav__link nav__link_green">
-                    <button className="nav__button nav__button-green">Войти</button>
-                </Link>
-            </li>
+            <ul className="nav__links">
+                <li className="nav__list-item">
+                    <Link to="/signup" className="nav__link">
+                        <button className="nav__button">Регистрация</button>
+                    </Link>
+                </li>
+                <li className="nav__list-item">
+                    <Link to="/signin" className="nav__link nav__link_green">
+                        <button className="nav__button nav__button-green">Войти</button>
+                    </Link>
+                </li>
+            </ul>
         </nav>
 
         <nav className={
@@ -25,12 +27,18 @@ function Navigation(props) {
             ? "nav__movies"
             : "nav__movies nav__movies_hidden"
             }>
-            <Link to="/movies" className="nav__link">
-                <button className="nav__button">Фильмы</button>
-            </Link>
-            <Link to="/saved-movies" className="nav__link">
-                <button className="nav__button">Сохраненные фильмы</button>
-            </Link>
+            <ul className="nav__links">
+                <li>
+                    <Link to="/movies" className="nav__link">
+                        <button className="nav__button">Фильмы</button>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/saved-movies" className="nav__link">
+                        <button className="nav__button">Сохраненные фильмы</button>
+                    </Link>
+                </li>
+            </ul>
         </nav>
 
         <div className={

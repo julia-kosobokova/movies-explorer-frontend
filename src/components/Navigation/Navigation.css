@@ -1,13 +1,26 @@
 .nav__sign_hidden {
     display: none;
 }
-
 .nav__movies_hidden {
     display: none;
 }
-
 .nav__profile_hidden {
     display: none;
+}
+
+.nav__links {
+    margin: 0;
+    padding: 0;
+    padding-inline-start: 0;
+    list-style-type: none;
+    color: #000;
+}
+.nav__list-item {
+    display: inline;
+    margin-right: 14px;
+}
+.nav__list-item:last-child {
+    margin-right: 0;
 }
 .nav__link {
     margin: 0;
@@ -21,6 +34,7 @@
 .nav__button {
     border: none;
     background-color: transparent;
+    cursor: pointer;
 }
 .nav__button-green {
     background-color: #2be080;
@@ -41,10 +55,21 @@
     background-position: center;
     cursor: pointer;
   }
+.nav__link:hover {
+    opacity: 0.6;
+    transition: opacity 0.5s linear 0.2s;
+}
+.nav__button-green:hover {
+    opacity: 0.8;
+    transition: opacity 0.5s linear 0.2s;
+}
 
 @media (min-width: 768px) {
   .nav__link {
     font-size: 12px;
     line-height: 1.34;
   }
+  .nav__list-item {
+    margin-right: 30px;
+}
 }
