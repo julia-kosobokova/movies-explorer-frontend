@@ -28,12 +28,12 @@ function Navigation(props) {
             : "nav__movies nav__movies_hidden"
             }>
             <ul className="nav__links">
-                <li>
+                <li className="nav__list-item nav__list-item_movies">
                     <Link to="/movies" className="nav__link">
                         <button className="nav__button">Фильмы</button>
                     </Link>
                 </li>
-                <li>
+                <li className="nav__list-item nav__list-item_movies">
                     <Link to="/saved-movies" className="nav__link">
                         <button className="nav__button">Сохраненные фильмы</button>
                     </Link>

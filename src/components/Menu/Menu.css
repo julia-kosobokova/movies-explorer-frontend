@@ -16,6 +16,60 @@
     height: 24px;
 }
 .menu__links {
+    margin: 0 auto;
+    padding-top: 144px;
+    padding-bottom: 46px;
     flex-grow: 1;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    padding-inline-start: 0;
+}
+.menu__list-item {
+    list-style-type: none;
+    padding-top: 15px;
+    padding-bottom: 9px;
 }
 
+.menu__link {
+    color: #000;
+    text-decoration: none;
+}
+.menu__link_active {
+    border-bottom: 2px solid #000;
+}
+.menu__link:hover {
+    opacity: 0.6;
+    transition: opacity 0.5s linear 0.2s;
+}
+.menu__buttons {
+    margin: 0 auto;
+}
+.menu__button {
+    padding: 0;
+    width: 100px;
+    height: 36px;
+    background: none;
+    border: none;
+    background-image: url(../../images/profile.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+  .menu__button:hover {
+    opacity: 0.8;
+    transition: opacity 0.5s linear 0.2s;
+}
+@media (min-width: 768px) {
+    .menu {
+        width: 520px;
+    }
+    .menu__links {
+        padding-top: 159px;
+        padding-bottom: 90px;
+    }
+    .menu__list-item {
+        padding-top: 22px;
+        padding-bottom: 6px;
+    }
+}
