@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
+import Menu from "../Menu/Menu";
+import { useState } from "react";
 
 function Navigation(props) {
+    let [ menuIsVisible, setMenuIsVisible ] = useState(false);
+
+    const showMenu = () => {
+        setMenuIsVisible(true);
+    };
+
+    const hideMenu = () => {
+        setMenuIsVisible(false);
+    };
     return (
         <>
             <div className="nav__center">
@@ -64,12 +75,11 @@ function Navigation(props) {
                     ? "nav__icon"
                     : "nav__icon nav__icon_hidden"
                     }>
-                    <Link to="" className="nav__link">
-                        <button type="button" className="nav__icon" />
-                    </Link>  
+                    <button type="button" className="nav__icon" onClick={showMenu} />
                 </div>
             </div>
             
+            <Menu isVisible={menuIsVisible} onClose={hideMenu} />
 
         </>
     )

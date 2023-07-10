@@ -1,5 +1,4 @@
 import Header from "../Header/Header";
-import Menu from "../Menu/Menu";
 
 function Profile() {
     return (
@@ -22,7 +21,6 @@ function Profile() {
                     <button type="button" className="profile__link profile__link_pink">Выйти из аккаунта</button>
                 </section>
             </main>
-            <Menu isVisible={false} />
         </>
     )
 }

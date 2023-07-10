@@ -18,9 +18,9 @@ function SearchForm() {
                 
                     <button type="button" className="search__button" />
                 </div>
-                <div class="search__divider"></div>
+                <div className="search__divider"></div>
                 <FilterCheckbox />
-                <div class="search__bottom"></div>
+                <div className="search__bottom"></div>
             </div>
         </div>
     )}
