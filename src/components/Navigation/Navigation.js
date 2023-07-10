@@ -29,6 +29,8 @@ function Navigation(props) {
                     : "nav__empty"
                 }></nav>
 
+            </div>
+            <div className="nav__right">
                 <nav className={
                     props.loggedIn
                     ? "nav__sign nav__sign_hidden"
@@ -47,8 +49,6 @@ function Navigation(props) {
                         </li>
                     </ul>
                 </nav>
-            </div>
-            <div className="nav__right">
                 <div className={
                     props.loggedIn
                     ? "nav__profile"
