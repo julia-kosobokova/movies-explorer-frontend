@@ -9,7 +9,7 @@ function SavedMovies() {
 
             <main className="saved-movies">
                 <SearchForm />
-                <MoviesCardList />
+                <MoviesCardList savedMode={true} />
                 <div className="saved-movies__devider" />
             </main>
         </>

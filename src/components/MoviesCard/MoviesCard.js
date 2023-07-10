@@ -13,9 +13,21 @@ function MoviesCard(props) {
                 </div>
 
                 <button type="button" className={
-                    props.isSaved===true
-                    ? "card__save-button card__save-button_active"
-                    : "card__save-button" 
+                    "card__save-button"
+                    + (props.isSaved===true
+                    ? " card__save-button_active"
+                    : "") 
+                    + (props.savedMode===true
+                    ? " card__save-button_hidden"
+                    : "")
+                }>
+
+                </button>
+                <button type="button" className={
+                    "card__remove-button"
+                    + (props.savedMode===true
+                    ? ""
+                    : " card__remove-button_hidden")
                 }>
 
                 </button>
