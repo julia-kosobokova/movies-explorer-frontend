@@ -27,6 +27,7 @@
     background-color: #f9f9f9;
     border-radius: 9px;
     padding: 19px;
+    flex-grow: 1;
 }
 
 .search__input-text {
@@ -70,6 +71,7 @@
         align-items: center;
         border-radius: 9px;
         background-color: #f9f9f9;
+        padding-right: 20px;
     }
 
     .search__divider {
@@ -84,18 +86,19 @@
         /* background-color: transparent; */
         border-radius: 9px;
     }
-
+    
     .search__icon {
         display: block;
         width: 34px;
         height: 34px;
         background-image: url(../../images/search-icon.svg);
     }
-
+    
     .search__input-text {
         padding-left: 10px;
         font-size: 18px;
         line-height: 1.12;
+        flex-grow: 1;
     }
 
     .search__button {
