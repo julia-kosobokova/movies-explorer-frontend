@@ -18,10 +18,11 @@ function Menu(props) {
                     <Link to="/saved-movies" className="menu__link">Сохраненные фильмы</Link>
                 </li>
             </ul>
-            
+
             <section class="menu__buttons">
                 <button type="button" className="menu__button"></button>
             </section>
+
         </nav>
     )
 }

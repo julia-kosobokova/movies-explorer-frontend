@@ -79,6 +79,16 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .card {
+    width: 300px;
+    height: 235px;
+  }
+  .card__image {
+    height: 168px;
+  }
+}
+
 @media (min-width: 1280px) {
   .card {
     width: 270px;

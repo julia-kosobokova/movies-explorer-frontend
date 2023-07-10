@@ -56,6 +56,16 @@ function Navigation(props) {
                 <button type="button" className="nav__profile" />
             </Link>
         </div>
+
+        <div className={ 
+            props.loggedIn
+            ? "nav__icon"
+            : "nav__icon nav__icon_hidden"
+            }>
+            <Link to="" className="nav__link">
+                <button type="button" className="nav__icon" />
+            </Link>  
+        </div>
         </>
     )
 }

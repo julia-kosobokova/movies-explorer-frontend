@@ -1,13 +1,10 @@
 .movies-card-list {
     margin: 0 auto;
     padding: 40px 10px 30px 10px;
-    width: 100%;
     list-style: none;
     display: grid;
     grid-template-columns: 1fr;
-    /* grid-template-columns: repeat(auto-fit, 300px); */
     row-gap: 20px;
-    justify-content: center;
 }
 
 @media (min-width: 768px) {
@@ -16,8 +13,19 @@
         column-gap: 30px;
         row-gap: 36px;
         padding: 70px 30px 30px;
-        /* padding-left: calc((100% - (282px*2 + 17px))/2); */
-        /* padding-right: calc((100% - (282px*2 + 17px))/2); */
+        padding-left: calc((100% - (339px*2 + 30px))/2);
+        padding-right: calc((100% - (339px*2 + 30px))/2);
+    }
+}
+
+@media (min-width: 1024px) {
+    .movies-card-list {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 25px;
+        row-gap: 34px;
+        padding: 70px 50px 30px;
+        padding-left: calc((100% - (300px*3 + 25px*2))/2);
+        padding-right: calc((100% - (300px*3 + 25px*2))/2);
     }
 }
 
@@ -27,7 +35,7 @@
         column-gap: 20px;
         row-gap: 32px;
         padding: 70px 70px 30px;
-        /* padding-left: calc((100% - (282px*3 + 17px*2))/2); */
-        /* padding-right: calc((100% - (282px*3 + 17px*2))/2); */
+        padding-left: calc((100% - (270px*4 + 20px*3))/2);
+        padding-right: calc((100% - (270px*4 + 20px*3))/2);
     }
 }
