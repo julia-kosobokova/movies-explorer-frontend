@@ -13,6 +13,8 @@
     margin-bottom: 10px;
     padding: 0;
     font-size: 80px;
+    /* font-size: calc(100vw / 6 + 26px); */
+    
     font-weight: 400;
 }
 .error__subtitle {
@@ -43,7 +45,8 @@
     }
     .error__title {
         margin-bottom: 5px;
-        font-size: 140px;
+        /* font-size: 140px; */
+        font-size: calc(100vw / 6);
     }
     .error__subtitle {
         margin-bottom: 184px;

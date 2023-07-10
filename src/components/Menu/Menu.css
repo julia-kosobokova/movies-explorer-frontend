@@ -8,16 +8,35 @@
     display: flex;
     flex-direction: column;
 }
+
 .menu_hidden {
     display: none;
 }
+
 .menu__close-button {
+    position: absolute;
+    top: 13.44px;
+    right: 13.44px;
+    margin: 0;
+    padding: 0;
     width: 24px;
     height: 24px;
+    background: none;
+    border: none;
+    background-image: url(../../images/close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
 }
+
+.menu__close-button:hover {
+    opacity: 0.8;
+    transition: opacity 0.5s linear 0.2s;
+}
+
 .menu__links {
     margin: 0 auto;
-    padding-top: 144px;
+    padding-top: 129px;
     padding-bottom: 46px;
     flex-grow: 1;
     text-align: center;
@@ -25,6 +44,7 @@
     font-weight: 500;
     padding-inline-start: 0;
 }
+
 .menu__list-item {
     list-style-type: none;
     padding-top: 15px;
@@ -35,16 +55,20 @@
     color: #000;
     text-decoration: none;
 }
+
 .menu__link_active {
     border-bottom: 2px solid #000;
 }
+
 .menu__link:hover {
     opacity: 0.6;
     transition: opacity 0.5s linear 0.2s;
 }
+
 .menu__buttons {
     margin: 0 auto;
 }
+
 .menu__button {
     padding: 0;
     width: 100px;
@@ -55,19 +79,28 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
-  }
-  .menu__button:hover {
+}
+
+.menu__button:hover {
     opacity: 0.8;
     transition: opacity 0.5s linear 0.2s;
 }
+
 @media (min-width: 768px) {
     .menu {
         width: 520px;
     }
+
+    .menu__close-button {
+        top: 22.44px;
+        right: 22.44px;
+    }
+
     .menu__links {
-        padding-top: 159px;
+        padding-top: 137px;
         padding-bottom: 90px;
     }
+
     .menu__list-item {
         padding-top: 22px;
         padding-bottom: 6px;

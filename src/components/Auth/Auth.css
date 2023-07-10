@@ -35,11 +35,14 @@
     /* position: relative; */
     /* min-height: 156px;
     max-height: 266px; */
-    width: 260px;
+    /* width: 260px; */
     margin: 0 auto;
     /* display: flex;
     flex-wrap: wrap;
     align-content: flex-start; */
+    min-width: 260px;
+    width: calc(100% - 2*30px);
+    max-width: 396px;
 }
 .auth__form-set {
     margin: 0;
@@ -120,11 +123,15 @@
 @media (min-width: 768px) {
     .auth {
         margin: auto;
+ 
         /* height: 560px; */
     }
     .auth__header {
         padding-top: 232px;
         padding-bottom: 40px;
+    }
+    .auth__form-set {
+        width: 396px;
     }
     .auth__link {
         text-align: left;

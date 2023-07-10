@@ -5,7 +5,7 @@ function Menu(props) {
         <nav className={props.isVisible ? 'menu' : 'menu menu_hidden'}>
             <div className="menu__overlay"></div>
 
-            <button type="button" className="menu__close-button">X</button>
+            <button type="button" className="menu__close-button"></button>
             
             <ul className="menu__links">
                 <li className="menu__list-item">
