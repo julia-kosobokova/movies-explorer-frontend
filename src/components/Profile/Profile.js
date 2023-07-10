@@ -22,7 +22,7 @@ function Profile() {
                     <button type="button" className="profile__link profile__link_pink">Выйти из аккаунта</button>
                 </section>
             </main>
-            <Menu isVisible={true} />
+            <Menu isVisible={false} />
         </>
     )
 }

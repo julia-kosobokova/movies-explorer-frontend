@@ -1,8 +1,15 @@
+.nav__center {
+    justify-self: center;
+}
+.nav__right {
+    justify-self: right;
+}
 .nav__sign {
     justify-self: right;
 }
 .nav__sign_hidden {
     display: none;
+    visibility: hidden;
 }
 .nav__movies {
     justify-self: center;
