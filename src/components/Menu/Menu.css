@@ -1,3 +1,8 @@
+.menu {
+    position: fixed;
+    z-index: 99;
+}
+
 .menu__popup {
     position: fixed;
     top: 0;
@@ -26,7 +31,7 @@
 }
 
 .menu__close-button {
-    position: absolute;
+    position: fixed;
     top: 13.44px;
     right: 13.44px;
     margin: 0;
@@ -99,7 +104,7 @@
 }
 
 @media (min-width: 768px) {
-    .menu {
+    .menu__popup {
         width: 520px;
     }
 
