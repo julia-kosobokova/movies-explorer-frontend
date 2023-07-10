@@ -146,4 +146,9 @@
     .nav__movies {
         display: block;
     }
+
+    .nav__movies_hidden
+    {
+        display: none;
+    }
 }
