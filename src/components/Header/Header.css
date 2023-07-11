@@ -90,6 +90,10 @@
 
 .header__profile {
   display: none;
+  justify-self: right;
+}
+
+.header__profile-button {
   margin: 0;
   padding: 0;
   width: 100px;
@@ -100,10 +104,13 @@
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-  justify-self: right;
 }
 
 .header__icon {
+  justify-self: right;
+}
+
+.header__icon-button {
   margin: 0;
   padding: 0;
   width: 44px;
@@ -114,10 +121,9 @@
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-  justify-self: right;
 }
 
-.header__icon:hover {
+.header__icon-button:hover {
   opacity: 0.8;
   transition: opacity 0.5s linear 0.2s;
 }
@@ -132,7 +138,7 @@
   transition: opacity 0.5s linear 0.2s;
 }
 
-.header__profile:hover {
+.header__profile-button:hover {
   opacity: 0.8;
   transition: opacity 0.5s linear 0.2s;
 }

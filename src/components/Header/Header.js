@@ -47,7 +47,7 @@ function Header(props) {
           }
         >
           <Link to="/profile" className="header__link">
-            <button type="button" className="header__profile" />
+            <button type="button" className="header__profile-button" />
           </Link>
         </div>
 
@@ -56,7 +56,7 @@ function Header(props) {
             props.loggedIn ? "header__icon" : "header__icon header__icon_hidden"
           }
         >
-          <button type="button" className="header__icon" onClick={showMenu} />
+          <button type="button" className="header__icon-button" onClick={showMenu} />
         </div>
       </div>
 
