@@ -4,7 +4,7 @@ function SearchForm() {
   return (
     <div className="search">
       <div className="search__container">
-        <div className="search__input">
+        <form className="search__input">
           <svg className="search__icon" alt="Поиск" />
           <input
             type="text"
@@ -17,7 +17,7 @@ function SearchForm() {
           />
 
           <button type="button" className="search__button" />
-        </div>
+        </form>
         <div className="search__divider"></div>
         <FilterCheckbox />
         <div className="search__bottom"></div>

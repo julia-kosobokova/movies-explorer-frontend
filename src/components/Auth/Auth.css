@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .auth__name_hidden {
   display: none;
 }
@@ -10,19 +11,23 @@
   padding: 0 30px 30px;
   background-color: #fff;
 }
+
 .auth__header {
   padding-top: 56px;
   padding-bottom: 80px;
 }
+
 .auth__link {
   height: 38px;
   display: block;
   text-align: center;
 }
+
 .auth__logo {
   width: 38px;
   height: 38px;
 }
+
 .auth__title {
   margin: 0;
   padding-top: 50px;
@@ -30,12 +35,14 @@
   font-weight: 500;
   text-align: center;
 }
+
 .auth__form {
   margin: 0 auto;
   min-width: 260px;
   width: calc(100% - 2 * 30px);
   max-width: 396px;
 }
+
 .auth__form-set {
   margin: 0;
   padding: 0;
@@ -43,22 +50,27 @@
   display: flex;
   flex-direction: column;
 }
+
 .auth__label {
   margin: 0 0 5px;
   font-size: 10px;
   font-weight: 400;
   color: #a0a0a0;
 }
+
 .auth__input-group {
   display: flex;
   flex-direction: column;
 }
+
 .auth__input-group_error {
   color: #ee3465;
 }
+
 .auth__input_error {
   color: #ee3465;
 }
+
 .auth__input {
   height: 27px;
   font-size: 14px;
@@ -69,11 +81,19 @@
   border-bottom: 1px solid #e8e8e8;
   margin: 0 0 24px;
 }
+
+.auth__input:focus {
+  outline: none;
+  border: 1px solid #2be080;
+  border-radius: 3px;
+}
+
 .auth__input-error {
   font-size: 10px;
   position: relative;
   top: -18px;
 }
+
 .auth__button {
   height: 45px;
   font-size: 12px;
@@ -86,10 +106,12 @@
   margin: 222px 0 0;
   cursor: pointer;
 }
+
 .auth__button:hover {
   opacity: 0.8;
   transition: opacity 0.5s linear 0.2s;
 }
+
 .auth__footer {
   margin: 0 auto;
   padding: 14px 0px 0;
@@ -98,6 +120,7 @@
   font-weight: 400;
   text-align: center;
 }
+
 .auth__footer-link {
   padding: 0;
   padding-left: 7px;
@@ -107,6 +130,7 @@
   border: none;
   cursor: pointer;
 }
+
 .auth__footer-link:hover {
   opacity: 0.6;
   transition: opacity 0.5s linear 0.2s;
@@ -116,24 +140,30 @@
   .auth {
     margin: auto;
   }
+
   .auth__header {
     padding-top: 232px;
     padding-bottom: 40px;
   }
+
   .auth__form-set {
     width: 396px;
   }
+
   .auth__link {
     text-align: left;
   }
+
   .auth__title {
     padding-top: 40px;
     text-align: left;
   }
+
   .auth__form {
     margin: 0;
     width: 396px;
   }
+  
   .auth__button {
     font-size: 14px;
   }
