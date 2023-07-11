@@ -1,154 +1,153 @@
 .nav__center {
-    justify-self: center;
+  justify-self: center;
 }
 .nav__right {
-    justify-self: right;
+  justify-self: right;
 }
 .nav__sign {
-    justify-self: right;
+  justify-self: right;
 }
 .nav__sign_hidden {
-    display: none;
-    visibility: hidden;
+  display: none;
+  visibility: hidden;
 }
 .nav__movies {
-    justify-self: center;
-    display: none;
+  justify-self: center;
+  display: none;
 }
 .nav__movies_hidden {
-    display: none;
+  display: none;
 }
 .nav__profile_hidden {
-    display: none;
+  display: none;
 }
 .nav__empty_hidden {
-    display: none;
+  display: none;
 }
 
 .nav__icon_hidden {
-    display: none;
+  display: none;
 }
 
 .nav__links {
-    margin: 0;
-    padding: 0;
-    padding-inline-start: 0;
-    list-style-type: none;
-    color: #000;
+  margin: 0;
+  padding: 0;
+  padding-inline-start: 0;
+  list-style-type: none;
+  color: #000;
 }
 .nav__list-item {
-    display: inline;
-    margin-right: 14px;
-    font-size: 10px;
-    line-height: 1.6;
+  display: inline;
+  margin-right: 14px;
+  font-size: 10px;
+  line-height: 1.6;
 }
 
 .nav__list-item:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 .nav__link {
-    margin: 0;
-    padding: 0;
-    color: #000;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  text-decoration: none;
 }
 .nav__button {
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-weight: 500;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 500;
 }
 .nav__button_active {
-    font-weight: 400;
+  font-weight: 400;
 }
 .nav__button-green {
-    background-color: #2be080;
-    border-radius: 3px;
-    width: 54px;
-    height: 26px;
+  background-color: #2be080;
+  border-radius: 3px;
+  width: 54px;
+  height: 26px;
 }
 
 .nav__profile {
-    display: none;
-    margin: 0;
-    padding: 0;
-    width: 100px;
-    height: 36px;
-    background: none;
-    border: none;
-    background-image: url(../../images/profile.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    justify-self: right;
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  height: 36px;
+  background: none;
+  border: none;
+  background-image: url(../../images/profile.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  justify-self: right;
 }
 
 .nav__icon {
-    margin: 0;
-    padding: 0;
-    width: 44px;
-    height: 44px;
-    background: none;
-    border: none;
-    background-image: url(../../images/menu-btn.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    justify-self: right;
+  margin: 0;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  background-image: url(../../images/menu-btn.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  justify-self: right;
 }
 
 .nav__icon:hover {
-    opacity: 0.8;
-    transition: opacity 0.5s linear 0.2s;
+  opacity: 0.8;
+  transition: opacity 0.5s linear 0.2s;
 }
 
 .nav__link:hover {
-    opacity: 0.6;
-    transition: opacity 0.5s linear 0.2s;
+  opacity: 0.6;
+  transition: opacity 0.5s linear 0.2s;
 }
 
 .nav__button-green:hover {
-    opacity: 0.8;
-    transition: opacity 0.5s linear 0.2s;
+  opacity: 0.8;
+  transition: opacity 0.5s linear 0.2s;
 }
 
 .nav__profile:hover {
-    opacity: 0.8;
-    transition: opacity 0.5s linear 0.2s;
+  opacity: 0.8;
+  transition: opacity 0.5s linear 0.2s;
 }
 
 @media (min-width: 768px) {
-    .nav__link {
-        font-size: 12px;
-        line-height: 1.34;
-    }
-    .nav__list-item {
-        margin-right: 30px;
-    }
+  .nav__link {
+    font-size: 12px;
+    line-height: 1.34;
+  }
+  .nav__list-item {
+    margin-right: 30px;
+  }
 
-    .nav__list-item_movies {
-        margin-right: 16px;
-        font-size: 13px;
-        line-height: 1.39;
-    }
+  .nav__list-item_movies {
+    margin-right: 16px;
+    font-size: 13px;
+    line-height: 1.39;
+  }
 }
 
 @media (min-width: 1280px) {
-    .nav__link {
-        font-size: 13px;
-    }
+  .nav__link {
+    font-size: 13px;
+  }
 
-    .nav__icon {
-        display: none;
-    }
+  .nav__icon {
+    display: none;
+  }
 
-    .nav__movies {
-        display: block;
-    }
+  .nav__movies {
+    display: block;
+  }
 
-    .nav__movies_hidden
-    {
-        display: none;
-    }
+  .nav__movies_hidden {
+    display: none;
+  }
 }

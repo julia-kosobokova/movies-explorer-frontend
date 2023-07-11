@@ -1,18 +1,18 @@
 .background {
-    width:100%;
-    background-color: #fff;
+  width: 100%;
+  background-color: #fff;
 }
 
 .page {
-    min-width: 320px;
-    max-width: 1280px;
-    padding: 0;
-    margin: 0 auto;
-    font-family: 'Inter', Arial, sans-serif;
-    color: #000;
-    text-rendering: optimizeLegibility;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
+  min-width: 320px;
+  max-width: 1280px;
+  padding: 0;
+  margin: 0 auto;
+  font-family: "Inter", Arial, sans-serif;
+  color: #000;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}

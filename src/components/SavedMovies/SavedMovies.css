@@ -1,8 +1,8 @@
 .saved-movies {
-    margin: 0;
-    padding: 0;
-    flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
 }
 .saved-movies__devider {
-    height: 140px;
+  height: 140px;
 }

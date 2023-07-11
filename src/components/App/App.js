@@ -17,39 +17,42 @@ function App() {
     <div className="background">
       <div className="page">
         <Routes>
-
           <Route path="/signup" element={<Register />} />
           <Route path="/signin" element={<Login />} />
 
-          <Route path="/" element={
-            <>
-              <Main />
-              <Footer />
-            </>
-          }/>
+          <Route
+            path="/"
+            element={
+              <>
+                <Main />
+                <Footer />
+              </>
+            }
+          />
 
-          <Route path="/movies" element={
-            <>
-              <Movies />
-              <Footer />
-            </>
-          }/>
-        
-          <Route path="/saved-movies" element={
-            <>
-              <SavedMovies />
-              <Footer />
-            </>
-          }/>
+          <Route
+            path="/movies"
+            element={
+              <>
+                <Movies />
+                <Footer />
+              </>
+            }
+          />
 
-          <Route path="/profile" element={
-              <Profile />
-          }/>  
+          <Route
+            path="/saved-movies"
+            element={
+              <>
+                <SavedMovies />
+                <Footer />
+              </>
+            }
+          />
 
-          <Route path="/error" element={
-              <Error />
-          }/>  
-        
+          <Route path="/profile" element={<Profile />} />
+
+          <Route path="/error" element={<Error />} />
         </Routes>
       </div>
     </div>
