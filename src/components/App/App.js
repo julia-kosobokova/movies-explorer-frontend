@@ -1,5 +1,8 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import {
+  Route,
+  Routes
+} from "react-router-dom";
 
 import Register from "../Register/Register";
 import Login from "../Login/Login";
@@ -13,49 +16,82 @@ import Profile from "../Profile/Profile";
 import Error from "../Error/Error";
 
 function App() {
-  return (
-    <div className="background">
-      <div className="page">
-        <Routes>
-          <Route path="/signup" element={<Register />} />
-          <Route path="/signin" element={<Login />} />
+  return ( <
+    div className = "background" >
+    <
+    div className = "page" >
+    <
+    Routes >
+    <
+    Route path = "/signup"
+    element = {
+      < Register / >
+    }
+    /> <
+    Route path = "/signin"
+    element = {
+      < Login / >
+    }
+    />
 
-          <Route
-            path="/"
-            element={
-              <>
-                <Main />
-                <Footer />
-              </>
-            }
-          />
+    <
+    Route path = "/"
+    element = {
+      <
+      >
+      <
+      Main / >
+      <
+      Footer / >
+      <
+      />
+    }
+    />
 
-          <Route
-            path="/movies"
-            element={
-              <>
-                <Movies />
-                <Footer />
-              </>
-            }
-          />
+    <
+    Route path = "/movies"
+    element = {
+      <
+      >
+      <
+      Movies / >
+      <
+      Footer / >
+      <
+      />
+    }
+    />
 
-          <Route
-            path="/saved-movies"
-            element={
-              <>
-                <SavedMovies />
-                <Footer />
-              </>
-            }
-          />
+    <
+    Route path = "/saved-movies"
+    element = {
+      <
+      >
+      <
+      SavedMovies / >
+      <
+      Footer / >
+      <
+      />
+    }
+    />
 
-          <Route path="/profile" element={<Profile />} />
+    <
+    Route path = "/profile"
+    element = {
+      < Profile / >
+    }
+    />
 
-          <Route path="/error" element={<Error />} />
-        </Routes>
-      </div>
-    </div>
+    <
+    Route path = "/error"
+    element = {
+      < Error / >
+    }
+    /> <
+    /Routes> <
+    /div> <
+    /div>
   );
 }
 

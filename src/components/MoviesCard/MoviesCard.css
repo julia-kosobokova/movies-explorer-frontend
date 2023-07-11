@@ -10,12 +10,14 @@
   box-sizing: border-box;
   box-shadow: 0 16px 24px 0 rgba(0, 0, 0, 0.05);
 }
+
 .card__image {
   width: 100%;
   height: 168px;
   border-radius: 10px 10px 0 0;
   object-fit: cover;
 }
+
 .card__footer {
   min-height: 67px;
   display: flex;
@@ -26,10 +28,12 @@
   padding: 14px 12px;
   box-sizing: border-box;
 }
+
 .card__caption {
   width: 206px;
   text-align: left;
 }
+
 .card__name {
   margin: 0;
   padding: 0;
@@ -40,6 +44,7 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
 .card__duration {
   margin: 0;
   padding: 0;
@@ -48,6 +53,7 @@
   font-size: 11px;
   font-weight: 400;
 }
+
 .card__save-button {
   margin: 0;
   padding: 0;
@@ -62,13 +68,16 @@
   position: relative;
   top: -3px;
 }
+
 .card__save-button:hover {
   opacity: 0.5;
   transition: opacity 0.5s linear 0.2s;
 }
+
 .card__save-button_active {
   background-image: url(../../images/save.svg);
 }
+
 .card__save-button_hidden {
   display: none;
 }
@@ -88,10 +97,12 @@
   top: -5px;
   left: -1px;
 }
+
 .card__remove-button:hover {
   opacity: 0.5;
   transition: opacity 0.5s linear 0.2s;
 }
+
 .card__remove-button_hidden {
   display: none;
 }
@@ -101,6 +112,7 @@
     width: 339px;
     height: 257px;
   }
+
   .card__image {
     height: 190px;
   }
@@ -111,6 +123,7 @@
     width: 300px;
     height: 235px;
   }
+
   .card__image {
     height: 168px;
   }
@@ -121,6 +134,7 @@
     width: 270px;
     height: 218px;
   }
+
   .card__image {
     height: 151px;
   }

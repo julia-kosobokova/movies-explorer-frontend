@@ -6,18 +6,29 @@ import Portfolio from "../Portfolio/Portfolio";
 import Header from "../Header/Header";
 
 function Main() {
-  return (
-    <>
-      <Header loggedIn={false} />
+  return ( <
+    >
+    <
+    Header loggedIn = {
+      false
+    }
+    />
 
-      <main className="content">
-        <Promo />
-        <AboutProject />
-        <Techs />
-        <AboutMe />
-        <Portfolio />
-      </main>
-    </>
+    <
+    main className = "content" >
+    <
+    Promo / >
+    <
+    AboutProject / >
+    <
+    Techs / >
+    <
+    AboutMe / >
+    <
+    Portfolio / >
+    <
+    /main> <
+    />
   );
 }
 

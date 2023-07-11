@@ -1,24 +1,32 @@
 function NavTab() {
-  return (
-    <nav className="nav-tab">
-      <ul className="nav-tab__links">
-        <li className="nav-tab__list-item">
-          <a href="#about" className="nav-tab__link">
-            О проекте
-          </a>
-        </li>
-        <li className="nav-tab__list-item">
-          <a href="#techs" className="nav-tab__link">
-            Технологии
-          </a>
-        </li>
-        <li className="nav-tab__list-item">
-          <a href="#student" className="nav-tab__link">
-            Студент
-          </a>
-        </li>
-      </ul>
-    </nav>
+  return ( <
+    nav className = "nav-tab" >
+    <
+    ul className = "nav-tab__links" >
+    <
+    li className = "nav-tab__list-item" >
+    <
+    a href = "#about"
+    className = "nav-tab__link" >
+    О проекте <
+    /a> <
+    /li> <
+    li className = "nav-tab__list-item" >
+    <
+    a href = "#techs"
+    className = "nav-tab__link" >
+    Технологии <
+    /a> <
+    /li> <
+    li className = "nav-tab__list-item" >
+    <
+    a href = "#student"
+    className = "nav-tab__link" >
+    Студент <
+    /a> <
+    /li> <
+    /ul> <
+    /nav>
   );
 }
 
