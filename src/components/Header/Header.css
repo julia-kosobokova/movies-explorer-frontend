@@ -7,23 +7,165 @@
   justify-content: space-between;
   align-items: center;
 }
-.header__link {
+
+.header__logo-link {
   height: 38px;
   display: block;
 }
+
 .header__logo {
   width: 38px;
   height: 38px;
+}
+
+.header__center {
+  justify-self: center;
+}
+
+.header__right {
+  justify-self: right;
+}
+
+.header__sign {
+  justify-self: right;
+}
+
+.header__sign_hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.header__profile_hidden {
+  display: none;
+}
+
+.header__icon_hidden {
+  display: none;
+}
+
+.header__links {
+  margin: 0;
+  padding: 0;
+  padding-inline-start: 0;
+  list-style-type: none;
+  color: #000;
+}
+
+.header__list-item {
+  display: inline;
+  margin-right: 14px;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.header__list-item:last-child {
+  margin-right: 0;
+}
+
+.header__link {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  text-decoration: none;
+}
+
+.header__button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.header__button_active {
+  font-weight: 400;
+}
+
+.header__button-green {
+  background-color: #2be080;
+  border-radius: 3px;
+  width: 54px;
+  height: 26px;
+}
+
+.header__profile {
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  height: 36px;
+  background: none;
+  border: none;
+  background-image: url(../../images/profile.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  justify-self: right;
+}
+
+.header__icon {
+  margin: 0;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  background-image: url(../../images/menu-btn.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  justify-self: right;
+}
+
+.header__icon:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s linear 0.2s;
+}
+
+.header__link:hover {
+  opacity: 0.6;
+  transition: opacity 0.5s linear 0.2s;
+}
+
+.header__button-green:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s linear 0.2s;
+}
+
+.header__profile:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s linear 0.2s;
 }
 
 @media (min-width: 768px) {
   .header {
     padding: 0 30px;
   }
+
+  .header__link {
+    font-size: 12px;
+    line-height: 1.34;
+  }
+
+  .header__list-item {
+    margin-right: 30px;
+  }
 }
 
 @media (min-width: 1280px) {
   .header {
     padding: 0 70px;
+  }
+
+  .header__link {
+    font-size: 13px;
+  }
+
+  .header__icon {
+    display: none;
+  }
+
+  .header__profile {
+    display: block;
   }
 }

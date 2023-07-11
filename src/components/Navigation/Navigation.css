@@ -1,16 +1,16 @@
-.nav__center {
+/* .nav__center {
   justify-self: center;
-}
-.nav__right {
+} */
+/* .nav__right {
   justify-self: right;
-}
-.nav__sign {
+} */
+/* .nav__sign {
   justify-self: right;
-}
-.nav__sign_hidden {
+} */
+/* .nav__sign_hidden {
   display: none;
   visibility: hidden;
-}
+} */
 .nav__movies {
   justify-self: center;
   display: none;
@@ -18,16 +18,16 @@
 .nav__movies_hidden {
   display: none;
 }
-.nav__profile_hidden {
+/* .nav__profile_hidden {
   display: none;
-}
+} */
 .nav__empty_hidden {
   display: none;
 }
 
-.nav__icon_hidden {
+/* .nav__icon_hidden {
   display: none;
-}
+} */
 
 .nav__links {
   margin: 0;
@@ -62,14 +62,14 @@
 .nav__button_active {
   font-weight: 400;
 }
-.nav__button-green {
+/* .nav__button-green {
   background-color: #2be080;
   border-radius: 3px;
   width: 54px;
   height: 26px;
-}
+} */
 
-.nav__profile {
+/* .nav__profile {
   display: none;
   margin: 0;
   padding: 0;
@@ -82,9 +82,9 @@
   background-position: center;
   cursor: pointer;
   justify-self: right;
-}
+} */
 
-.nav__icon {
+/* .nav__icon {
   margin: 0;
   padding: 0;
   width: 44px;
@@ -96,27 +96,27 @@
   background-position: center;
   cursor: pointer;
   justify-self: right;
-}
+} */
 
-.nav__icon:hover {
+/* .nav__icon:hover {
   opacity: 0.8;
   transition: opacity 0.5s linear 0.2s;
-}
+} */
 
 .nav__link:hover {
   opacity: 0.6;
   transition: opacity 0.5s linear 0.2s;
 }
 
-.nav__button-green:hover {
+/* .nav__button-green:hover {
   opacity: 0.8;
   transition: opacity 0.5s linear 0.2s;
-}
+} */
 
-.nav__profile:hover {
+/* .nav__profile:hover {
   opacity: 0.8;
   transition: opacity 0.5s linear 0.2s;
-}
+} */
 
 @media (min-width: 768px) {
   .nav__link {
@@ -139,9 +139,9 @@
     font-size: 13px;
   }
 
-  .nav__icon {
+  /* .nav__icon {
     display: none;
-  }
+  } */
 
   .nav__movies {
     display: block;
