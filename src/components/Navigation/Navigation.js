@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navigation(props) {
   return (
@@ -10,7 +10,7 @@ function Navigation(props) {
         >
           <ul className="nav__links">
             <li className="nav__list-item nav__list-item_movies">
-              <Link to="/movies" className="nav__link">
+              <NavLink to="/movies" className="nav__link">
                 <button
                   className={`nav__button ${
                     props.activeLink === "movies" ? "nav__button_active" : ""
@@ -18,10 +18,10 @@ function Navigation(props) {
                 >
                   Фильмы
                 </button>
-              </Link>
+              </NavLink>
             </li>
             <li className="nav__list-item nav__list-item_movies">
-              <Link to="/saved-movies" className="nav__link">
+              <NavLink to="/saved-movies" className="nav__link">
                 <button
                   className={`nav__button ${
                     props.activeLink === "saved-movies"
@@ -31,7 +31,7 @@ function Navigation(props) {
                 >
                   Сохраненные фильмы
                 </button>
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
