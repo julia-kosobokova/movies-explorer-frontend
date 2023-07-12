@@ -175,4 +175,8 @@
   .header__profile {
     display: block;
   }
+
+  .header__profile_hidden {
+    display: none;
+  }
 }
