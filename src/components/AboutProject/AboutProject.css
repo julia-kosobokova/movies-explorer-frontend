@@ -1,0 +1,96 @@
+/* 320 Описание дипломного проекта */
+.about-project {
+  margin: 0 auto;
+  padding: 70px 18px;
+}
+.about-project__columns {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  padding: 4px 0 60px 0;
+}
+.about-project__title {
+  margin: 0;
+  padding-top: 56px;
+  line-height: 1.22;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.72px;
+  text-align: left;
+}
+.about-project__text {
+  margin: 0;
+  padding-top: 16px;
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: left;
+}
+.about-project__table {
+  display: flex;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.19;
+  color: #a0a0a0;
+}
+.about-project__table-left {
+  width: 20%;
+}
+.about-project__table-right {
+  width: 80%;
+}
+.about-project__table-title {
+  margin: 0;
+  padding: 11px 0;
+  box-sizing: border-box;
+  height: 35px;
+  color: #000;
+  background-color: #f2f2f2;
+}
+.about-project__table-title_green {
+  background-color: #2be080;
+}
+.about-project__table-text {
+  margin: 0;
+  padding-top: 10px;
+}
+
+/* Разрешение экрана 768 */
+@media (min-width: 768px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+  .about-project__columns {
+    flex-direction: row;
+    padding-top: 70px;
+    padding-bottom: 93px;
+  }
+  .about-project__title {
+    padding-top: 0;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+  }
+  .about-project__text {
+    padding-top: 22px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .about-project__table {
+    font-size: 14px;
+    line-height: 1.29;
+  }
+  .about-project__table-title {
+    padding: 9px 0;
+    height: 36px;
+  }
+}
+
+/* Разрешение экрана 1280 */
+@media (min-width: 1280px) {
+  .about-project {
+    padding: 110px 70px;
+  }
+  .about-project__columns {
+    padding-bottom: 110px;
+  }
+}

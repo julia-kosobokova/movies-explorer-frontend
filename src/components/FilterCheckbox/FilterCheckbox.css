@@ -1,0 +1,61 @@
+.filter {
+  margin: 0 auto;
+  padding: 45px 0 44px;
+  box-sizing: border-box;
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter__tumbler {
+  margin: 0;
+  padding: 0;
+  width: 36px;
+  height: 20px;
+  background: none;
+  border: none;
+  background-image: url(../../images/smalltumb.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.filter__tumbler_active {
+  background-image: url(../../images/smalltumboff.svg);
+}
+
+.filter__tumbler:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s linear 0.2s;
+}
+
+.filter__text {
+  margin: 0;
+  padding: 0;
+  padding-left: 13px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.64;
+}
+
+@media (min-width: 768px) {
+  .filter {
+    padding: 16px 0 16px 19px;
+    height: 72px;
+    justify-content: flex-start;
+  }
+
+  .filter__text {
+    padding-left: 15px;
+    font-size: 13px;
+    line-height: 1.39;
+  }
+}
+
+@media (min-width: 1280px) {
+  .filter {
+    padding-left: 29px;
+  }
+}
