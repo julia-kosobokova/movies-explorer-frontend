@@ -14,13 +14,30 @@ function Header(props) {
   const hideMenu = () => {
     setMenuIsVisible(false);
   };
+
+  // Кнопка регистрации в Header
+  function handleRegisterButton() {
+    props.onRegisterButton();
+  }
+
+   // Кнопка аутентификации в Header
+  function handleLoginButton() {
+    props.onLoginButton();
+  }
+
+
   return (
     <header className="header">
       <NavLink to="/" className="header__logo-link">
         <img src={logo} alt="Логотип проекта" className="header__logo" />
       </NavLink>
       <div className="header__center">
-        <Navigation loggedIn={props.loggedIn} activeLink={props.activeLink} />
+        <Navigation 
+          loggedIn={props.loggedIn}
+          activeLink={props.activeLink}
+          onMoviesButton={props.onMoviesButton}
+          onSavedMoviesButton={props.onSavedMoviesButton}
+        />
       </div>
       <div className="header__right">
         <nav
@@ -30,16 +47,24 @@ function Header(props) {
         >
           <ul className="header__links">
             <li className="header__list-item">
-              <NavLink to="/signup" className="header__link">
-                <button className="header__button">Регистрация</button>
-              </NavLink>
+              <span className="header__link">
+                <button 
+                  className="header__button"
+                  type="button"
+                  onClick={handleRegisterButton}
+                >Регистрация</button>
+              </span>
             </li>
             <li className="header__list-item">
-              <NavLink to="/signin" className="header__link header__link_green">
-                <button className="header__button header__button-green">
+              <span className="header__link header__link_green">
+                <button 
+                  className="header__button header__button-green"
+                  type="button"
+                  onClick={handleLoginButton}
+                >
                   Войти
                 </button>
-              </NavLink>
+              </span>
             </li>
           </ul>
         </nav>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 import Register from "../Register/Register";
 import Login from "../Login/Login";
@@ -13,18 +13,46 @@ import Profile from "../Profile/Profile";
 import Error from "../Error/Error";
 
 function App() {
+
+  const navigate = useNavigate();
+
+  // Переход в форму регистрации
+  function handleRegisterButton() {
+    navigate("/signup", { replace: true });
+  }
+
+  // Переход в форму входа
+  function handleLoginButton() {
+    navigate("/signin", { replace: true });
+  }
+
+  // Переход на страницу с фильмами
+  function handleMoviesButton() {
+    navigate("/movies", { replace: true });
+  }
+
+  // Переход на страницу с фильмами
+  function handleSavedMoviesButton() {
+    navigate("/saved-movies", { replace: true });
+  }
+
   return (
     <div className="background">
       <div className="page">
         <Routes>
-          <Route path="/signup" element={<Register />} />
+          <Route path="/signup" element={ <Register />} />
+
+
           <Route path="/signin" element={<Login />} />
 
           <Route
             path="/"
             element={
               <>
-                <Main />
+                <Main
+                  onRegisterButton={handleRegisterButton}
+                  onLoginButton={handleLoginButton}
+                />
                 <Footer />
               </>
             }
@@ -34,7 +62,9 @@ function App() {
             path="/movies"
             element={
               <>
-                <Movies />
+                <Movies
+                  onSavedMoviesButton={handleSavedMoviesButton}
+                />
                 <Footer />
               </>
             }
@@ -44,7 +74,9 @@ function App() {
             path="/saved-movies"
             element={
               <>
-                <SavedMovies />
+                <SavedMovies
+                  onMoviesButton={handleMoviesButton}
+                />
                 <Footer />
               </>
             }

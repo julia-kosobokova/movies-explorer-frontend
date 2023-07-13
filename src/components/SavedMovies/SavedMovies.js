@@ -2,10 +2,14 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
 
-function SavedMovies() {
+function SavedMovies(props) {
   return (
     <>
-      <Header loggedIn={true} activeLink="saved-movies" />
+      <Header
+        loggedIn={true}
+        activeLink="saved-movies"
+        onMoviesButton={props.onMoviesButton}
+      />
 
       <main className="saved-movies">
         <SearchForm />
