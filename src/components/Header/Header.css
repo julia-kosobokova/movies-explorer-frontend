@@ -143,6 +143,12 @@
   transition: opacity 0.5s linear 0.2s;
 }
 
+.header__profile-button_active-page:hover {
+  opacity: 1;
+  transition: none;
+  cursor: default;
+}
+
 @media (min-width: 768px) {
   .header {
     padding: 0 30px;

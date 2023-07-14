@@ -1,9 +1,14 @@
 import Header from "../Header/Header";
 
-function Profile() {
+function Profile(props) {
   return (
     <>
-      <Header loggedIn={true} />
+      <Header
+        loggedIn={true}
+        activeLink="profile"
+        onMoviesButton={props.onMoviesButton}
+        onSavedMoviesButton={props.onSavedMoviesButton}
+      />
       <main className="profile">
         <h1 className="profile__title">Привет, Виталий!</h1>
         <section className="profile__body">

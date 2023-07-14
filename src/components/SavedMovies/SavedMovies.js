@@ -9,6 +9,7 @@ function SavedMovies(props) {
         loggedIn={true}
         activeLink="saved-movies"
         onMoviesButton={props.onMoviesButton}
+        onProfileButton={props.onProfileButton}
       />
 
       <main className="saved-movies">

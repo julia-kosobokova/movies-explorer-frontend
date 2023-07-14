@@ -1,16 +1,12 @@
-import { NavLink } from "react-router-dom";
-
 function Navigation(props) {
 
   // Кнопка Фильмы в Header
   function handleMoviesButton() {
-    console.log("jehgfdhgsr.k");
     props.onMoviesButton()
   }
 
   // Кнопка Сохраненные фильмы в Header
   function handleSavedMoviesButton() {
-    console.log("88776");
     props.onSavedMoviesButton()
   }
 

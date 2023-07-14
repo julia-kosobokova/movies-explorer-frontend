@@ -26,6 +26,11 @@ function App() {
     navigate("/signin", { replace: true });
   }
 
+  // Переход на страницу профиля
+  function handleProfileButton() {
+    navigate("/profile", { replace: true });
+  }
+
   // Переход на страницу с фильмами
   function handleMoviesButton() {
     navigate("/movies", { replace: true });
@@ -64,6 +69,7 @@ function App() {
               <>
                 <Movies
                   onSavedMoviesButton={handleSavedMoviesButton}
+                  onProfileButton={handleProfileButton}
                 />
                 <Footer />
               </>
@@ -76,13 +82,22 @@ function App() {
               <>
                 <SavedMovies
                   onMoviesButton={handleMoviesButton}
+                  onProfileButton={handleProfileButton}
                 />
                 <Footer />
               </>
             }
           />
 
-          <Route path="/profile" element={<Profile />} />
+          <Route 
+            path="/profile" 
+            element={
+              <Profile
+                onMoviesButton={handleMoviesButton}
+                onSavedMoviesButton={handleSavedMoviesButton}
+              /> 
+            } 
+          />
 
           <Route path="/error" element={<Error />} />
         </Routes>

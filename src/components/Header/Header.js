@@ -25,6 +25,10 @@ function Header(props) {
     props.onLoginButton();
   }
 
+  // Кнопка аккаунта в Header
+  function handleProfileButton() {
+    props.onProfileButton();
+}
 
   return (
     <header className="header">
@@ -75,9 +79,20 @@ function Header(props) {
               : "header__profile header__profile_hidden"
           }
         >
-          <NavLink to="/profile" className="header__link">
-            <button type="button" className="header__profile-button" />
-          </NavLink>
+          {/* <div className="header__link"> */}
+            <button
+              className={`header__profile-button ${
+                props.activeLink==="profile"
+                  ? "header__profile-button_active-page"
+                  : ""
+              }`}
+              type="button"
+              onClick={props.activeLink==="profile"
+                ? null
+                : handleProfileButton
+              }
+            />
+          {/* </div> */}
         </div>
 
         <div
