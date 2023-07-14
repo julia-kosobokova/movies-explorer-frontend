@@ -2,6 +2,18 @@ import { Link } from "react-router-dom";
 import logo from "../../images/header-logo.svg";
 
 function Auth(props) {
+
+  // function handleSubmit(e) {
+  //   // Запрещаем браузеру переходить по адресу формы
+  //   e.preventDefault();
+
+  //   // Передаём значения управляемых компонентов во внешний обработчик
+  //   props.onLoginUser({
+  //     email: formData.email,
+  //     password: formData.password,
+  //   });
+  // }
+
   return (
     <main className="auth">
       <header className="auth__header">
@@ -56,6 +68,7 @@ function Auth(props) {
             <span className="auth__input-error">Что-то пошло не так...</span>
           </div>
 
+          {/* Кнопка Войти / Зарегистрироваться */}
           <button type="submit" className="auth__button">
             {props.button}
           </button>

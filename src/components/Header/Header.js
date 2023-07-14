@@ -108,7 +108,7 @@ function Header(props) {
         </div>
       </div>
 
-      <Menu isVisible={menuIsVisible} onClose={hideMenu} />
+      <Menu isVisible={menuIsVisible} onClose={hideMenu} onProfileButton={props.onProfileButton} />
     </header>
   );
 }
