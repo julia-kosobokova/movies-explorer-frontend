@@ -1,6 +1,7 @@
 import Auth from "../Auth/Auth";
 
-function Login() {
+function Login(props) {
+  
   return (
     <Auth
       title="Рады видеть!"

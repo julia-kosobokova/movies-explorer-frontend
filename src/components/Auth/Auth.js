@@ -1,18 +1,43 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/header-logo.svg";
 
 function Auth(props) {
 
-  // function handleSubmit(e) {
-  //   // Запрещаем браузеру переходить по адресу формы
-  //   e.preventDefault();
+  const [formData, setFormData] = React.useState({ email: "", password: "" });
 
-  //   // Передаём значения управляемых компонентов во внешний обработчик
-  //   props.onLoginUser({
-  //     email: formData.email,
-  //     password: formData.password,
-  //   });
-  // }
+  function onNameChange(event) {
+    setFormData({
+      ...formData,
+      name: event.target.value,
+    });
+  }
+  
+  function onEmailChange(event) {
+    setFormData({
+      ...formData,
+      email: event.target.value,
+    });
+  }
+
+  function onPasswordChange(event) {
+    setFormData({
+      ...formData,
+      password: event.target.value,
+    });
+  }
+
+  function handleSubmit(e) {
+    // Запрещаем браузеру переходить по адресу формы
+    e.preventDefault();
+
+    // Передаём значения управляемых компонентов во внешний обработчик
+    props.onAuthUser({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+    });
+  }
 
   return (
     <main className="auth">
@@ -26,7 +51,7 @@ function Auth(props) {
       <form
         name="authForm"
         className="auth__form"
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <fieldset className="auth__form-set">
           <div
@@ -39,9 +64,9 @@ function Auth(props) {
               type="name"
               name="name"
               required
-              // onChange={onEmailChange}
+              onChange={onNameChange}
               className="auth__input"
-              // value={formData.email}
+              value={formData.name}
             />
           </div>
 
@@ -50,9 +75,9 @@ function Auth(props) {
             type="email"
             name="email"
             required
-            // onChange={onEmailChange}
+            onChange={onEmailChange}
             className="auth__input"
-            // value={formData.email}
+            value={formData.email}
           />
 
           <div className="auth__input-group auth__input-group_error">
@@ -61,9 +86,9 @@ function Auth(props) {
               type="password"
               name="password"
               required
-              // onChange={onPasswordChange}
+              onChange={onPasswordChange}
               className="auth__input auth__input_error"
-              // value={formData.password}
+              value={formData.password}
             />
             <span className="auth__input-error">Что-то пошло не так...</span>
           </div>
