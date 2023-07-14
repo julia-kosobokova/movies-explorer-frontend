@@ -61,9 +61,9 @@ function Auth(props) {
           >
             <label className="auth__label">Имя</label>
             <input
-              type="name"
+              type="text"
               name="name"
-              required
+              required={ props.hasName ? true : false }
               onChange={onNameChange}
               className="auth__input"
               value={formData.name}

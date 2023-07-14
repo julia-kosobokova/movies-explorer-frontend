@@ -275,14 +275,12 @@ function App() {
           userEmail: data.user.email,
           userPassword: password,
           userName: data.user.name,
-          userDescription: data.user.about,
-          userAvatar: data.user.avatar,
         });
 
         if (data.token) {
           localStorage.setItem("token", data.token);
           setLoggedIn(true);
-          navigate("/", { replace: true });
+          navigate("/movies", { replace: true });
         }
         // closeAllPopups();
       })
@@ -295,7 +293,7 @@ function App() {
   // function signOut() {
   //   localStorage.removeItem("token");
   //   setLoggedIn(false);
-  //   navigate("/sign-in", { replace: true });
+  //   navigate("/", { replace: true });
   // }
 
   // Переход в форму регистрации

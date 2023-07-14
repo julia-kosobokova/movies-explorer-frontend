@@ -20,6 +20,7 @@ class MainApi {
 
   // Авторизация
   signin(userInfo) {
+    console.log(userInfo);
     return fetch(this._options.baseUrl + "/signin", {
       method: "POST",
       headers: {

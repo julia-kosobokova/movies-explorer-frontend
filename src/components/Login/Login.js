@@ -8,6 +8,7 @@ function Login(props) {
       button="Войти"
       footerText="Ещё не зарегистрированы?"
       footerLink="Регистрация"
+      onAuthUser={props.onLoginUser}
     />
   );
 }
