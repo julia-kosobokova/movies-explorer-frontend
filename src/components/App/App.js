@@ -47,7 +47,7 @@ function App() {
             // авторизуем пользователя
             setLoggedIn(true);
             setUserEmail(res.data.email);
-            navigate("/movies", { replace: true });
+            // navigate("/movies", { replace: true });
           }
         })
         .catch((err) => {
@@ -271,10 +271,10 @@ function App() {
       .then((data) => {
         setCurrentUser({
           ...currentUser,
-          id: data.user._id,
-          userEmail: data.user.email,
+          id: data.userObject._id,
+          userEmail: data.userObject.email,
           userPassword: password,
-          userName: data.user.name,
+          userName: data.userObject.name,
         });
 
         if (data.token) {
@@ -290,11 +290,11 @@ function App() {
   };
 
   // Выход пользователя
-  // function signOut() {
-  //   localStorage.removeItem("token");
-  //   setLoggedIn(false);
-  //   navigate("/", { replace: true });
-  // }
+  function signOut() {
+    localStorage.removeItem("token");
+    setLoggedIn(false);
+    navigate("/", { replace: true });
+  }
 
   // Переход в форму регистрации
   function handleRegisterButton() {
@@ -385,6 +385,7 @@ function App() {
               <Profile
                 onMoviesButton={handleMoviesButton}
                 onSavedMoviesButton={handleSavedMoviesButton}
+                onExitButton={signOut}
               /> 
             } 
           />

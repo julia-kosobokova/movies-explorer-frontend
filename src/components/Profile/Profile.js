@@ -1,6 +1,7 @@
 import Header from "../Header/Header";
 
 function Profile(props) {
+  console.log("Profile");
   return (
     <>
       <Header
@@ -25,7 +26,10 @@ function Profile(props) {
           <button type="button" className="profile__link">
             Редактировать
           </button>
-          <button type="button" className="profile__link profile__link_pink">
+          <button
+            type="button"
+            className="profile__link profile__link_pink"
+            onClick={props.onExitButton}>
             Выйти из аккаунта
           </button>
         </section>
