@@ -39,6 +39,10 @@ function Auth(props) {
     });
   }
 
+  function handleAuthButton() {
+    props.onAuthButton();
+  }
+
   return (
     <main className="auth">
       <header className="auth__header">
@@ -103,7 +107,9 @@ function Auth(props) {
             <button
               className="auth__footer-link"
               type="button"
+              onClick={handleAuthButton}
               // onClick={handleLoginButton}
+              // onClick={handleRegisterButton}
             >
               {props.footerLink}
             </button>

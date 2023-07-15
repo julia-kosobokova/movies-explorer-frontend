@@ -10,6 +10,7 @@ function Register(props) {
       footerText="Уже зарегистрированы?"
       footerLink="Войти"
       onAuthUser={props.onRegisterUser}
+      onAuthButton={props.onLoginButton}
     />
   );
 }
