@@ -19,18 +19,19 @@ function MoviesCard(props) {
   }
 
   async function isSaved() {
-    const res = await mainApi.findMovies();
-    // .then((res)=> {
-      const savedMovies = res.data;
-      const isSaved = savedMovies.some((savedMovie) => savedMovie.movieId === props.movie.id);
-      return isSaved;
-    // });
+    return false;
+    // const res = await mainApi.findMovies();
+    // // .then((res)=> {
+    //   const savedMovies = res.data;
+    //   const isSaved = savedMovies.some((savedMovie) => savedMovie.movieId === props.movie.id);
+    //   return isSaved;
+    // // });
   }
 
   return (
     <li className="card">
       <img
-        src={MOVIES_URL + props.movie.image.url}
+        src={props.movie.image}
         className="card__image"
         alt={props.movie.nameRU}
       />

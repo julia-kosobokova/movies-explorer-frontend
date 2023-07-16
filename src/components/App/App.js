@@ -19,6 +19,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import Error from "../Error/Error";
 import { movieApi } from "../../utils/MovieApi";
+import { MOVIES_URL } from "../../const";
 
 function App() {
 
@@ -164,7 +165,21 @@ function App() {
   React.useEffect(() => {
     movieApi.getAllMovies()
       .then((allMovies) => {
-        setMovies(allMovies);
+        setMovies(allMovies.map((movie) => {
+          return {
+            country: movie.country,
+            director: movie.director,
+            duration: movie.duration,
+            year: movie.year,
+            description: movie.description,
+            image: MOVIES_URL + movie.image.url,
+            trailerLink: movie.trailerLink,
+            nameRU: movie.nameRU,
+            nameEN: movie.nameEN,
+            thumbnail: MOVIES_URL + movie.image.formats.thumbnail.url,
+            movieId: movie.id,
+          };
+        }));
       })
       .catch((err) => {
         console.log(err);

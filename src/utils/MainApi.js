@@ -69,19 +69,7 @@ class MainApi {
     return fetch(this._options.baseUrl + "/movies", {
       method: "POST",
       headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-      body: JSON.stringify({
-        country: movie.country,
-        director: movie.director,
-        duration: movie.duration,
-        year: movie.year,
-        description: movie.description,
-        image: MOVIES_URL + movie.image.url,
-        trailerLink: movie.trailerLink,
-        nameRU: movie.nameRU,
-        nameEN: movie.nameEN,
-        thumbnail: MOVIES_URL + movie.image.formats.thumbnail.url,
-        movieId: movie.id,
-      }),
+      body: JSON.stringify(movie),
     }).then((res) => {
       return this._getResponseData(res);
     });
