@@ -15,10 +15,10 @@ class MovieApi {
   }
 
   // Загрузка карточек с сервера
-  getInitialCards() {
+  getAllMovies() {
     console.log(this._options.headers);
-    return fetch(this._options.baseUrl + "/cards", {
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+    return fetch(this._options.baseUrl + "/beatfilm-movies", {
+      headers: {...this._options.headers},
     }).then((res) => {
       return this._getResponseData(res);
     });
@@ -83,17 +83,17 @@ class MovieApi {
   }
 
   // Обновление аватара пользователя
-  updateUserAvatar(avatar) {
-    return fetch(this._options.baseUrl + "/users/me/avatar", {
-      method: "PATCH",
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-      body: JSON.stringify({
-        avatar,
-      }),
-    }).then((res) => {
-      return this._getResponseData(res);
-    });
-  }
+  // updateUserAvatar(avatar) {
+  //   return fetch(this._options.baseUrl + "/users/me/avatar", {
+  //     method: "PATCH",
+  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+  //     body: JSON.stringify({
+  //       avatar,
+  //     }),
+  //   }).then((res) => {
+  //     return this._getResponseData(res);
+  //   });
+  // }
 
   _getResponseData(res) {
     if (!res.ok) {
@@ -106,7 +106,7 @@ class MovieApi {
 export const movieApi = new MovieApi({
 baseUrl: MOVIES_URL,
   headers: {
-    "Authorization": `Bearer ${localStorage.getItem('token')}`,
+    // "Authorization": `Bearer ${localStorage.getItem('token')}`,
     "Content-Type": "application/json",
   },
 });

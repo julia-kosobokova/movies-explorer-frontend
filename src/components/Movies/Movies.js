@@ -3,6 +3,9 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
 
 function Movies(props) {
+
+
+
   return (
     <>
       <Header
@@ -14,7 +17,9 @@ function Movies(props) {
 
       <main className="movies">
         <SearchForm />
-        <MoviesCardList />
+        <MoviesCardList
+          movies={props.movies}
+        />
         <div className="movies__more">
           <button type="button" className="movies__more-button">
             Ещё

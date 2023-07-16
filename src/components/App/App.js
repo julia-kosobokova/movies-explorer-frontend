@@ -18,6 +18,7 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import Error from "../Error/Error";
+import { movieApi } from "../../utils/MovieApi";
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
     userPassword: "",
   });
 
-  // const [cards, setCards] = React.useState([]);
+  const [movies, setMovies] = React.useState([]);
   const [userEmail, setUserEmail] = React.useState("");
   const [loggedIn, setLoggedIn] = React.useState(false);
 
@@ -158,15 +159,16 @@ function App() {
   //     });
   // };
 
-  // React.useEffect(() => {
-  //   Promise.all([api.getInitialCards()])
-  //     .then(([{data: initialCards}]) => {
-  //       setCards(initialCards);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  // Загрузка всех фильмов с внешнего сервиса
+  React.useEffect(() => {
+    movieApi.getAllMovies()
+      .then((allMovies) => {
+        setMovies(allMovies);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   // function handleCardLike(card) {
   //   // Снова проверяем, есть ли уже лайк на этой карточке
@@ -360,6 +362,7 @@ function App() {
                 <Movies
                   onSavedMoviesButton={handleSavedMoviesButton}
                   onProfileButton={handleProfileButton}
+                  movies={movies}
                 />
                 <Footer />
               </>
