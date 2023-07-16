@@ -1,6 +1,32 @@
+import { useState } from "react";
 import { MOVIES_URL } from "../../const";
+import { mainApi } from "../../utils/MainApi";
 
 function MoviesCard(props) {
+
+  // let [movieIsSaved, setMovieIsSaved] = useState(false);
+
+  // const saveMovie = () => {
+  //   setMovieIsSaved(true);
+  // };
+
+  // const hideMenu = () => {
+  //   setMenuIsVisible(false);
+  // };
+
+  function handleSaveMovie() {
+    props.onMovieSave(props.movie);
+  }
+
+  async function isSaved() {
+    const res = await mainApi.findMovies();
+    // .then((res)=> {
+      const savedMovies = res.data;
+      const isSaved = savedMovies.some((savedMovie) => savedMovie.movieId === props.movie.id);
+      return isSaved;
+    // });
+  }
+
   return (
     <li className="card">
       <img
@@ -18,9 +44,10 @@ function MoviesCard(props) {
           type="button"
           className={
             "card__save-button" +
-            (props.isSaved === true ? " card__save-button_active" : "") +
+            (isSaved() === true ? " card__save-button_active" : "") +
             (props.savedMode === true ? " card__save-button_hidden" : "")
           }
+          onClick={handleSaveMovie}
         ></button>
         <button
           type="button"

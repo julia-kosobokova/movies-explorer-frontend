@@ -31,6 +31,7 @@ function App() {
   });
 
   const [movies, setMovies] = React.useState([]);
+  const [savedMovies, setSavedMovies] = React.useState([]);
   const [userEmail, setUserEmail] = React.useState("");
   const [loggedIn, setLoggedIn] = React.useState(false);
 
@@ -170,35 +171,62 @@ function App() {
       });
   }, []);
 
-  // function handleCardLike(card) {
-  //   // Снова проверяем, есть ли уже лайк на этой карточке
-  //   const isLiked = card.likes.some((i) => i._id === currentUser.id);
+    // Загрузка всех сохраненных фильмов из внутреннего сервера
+    React.useEffect(() => {
+      mainApi.findMovies()
+        .then((resp) => {
+          const savedMovies=resp.data;
+          setSavedMovies(savedMovies);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
 
-  //   if (!isLiked) {
-  //     // Отправляем запрос в API и получаем обновлённые данные карточки
-  //     api
-  //       .addLike(card._id)
-  //       .then(({data: newCard}) => {
-  //         setCards((cards) =>
-  //           cards.map((c) => (c._id === card._id ? newCard : c))
-  //         );
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   } else {
-  //     api
-  //       .removeLike(card._id)
-  //       .then(({data: newCard}) => {
-  //         setCards((cards) =>
-  //           cards.map((c) => (c._id === card._id ? newCard : c))
-  //         );
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // }
+  // Выбор фильма для сохранения
+  function handleSaveMovie(movie) {
+    // Проверяем, есть ли фильм в списке сохраненных
+    mainApi.findMovies()
+      .then((res)=> {
+        const savedMovies = res.data;
+        const isSaved = savedMovies.some((savedMovie) => savedMovie.movieId === movie.id);
+        if (!isSaved) {
+          // Отправляем запрос в API на сохранение фильма
+          mainApi
+            .createMovie(movie)
+            .then (() => {
+              movie.isSaved = true;
+            });
+            
+        }
+    });
+
+
+    // if (!isSaved) {
+    //   // Отправляем запрос в API и получаем обновлённые данные карточки
+    //   mainApi
+    //     .addLike(movie._id)
+    //     .then(({data: newMovie}) => {
+    //       setMovies((movies) =>
+    //         movies.map((c) => (c._id === movie._id ? newMovie : c))
+    //       );
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // } else {
+    //   mainApi
+    //     .removeLike(movie._id)
+    //     .then(({data: newMovie}) => {
+    //       setMovies((movies) =>
+    //         movies.map((c) => (c._id === movie._id ? newMovie : c))
+    //       );
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // }
+  }
 
   // function handleCardDelete(card) {
   //   // Проверяем, моя ли это карточка
@@ -363,6 +391,7 @@ function App() {
                   onSavedMoviesButton={handleSavedMoviesButton}
                   onProfileButton={handleProfileButton}
                   movies={movies}
+                  onMovieSave={handleSaveMovie}
                 />
                 <Footer />
               </>
@@ -376,6 +405,7 @@ function App() {
                 <SavedMovies
                   onMoviesButton={handleMoviesButton}
                   onProfileButton={handleProfileButton}
+                  movies={savedMovies}
                 />
                 <Footer />
               </>

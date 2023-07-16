@@ -1,4 +1,4 @@
-import { BASE_URL } from "../const";
+import { BASE_URL, MOVIES_URL } from "../const";
 
 class MainApi {
   constructor(options) {
@@ -46,6 +46,52 @@ class MainApi {
         password: userInfo.password,
         email: userInfo.email,
       }),
+    }).then((res) => {
+      return this._getResponseData(res);
+    });
+  }
+
+  // Поиск всех сохраненных текущим пользователем фильмов
+  findMovies() {
+    return fetch(this._options.baseUrl + "/movies", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem('token')}`
+      },
+    }).then((res) => {
+      return this._getResponseData(res);
+    });
+  }
+
+  // Сохранение фильма на сервере
+  createMovie(movie) {
+    return fetch(this._options.baseUrl + "/movies", {
+      method: "POST",
+      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+      body: JSON.stringify({
+        country: movie.country,
+        director: movie.director,
+        duration: movie.duration,
+        year: movie.year,
+        description: movie.description,
+        image: MOVIES_URL + movie.image.url,
+        trailerLink: movie.trailerLink,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN,
+        thumbnail: MOVIES_URL + movie.image.formats.thumbnail.url,
+        movieId: movie.id,
+      }),
+    }).then((res) => {
+      return this._getResponseData(res);
+    });
+  }
+
+  // Постановка лайка - перенесено на свой сервер: выбор для сохранения
+  addLike(cardId) {
+    return fetch(this._options.baseUrl + "/cards/" + cardId + "/likes", {
+      method: "PUT",
+      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
     }).then((res) => {
       return this._getResponseData(res);
     });

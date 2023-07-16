@@ -19,6 +19,7 @@ function Movies(props) {
         <SearchForm />
         <MoviesCardList
           movies={props.movies}
+          onMovieSave={props.onMovieSave}
         />
         <div className="movies__more">
           <button type="button" className="movies__more-button">

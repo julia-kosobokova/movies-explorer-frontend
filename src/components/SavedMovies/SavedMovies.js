@@ -14,7 +14,10 @@ function SavedMovies(props) {
 
       <main className="saved-movies">
         <SearchForm />
-        <MoviesCardList savedMode={true} />
+        <MoviesCardList
+          savedMode={true}
+          movies={props.movies}
+        />
         <div className="saved-movies__devider" />
       </main>
     </>

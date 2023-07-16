@@ -14,7 +14,7 @@ class MovieApi {
     });
   }
 
-  // Загрузка карточек с сервера
+  // Загрузка фильмов с сервера
   getAllMovies() {
     console.log(this._options.headers);
     return fetch(this._options.baseUrl + "/beatfilm-movies", {
@@ -38,19 +38,19 @@ class MovieApi {
     });
   }
 
-  // Добавление новой карточки
-  saveNewCard(card) {
-    return fetch(this._options.baseUrl + "/cards", {
-      method: "POST",
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-      body: JSON.stringify({
-        name: card.name,
-        link: card.link,
-      }),
-    }).then((res) => {
-      return this._getResponseData(res);
-    });
-  }
+  // // Добавление новой карточки - перенесено на свой сервер: сохранение фильма
+  // saveNewCard(card) {
+  //   return fetch(this._options.baseUrl + "/cards", {
+  //     method: "POST",
+  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+  //     body: JSON.stringify({
+  //       name: card.name,
+  //       link: card.link,
+  //     }),
+  //   }).then((res) => {
+  //     return this._getResponseData(res);
+  //   });
+  // }
 
   // Удаление карточки
   deleteCard(cardId) {
@@ -62,15 +62,15 @@ class MovieApi {
     });
   }
 
-  // Постановка лайка
-  addLike(cardId) {
-    return fetch(this._options.baseUrl + "/cards/" + cardId + "/likes", {
-      method: "PUT",
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-    }).then((res) => {
-      return this._getResponseData(res);
-    });
-  }
+  // // Постановка лайка - перенесено на свой сервер: выбор для сохранения
+  // addLike(cardId) {
+  //   return fetch(this._options.baseUrl + "/cards/" + cardId + "/likes", {
+  //     method: "PUT",
+  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+  //   }).then((res) => {
+  //     return this._getResponseData(res);
+  //   });
+  // }
 
   // Снятие лайка
   removeLike(cardId) {
