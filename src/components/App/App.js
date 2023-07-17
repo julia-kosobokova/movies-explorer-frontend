@@ -121,24 +121,24 @@ function App() {
   //   });
   // };
 
-  // const handleUpdateUser = ({ name, about }) => {
-  //   api
-  //     .saveUserInfo({
-  //       name: name,
-  //       description: about,
-  //     })
-  //     .then(() => {
-  //       setCurrentUser({
-  //         ...currentUser,
-  //         userName: name,
-  //         userDescription: about,
-  //       });
-  //       closeAllPopups();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  const handleUpdateUser = ({ name, email }) => {
+    mainApi
+      .saveUserInfo({
+        name: name,
+        email: email,
+      })
+      .then(() => {
+        setCurrentUser({
+          ...currentUser,
+          userName: name,
+          userEmail: email,
+        });
+        // closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   // const handleUpdateAvatar = ({ avatar }) => {
   //   api
@@ -434,6 +434,7 @@ function App() {
                 <Profile
                   onMoviesButton={handleMoviesButton}
                   onSavedMoviesButton={handleSavedMoviesButton}
+                  onUpdateUser={handleUpdateUser}
                   onExitButton={signOut}
                 />
               }

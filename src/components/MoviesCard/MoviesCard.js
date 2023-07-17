@@ -1,7 +1,3 @@
-import { useState } from "react";
-import { MOVIES_URL } from "../../const";
-import { mainApi } from "../../utils/MainApi";
-
 function MoviesCard(props) {
 
   // let [movieIsSaved, setMovieIsSaved] = useState(false);

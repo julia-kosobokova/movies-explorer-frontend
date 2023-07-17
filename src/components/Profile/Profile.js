@@ -6,20 +6,42 @@ import Header from "../Header/Header";
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
-  const [formData, setFormData] = React.useState({ email: "", password: "" });
+  const [profileData, setProfileData] = React.useState({ email: "", password: "" });
 
   function onNameChange(event) {
-    setFormData({
-      ...formData,
+    setProfileData({
+      ...profileData,
       name: event.target.value,
     });
   }
 
   function onEmailChange(event) {
-    setFormData({
-      ...formData,
+    setProfileData({
+      ...profileData,
       email: event.target.value,
     });
+  }
+
+  function handleSubmit(e) {
+    // Запрещаем браузеру переходить по адресу формы
+    e.preventDefault();
+
+    // Передаём значения управляемых компонентов во внешний обработчик
+    props.onUpdateUser({
+      name: profileData.name,
+      email: profileData.email,
+    });
+  }
+
+  React.useEffect(() => {
+    setProfileData({
+      name: currentUser.userName,
+      email: currentUser.userEmail,
+    });
+  }, [currentUser]);
+
+  function isDirty() {
+    return (profileData.name!==currentUser.userName) || (profileData.email!==currentUser.userEmail);
   }
 
   return (
@@ -30,7 +52,9 @@ function Profile(props) {
         onMoviesButton={props.onMoviesButton}
         onSavedMoviesButton={props.onSavedMoviesButton}
       />
-      <main className="profile">
+      <form
+        className="profile"
+        onSubmit={handleSubmit}>
         <h1 className="profile__title">Привет, {currentUser.userName}!</h1>
         <section className="profile__body">
           <div className="profile__info">
@@ -41,22 +65,26 @@ function Profile(props) {
               required
               onChange={onNameChange}
               className="profile__description-value"
-              value={currentUser.userName}
+              value={profileData.name}
             />
           </div>
           <div className="profile__info">
             <p className="profile__description">E-mail</p>
             <input
-              className="profile__description-value"
               type="email"
+              name="name"
               required
               onChange={onEmailChange}
-              value={currentUser.userEmail}
+              className="profile__description-value"
+              value={profileData.email}
             />
           </div>
         </section>
         <section className="profile__buttons">
-          <button type="button" className="profile__link">
+          <button
+            type="submit"
+            className="profile__link"
+            disabled={!isDirty()}>
             Редактировать
           </button>
           <button
@@ -66,7 +94,7 @@ function Profile(props) {
             Выйти из аккаунта
           </button>
         </section>
-      </main>
+      </form>
     </>
   );
 }

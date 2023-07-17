@@ -1,8 +1,22 @@
-import { BASE_URL, MOVIES_URL } from "../const";
+import { BASE_URL } from "../const";
 
 class MainApi {
   constructor(options) {
       this._options = options;
+  }
+
+  // Сохранение профиля
+  saveUserInfo(userInfo) {
+    return fetch(this._options.baseUrl + "/users/me", {
+      method: "PATCH",
+      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+      body: JSON.stringify({
+        name: userInfo.name,
+        email: userInfo.email,
+      }),
+    }).then((res) => {
+      return this._getResponseData(res);
+    });
   }
 
   //Загрузка информации о пользователе с сервера
