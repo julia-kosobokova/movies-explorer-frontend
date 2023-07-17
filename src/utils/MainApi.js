@@ -51,6 +51,15 @@ class MainApi {
     });
   }
 
+    //Загрузка информации о пользователе с сервера
+    getUserInfo() {
+      return fetch(this._options.baseUrl + "/users/me", {
+        headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+      }).then((res) => {
+        return this._getResponseData(res);
+      });
+    }
+
   // Поиск всех сохраненных текущим пользователем фильмов
   findMovies() {
     return fetch(this._options.baseUrl + "/movies", {

@@ -35,6 +35,14 @@
 .profile__description-value {
   margin: 0;
   font-weight: 400;
+  font-family: "Inter", Arial, sans-serif;
+  border: none;
+  text-align: right;
+}
+.profile__description-value:focus {
+  outline: none;
+  border: 1px solid #2be080;
+  border-radius: 3px;
 }
 .profile__info:first-child {
   padding-top: 0;

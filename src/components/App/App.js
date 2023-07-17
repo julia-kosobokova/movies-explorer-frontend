@@ -3,10 +3,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 
 import { mainApi } from "../../utils/MainApi";
 
-// movieApi - замена api с карточками, для фильмов 
-// import { movieApi } from "../utils/MovieApi.js"; 
-
-// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 import Register from "../Register/Register";
 import Login from "../Login/Login";
@@ -22,7 +19,6 @@ import { movieApi } from "../../utils/MovieApi";
 import { MOVIES_URL } from "../../const";
 
 function App() {
-
   const navigate = useNavigate();
 
   const [currentUser, setCurrentUser] = React.useState({
@@ -63,30 +59,28 @@ function App() {
     tokenCheck();
   }, [tokenCheck]);
 
-  // React.useEffect(() => {
-  //   const initUserInfo = () => {
-  //     api
-  //       .getUserInfo()
-  //       .then(({data: info}) => {
-  //         setCurrentUser((previousUserState) => {
-  //           return {
-  //             ...previousUserState,
-  //             userName: info.name,
-  //             userDescription: info.about,
-  //             userAvatar: info.avatar,
-  //             id: info._id,
-  //           };
-  //         });
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
+  React.useEffect(() => {
+    const initUserInfo = () => {
+      mainApi
+        .getUserInfo()
+        .then(({ data: info }) => {
+          setCurrentUser((previousUserState) => {
+            return {
+              ...previousUserState,
+              userName: info.name,
+              id: info._id,
+            };
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
 
-  //   initUserInfo();
+    initUserInfo();
 
-  //   return () => {};
-  // }, []);
+    return () => {};
+  }, []);
 
   // const handleEditAvatarClick = () => {
   //   setPopupsOptions({
@@ -163,59 +157,60 @@ function App() {
 
   // Загрузка всех фильмов с внешнего сервиса
   React.useEffect(() => {
-    movieApi.getAllMovies()
+    movieApi
+      .getAllMovies()
       .then((allMovies) => {
-        setMovies(allMovies.map((movie) => {
-          return {
-            country: movie.country,
-            director: movie.director,
-            duration: movie.duration,
-            year: movie.year,
-            description: movie.description,
-            image: MOVIES_URL + movie.image.url,
-            trailerLink: movie.trailerLink,
-            nameRU: movie.nameRU,
-            nameEN: movie.nameEN,
-            thumbnail: MOVIES_URL + movie.image.formats.thumbnail.url,
-            movieId: movie.id,
-          };
-        }));
+        setMovies(
+          allMovies.map((movie) => {
+            return {
+              country: movie.country,
+              director: movie.director,
+              duration: movie.duration,
+              year: movie.year,
+              description: movie.description,
+              image: MOVIES_URL + movie.image.url,
+              trailerLink: movie.trailerLink,
+              nameRU: movie.nameRU,
+              nameEN: movie.nameEN,
+              thumbnail: MOVIES_URL + movie.image.formats.thumbnail.url,
+              movieId: movie.id,
+            };
+          })
+        );
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-    // Загрузка всех сохраненных фильмов из внутреннего сервера
-    React.useEffect(() => {
-      mainApi.findMovies()
-        .then((resp) => {
-          const savedMovies=resp.data;
-          setSavedMovies(savedMovies);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, []);
+  // Загрузка всех сохраненных фильмов из внутреннего сервера
+  React.useEffect(() => {
+    mainApi
+      .findMovies()
+      .then((resp) => {
+        const savedMovies = resp.data;
+        setSavedMovies(savedMovies);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   // Выбор фильма для сохранения
   function handleSaveMovie(movie) {
     // Проверяем, есть ли фильм в списке сохраненных
-    mainApi.findMovies()
-      .then((res)=> {
-        const savedMovies = res.data;
-        const isSaved = savedMovies.some((savedMovie) => savedMovie.movieId === movie.id);
-        if (!isSaved) {
-          // Отправляем запрос в API на сохранение фильма
-          mainApi
-            .createMovie(movie)
-            .then (() => {
-              movie.isSaved = true;
-            });
-            
-        }
+    mainApi.findMovies().then((res) => {
+      const savedMovies = res.data;
+      const isSaved = savedMovies.some(
+        (savedMovie) => savedMovie.movieId === movie.id
+      );
+      if (!isSaved) {
+        // Отправляем запрос в API на сохранение фильма
+        mainApi.createMovie(movie).then(() => {
+          movie.isSaved = true;
+        });
+      }
     });
-
 
     // if (!isSaved) {
     //   // Отправляем запрос в API и получаем обновлённые данные карточки
@@ -367,81 +362,88 @@ function App() {
   }
 
   return (
-    <div className="background">
-      <div className="page">
-        <Routes>
-          <Route path="/signup" element={
-            <Register
-              onRegisterUser={handleRegisterUser}
-              onLoginButton={handleLoginButton}
-            />
-          } />
-
-
-          <Route path="/signin" element={
-            <Login
-              onLoginUser={handleLoginUser}
-              onRegisterButton={handleRegisterButton}
-            />
-          } />
-
-          <Route
-            path="/"
-            element={
-              <>
-                <Main
-                  onRegisterButton={handleRegisterButton}
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="background">
+        <div className="page">
+          <Routes>
+            <Route
+              path="/signup"
+              element={
+                <Register
+                  onRegisterUser={handleRegisterUser}
                   onLoginButton={handleLoginButton}
                 />
-                <Footer />
-              </>
-            }
-          />
+              }
+            />
 
-          <Route
-            path="/movies"
-            element={
-              <>
-                <Movies
-                  onSavedMoviesButton={handleSavedMoviesButton}
-                  onProfileButton={handleProfileButton}
-                  movies={movies}
-                  onMovieSave={handleSaveMovie}
+            <Route
+              path="/signin"
+              element={
+                <Login
+                  onLoginUser={handleLoginUser}
+                  onRegisterButton={handleRegisterButton}
                 />
-                <Footer />
-              </>
-            }
-          />
+              }
+            />
 
-          <Route
-            path="/saved-movies"
-            element={
-              <>
-                <SavedMovies
+            <Route
+              path="/"
+              element={
+                <>
+                  <Main
+                    onRegisterButton={handleRegisterButton}
+                    onLoginButton={handleLoginButton}
+                  />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/movies"
+              element={
+                <>
+                  <Movies
+                    onSavedMoviesButton={handleSavedMoviesButton}
+                    onProfileButton={handleProfileButton}
+                    movies={movies}
+                    onMovieSave={handleSaveMovie}
+                  />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/saved-movies"
+              element={
+                <>
+                  <SavedMovies
+                    onMoviesButton={handleMoviesButton}
+                    onProfileButton={handleProfileButton}
+                    movies={savedMovies}
+                  />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/profile"
+              element={
+                <Profile
                   onMoviesButton={handleMoviesButton}
-                  onProfileButton={handleProfileButton}
-                  movies={savedMovies}
+                  onSavedMoviesButton={handleSavedMoviesButton}
+                  onExitButton={signOut}
                 />
-                <Footer />
-              </>
-            }
-          />
+              }
+            />
 
-          <Route 
-            path="/profile" 
-            element={
-              <Profile
-                onMoviesButton={handleMoviesButton}
-                onSavedMoviesButton={handleSavedMoviesButton}
-                onExitButton={signOut}
-              /> 
-            } 
-          />
-
-          <Route path="/error" element={<Error />} />
-        </Routes>
+            <Route path="/error" element={<Error />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </CurrentUserContext.Provider>
   );
 }
 

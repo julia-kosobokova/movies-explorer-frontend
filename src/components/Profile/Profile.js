@@ -1,7 +1,27 @@
+
+import React from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
 
 function Profile(props) {
-  console.log("Profile");
+  const currentUser = React.useContext(CurrentUserContext);
+
+  const [formData, setFormData] = React.useState({ email: "", password: "" });
+
+  function onNameChange(event) {
+    setFormData({
+      ...formData,
+      name: event.target.value,
+    });
+  }
+
+  function onEmailChange(event) {
+    setFormData({
+      ...formData,
+      email: event.target.value,
+    });
+  }
+
   return (
     <>
       <Header
@@ -11,15 +31,28 @@ function Profile(props) {
         onSavedMoviesButton={props.onSavedMoviesButton}
       />
       <main className="profile">
-        <h1 className="profile__title">Привет, Виталий!</h1>
+        <h1 className="profile__title">Привет, {currentUser.userName}!</h1>
         <section className="profile__body">
           <div className="profile__info">
             <p className="profile__description">Имя</p>
-            <p className="profile__description-value">Виталий</p>
+            <input
+              type="text"
+              name="name"
+              required
+              onChange={onNameChange}
+              className="profile__description-value"
+              value={currentUser.userName}
+            />
           </div>
           <div className="profile__info">
             <p className="profile__description">E-mail</p>
-            <p className="profile__description-value">pochta@yandex.ru</p>
+            <input
+              className="profile__description-value"
+              type="email"
+              required
+              onChange={onEmailChange}
+              value={currentUser.userEmail}
+            />
           </div>
         </section>
         <section className="profile__buttons">

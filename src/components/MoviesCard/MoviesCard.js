@@ -50,6 +50,7 @@ function MoviesCard(props) {
           }
           onClick={handleSaveMovie}
         ></button>
+
         <button
           type="button"
           className={
