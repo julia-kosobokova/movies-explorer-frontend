@@ -1,27 +1,19 @@
+import React from "react";
+import { SavedMoviesContext } from "../../contexts/SavedMoviesContext";
+
 function MoviesCard(props) {
 
-  // let [movieIsSaved, setMovieIsSaved] = useState(false);
-
-  // const saveMovie = () => {
-  //   setMovieIsSaved(true);
-  // };
-
-  // const hideMenu = () => {
-  //   setMenuIsVisible(false);
-  // };
+  const savedMovies = React.useContext(SavedMoviesContext);
 
   function handleSaveMovie() {
     props.onMovieSave(props.movie);
   }
 
-  async function isSaved() {
-    return false;
-    // const res = await mainApi.findMovies();
-    // // .then((res)=> {
-    //   const savedMovies = res.data;
-    //   const isSaved = savedMovies.some((savedMovie) => savedMovie.movieId === props.movie.id);
-    //   return isSaved;
-    // // });
+  function isSaved() { 
+    const isSaved = savedMovies.some(
+      (savedMovie) => savedMovie.movieId === props.movie.movieId
+      );
+    return isSaved;
   }
 
   return (

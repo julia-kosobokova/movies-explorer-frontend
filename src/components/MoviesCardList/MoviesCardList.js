@@ -1,7 +1,6 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MoviesCardList(props) {
-console.log(props);
   return (
     <ul className="movies-card-list">
       {/* <MoviesCard isSaved={true} savedMode={props.savedMode} /> */}

@@ -17,6 +17,7 @@ import Profile from "../Profile/Profile";
 import Error from "../Error/Error";
 import { movieApi } from "../../utils/MovieApi";
 import { MOVIES_URL } from "../../const";
+import { SavedMoviesContext } from "../../contexts/SavedMoviesContext";
 
 function App() {
   const navigate = useNavigate();
@@ -202,12 +203,14 @@ function App() {
     mainApi.findMovies().then((res) => {
       const savedMovies = res.data;
       const isSaved = savedMovies.some(
-        (savedMovie) => savedMovie.movieId === movie.id
+        (savedMovie) => savedMovie.movieId === movie.movieId
       );
       if (!isSaved) {
         // Отправляем запрос в API на сохранение фильма
         mainApi.createMovie(movie).then(() => {
           movie.isSaved = true;
+          savedMovies.push(movie);
+          setSavedMovies(savedMovies);
         });
       }
     });
@@ -363,87 +366,89 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="background">
-        <div className="page">
-          <Routes>
-            <Route
-              path="/signup"
-              element={
-                <Register
-                  onRegisterUser={handleRegisterUser}
-                  onLoginButton={handleLoginButton}
-                />
-              }
-            />
-
-            <Route
-              path="/signin"
-              element={
-                <Login
-                  onLoginUser={handleLoginUser}
-                  onRegisterButton={handleRegisterButton}
-                />
-              }
-            />
-
-            <Route
-              path="/"
-              element={
-                <>
-                  <Main
-                    onRegisterButton={handleRegisterButton}
+      <SavedMoviesContext.Provider value={savedMovies}>
+        <div className="background">
+          <div className="page">
+            <Routes>
+              <Route
+                path="/signup"
+                element={
+                  <Register
+                    onRegisterUser={handleRegisterUser}
                     onLoginButton={handleLoginButton}
                   />
-                  <Footer />
-                </>
-              }
-            />
+                }
+              />
 
-            <Route
-              path="/movies"
-              element={
-                <>
-                  <Movies
-                    onSavedMoviesButton={handleSavedMoviesButton}
-                    onProfileButton={handleProfileButton}
-                    movies={movies}
-                    onMovieSave={handleSaveMovie}
+              <Route
+                path="/signin"
+                element={
+                  <Login
+                    onLoginUser={handleLoginUser}
+                    onRegisterButton={handleRegisterButton}
                   />
-                  <Footer />
-                </>
-              }
-            />
+                }
+              />
 
-            <Route
-              path="/saved-movies"
-              element={
-                <>
-                  <SavedMovies
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Main
+                      onRegisterButton={handleRegisterButton}
+                      onLoginButton={handleLoginButton}
+                    />
+                    <Footer />
+                  </>
+                }
+              />
+
+              <Route
+                path="/movies"
+                element={
+                  <>
+                    <Movies
+                      onSavedMoviesButton={handleSavedMoviesButton}
+                      onProfileButton={handleProfileButton}
+                      movies={movies}
+                      onMovieSave={handleSaveMovie}
+                    />
+                    <Footer />
+                  </>
+                }
+              />
+
+              <Route
+                path="/saved-movies"
+                element={
+                  <>
+                    <SavedMovies
+                      onMoviesButton={handleMoviesButton}
+                      onProfileButton={handleProfileButton}
+                      movies={savedMovies}
+                    />
+                    <Footer />
+                  </>
+                }
+              />
+
+              <Route
+                path="/profile"
+                element={
+                  <Profile
                     onMoviesButton={handleMoviesButton}
-                    onProfileButton={handleProfileButton}
-                    movies={savedMovies}
+                    onSavedMoviesButton={handleSavedMoviesButton}
+                    onUpdateUser={handleUpdateUser}
+                    onExitButton={signOut}
                   />
-                  <Footer />
-                </>
-              }
-            />
+                }
+              />
 
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  onMoviesButton={handleMoviesButton}
-                  onSavedMoviesButton={handleSavedMoviesButton}
-                  onUpdateUser={handleUpdateUser}
-                  onExitButton={signOut}
-                />
-              }
-            />
-
-            <Route path="/error" element={<Error />} />
-          </Routes>
+              <Route path="/error" element={<Error />} />
+            </Routes>
+          </div>
         </div>
-      </div>
+      </SavedMoviesContext.Provider>
     </CurrentUserContext.Provider>
   );
 }
