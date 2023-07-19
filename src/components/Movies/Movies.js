@@ -18,6 +18,7 @@ function Movies(props) {
         <MoviesCardList
           movies={props.movies}
           onMovieSave={props.onMovieSave}
+          savedMode={false}
         />
         <div className="movies__more">
           <button type="button" className="movies__more-button">

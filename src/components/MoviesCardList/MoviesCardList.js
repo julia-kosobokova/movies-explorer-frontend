@@ -13,6 +13,7 @@ function MoviesCardList(props) {
           onMovieSave={props.onMovieSave}
           savedMovie={props.savedMovie}
           onMovieClick={props.onMovieClick}
+          savedMode={props.savedMode}
           // onCardDelete={props.onCardDelete}
         />
       ))}

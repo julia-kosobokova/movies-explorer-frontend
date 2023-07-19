@@ -42,8 +42,18 @@ function MoviesCard(props) {
           type="button"
           className={
             "card__save-button" +
-            (isSaved() === true ? " card__save-button_active" : "") +
-            (props.savedMode === true ? " card__save-button_hidden" : "")
+            (isSaved() ? " card__save-button_hidden" : "") +
+            (props.savedMode ? " card__save-button_hidden" : "")
+          }
+          onClick={handleSaveMovie}
+        ></button>
+
+        <button
+          type="button"
+          className={
+            "card__save-button card__save-button_active" +
+            (!isSaved() ? " card__save-button_hidden" : "") +
+            (props.savedMode ? " card__save-button_hidden" : "")
           }
           onClick={handleSaveMovie}
         ></button>
@@ -52,7 +62,7 @@ function MoviesCard(props) {
           type="button"
           className={
             "card__remove-button" +
-            (props.savedMode === true ? "" : " card__remove-button_hidden")
+            (props.savedMode ? "" : " card__remove-button_hidden")
           }
         ></button>
       </div>
