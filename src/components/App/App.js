@@ -215,6 +215,8 @@ function App() {
       }
     });
 
+
+
     // if (!isSaved) {
     //   // Отправляем запрос в API и получаем обновлённые данные карточки
     //   mainApi
@@ -240,6 +242,12 @@ function App() {
     //     });
     // }
   }
+
+      // Клик по карточке открывает трейлер фильма
+      const handleMovieClick = (movie) => {
+
+    
+      };
 
   // function handleCardDelete(card) {
   //   // Проверяем, моя ли это карточка

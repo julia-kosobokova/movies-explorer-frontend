@@ -20,17 +20,17 @@ function Menu(props) {
 
         <ul className="menu__links">
           <li className="menu__list-item">
-            <NavLink to="/" className="menu__link">
+            <NavLink to="/" className={props.activeLink==="main" ? "menu__link menu__link_active" : "menu__link"} >
               Главная
             </NavLink>
           </li>
           <li className="menu__list-item">
-            <NavLink to="/movies" className="menu__link menu__link_active">
+            <NavLink to="/movies" className={props.activeLink==="movies" ? "menu__link menu__link_active" : "menu__link"}>
               Фильмы
             </NavLink>
           </li>
           <li className="menu__list-item">
-            <NavLink to="/saved-movies" className="menu__link">
+            <NavLink to="/saved-movies" className={props.activeLink==="saved-movies" ? "menu__link menu__link_active" : "menu__link"}>
               Сохраненные фильмы
             </NavLink>
           </li>
