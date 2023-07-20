@@ -69,6 +69,7 @@ function App() {
             return {
               ...previousUserState,
               userName: info.name,
+              userEmail: info.email,
               id: info._id,
             };
           });
