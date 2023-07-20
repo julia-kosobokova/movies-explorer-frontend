@@ -1,9 +1,18 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MoviesCardList(props) {
+
+  function filterMovies() {
+    if (props.search==="") {
+      return [];
+    }
+
+    return props.movies.filter((movie) => movie.nameRU.indexOf(props.search)!==-1);
+  }
+
   return (
     <ul className="movies-card-list">
-      {props.movies.map((movie) => (
+      {filterMovies().map((movie) => (
         <MoviesCard
           movie={movie}
           key={`movie_${movie.movieId}`}
@@ -13,7 +22,7 @@ function MoviesCardList(props) {
           savedMode={props.savedMode}
           onMovieDelete={props.onMovieDelete}
         />
-      ))}
+        ))}
     </ul>
   );
 }

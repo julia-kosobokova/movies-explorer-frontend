@@ -1,8 +1,15 @@
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
+import React from "react";
 
 function Movies(props) {
+
+  const [search, setSearch] = React.useState("");
+
+  function handleUpdateSearch(newSearch) {
+    setSearch(newSearch);
+  }
 
   return (
     <>
@@ -14,12 +21,15 @@ function Movies(props) {
       />
 
       <main className="movies">
-        <SearchForm />
+        <SearchForm
+          onSearchUpdate={handleUpdateSearch}
+              />
         <MoviesCardList
           movies={props.movies}
           onMovieSave={props.onMovieSave}
           savedMode={false}
           onMovieDelete={props.onMovieDelete}
+          search={search}
         />
         <div className="movies__more">
           <button type="button" className="movies__more-button">
