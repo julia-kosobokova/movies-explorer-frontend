@@ -17,6 +17,7 @@ function SavedMovies(props) {
         <MoviesCardList
           savedMode={true}
           movies={props.movies}
+          onMovieDelete={props.onMovieDelete}
         />
         <div className="saved-movies__devider" />
       </main>

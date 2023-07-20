@@ -207,9 +207,8 @@ function App() {
       );
       if (!isSaved) {
         // Отправляем запрос в API на сохранение фильма
-        mainApi.createMovie(movie).then(() => {
-          movie.isSaved = true;
-          savedMovies.push(movie);
+        mainApi.createMovie(movie).then((res) => {
+          savedMovies.push(res.data);
           setSavedMovies(savedMovies);
         });
       }
@@ -243,10 +242,26 @@ function App() {
     // }
   }
 
-      // Клик по карточке открывает трейлер фильма
-      const handleMovieClick = (movie) => {
-
-    
+      // Удаление фильма из сохраненных
+      function handleDeleteMovie(movie) {
+        // Проверяем, есть ли фильм в списке сохраненных
+        mainApi.findMovies().then((res) => {
+          const savedMovies = res.data;
+          const isSaved = savedMovies.some(
+            (savedMovie) => savedMovie.movieId === movie.movieId
+          );
+          if (isSaved) {
+            // Ищем указанный фильм в списке сохраненных
+            const movieToDelete = savedMovies.find(savedMovie => savedMovie.movieId === movie.movieId);
+            // Отправляем запрос в API на удаление фильма
+            mainApi.deleteMovie(movieToDelete._id).then(() => {
+              // Собираем список всех сохраненных фильмов, кроме только что удаленного
+              const leftMovies = savedMovies.filter((savedMovie) => savedMovie.movieId !== movie.movieId);
+              // Сохраняем список сохраненных фильмов в стейт
+              setSavedMovies(leftMovies);
+            });
+          }
+        });  
       };
 
   // function handleCardDelete(card) {
@@ -420,6 +435,7 @@ function App() {
                       onProfileButton={handleProfileButton}
                       movies={movies}
                       onMovieSave={handleSaveMovie}
+                      onMovieDelete={handleDeleteMovie}
                     />
                     <Footer />
                   </>
@@ -434,6 +450,7 @@ function App() {
                       onMoviesButton={handleMoviesButton}
                       onProfileButton={handleProfileButton}
                       movies={savedMovies}
+                      onMovieDelete={handleDeleteMovie}
                     />
                     <Footer />
                   </>

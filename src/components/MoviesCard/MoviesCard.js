@@ -3,16 +3,26 @@ import { SavedMoviesContext } from "../../contexts/SavedMoviesContext";
 
 function MoviesCard(props) {
   const savedMovies = React.useContext(SavedMoviesContext);
+  
+  // Есть ли текущий фильм в списке сохраненных?
+  const [isSaved, setIsSaved] = React.useState(false);
+
+  // При изменении списка сохраненных фильмов
+  React.useEffect(() => {
+    // Проверяем, есть ли текущий фильм в списке сохраненных
+    const movieIsSaved = savedMovies.some(
+      (savedMovie) => savedMovie.movieId === props.movie.movieId
+    );
+    // Обновляем стейт
+    setIsSaved(movieIsSaved);
+  }, [savedMovies, props.movie.movieId]);
 
   function handleSaveMovie() {
     props.onMovieSave(props.movie);
   }
 
-  function isSaved() {
-    const isSaved = savedMovies.some(
-      (savedMovie) => savedMovie.movieId === props.movie.movieId
-    );
-    return isSaved;
+  function handleDeleteMovie() {
+    props.onMovieDelete(props.movie);
   }
 
   return (
@@ -42,7 +52,7 @@ function MoviesCard(props) {
           type="button"
           className={
             "card__save-button" +
-            (isSaved() ? " card__save-button_hidden" : "") +
+            (isSaved ? " card__save-button_hidden" : "") +
             (props.savedMode ? " card__save-button_hidden" : "")
           }
           onClick={handleSaveMovie}
@@ -52,10 +62,10 @@ function MoviesCard(props) {
           type="button"
           className={
             "card__save-button card__save-button_active" +
-            (!isSaved() ? " card__save-button_hidden" : "") +
+            (!isSaved ? " card__save-button_hidden" : "") +
             (props.savedMode ? " card__save-button_hidden" : "")
           }
-          onClick={handleSaveMovie}
+          onClick={handleDeleteMovie}
         ></button>
 
         <button
@@ -64,6 +74,7 @@ function MoviesCard(props) {
             "card__remove-button" +
             (props.savedMode ? "" : " card__remove-button_hidden")
           }
+          onClick={handleDeleteMovie}
         ></button>
       </div>
     </li>

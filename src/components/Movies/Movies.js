@@ -19,6 +19,7 @@ function Movies(props) {
           movies={props.movies}
           onMovieSave={props.onMovieSave}
           savedMode={false}
+          onMovieDelete={props.onMovieDelete}
         />
         <div className="movies__more">
           <button type="button" className="movies__more-button">
