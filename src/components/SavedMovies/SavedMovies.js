@@ -1,8 +1,16 @@
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
+import React from "react";
 
 function SavedMovies(props) {
+
+  const [search, setSearch] = React.useState("");
+
+  function handleUpdateSearch(newSearch) {
+    setSearch(newSearch);
+  }
+
   return (
     <>
       <Header
@@ -13,11 +21,14 @@ function SavedMovies(props) {
       />
 
       <main className="saved-movies">
-        <SearchForm />
+        <SearchForm
+          onSearchUpdate={handleUpdateSearch}
+        />
         <MoviesCardList
           savedMode={true}
           movies={props.movies}
           onMovieDelete={props.onMovieDelete}
+          search={search}
         />
         <div className="saved-movies__devider" />
       </main>

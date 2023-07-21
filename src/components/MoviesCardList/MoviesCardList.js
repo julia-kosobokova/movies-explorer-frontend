@@ -3,8 +3,12 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 function MoviesCardList(props) {
 
   function filterMovies() {
-    if (props.search==="") {
+    if (props.search==="" && !props.savedMode) {
       return [];
+    }
+
+    if (props.search==="" && props.savedMode) {
+      return props.movies;
     }
 
     return props.movies.filter((movie) => movie.nameRU.indexOf(props.search)!==-1);

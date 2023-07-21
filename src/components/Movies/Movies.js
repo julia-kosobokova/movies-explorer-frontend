@@ -23,7 +23,7 @@ function Movies(props) {
       <main className="movies">
         <SearchForm
           onSearchUpdate={handleUpdateSearch}
-              />
+        />
         <MoviesCardList
           movies={props.movies}
           onMovieSave={props.onMovieSave}
