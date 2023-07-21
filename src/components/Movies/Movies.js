@@ -31,11 +31,7 @@ function Movies(props) {
           onMovieDelete={props.onMovieDelete}
           search={search}
         />
-        <div className="movies__more">
-          <button type="button" className="movies__more-button">
-            Ещё
-          </button>
-        </div>
+
       </main>
     </>
   );
