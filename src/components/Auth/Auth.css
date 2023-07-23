@@ -63,11 +63,11 @@
   flex-direction: column;
 }
 
-.auth__input-group_error {
+.auth__input_error {
   color: #ee3465;
 }
 
-.auth__input_error {
+.auth__input-error {
   color: #ee3465;
 }
 

@@ -133,8 +133,10 @@ function Auth(props) {
                 name="name"
                 required={ props.hasName ? true : false }
                 onChange={onNameChange}
-                className="auth__input"
-                value={formData.name}         
+                className={inputErrors.name
+                  ? "auth__input auth__input_error"
+                  : "auth__input"}
+                value={formData.name}
               />
               <span className="auth__input-error">{inputErrors.name}</span>
             </div>
@@ -147,7 +149,9 @@ function Auth(props) {
               name="email"
               required
               onChange={onEmailChange}
-              className="auth__input auth__input_error"
+              className={inputErrors.email
+                ? "auth__input auth__input_error"
+                : "auth__input"}
               value={formData.email}
             />
             <span className="auth__input-error">{inputErrors.email}</span>
@@ -160,7 +164,9 @@ function Auth(props) {
               name="password"
               required
               onChange={onPasswordChange}
-              className="auth__input auth__input_error"
+              className={inputErrors.password
+                ? "auth__input auth__input_error"
+                : "auth__input"}
               value={formData.password}
             />
             <span className="auth__input-error">{inputErrors.password}</span>
