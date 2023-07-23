@@ -173,7 +173,10 @@ function Auth(props) {
           </div>
 
           {/* Кнопка Войти / Зарегистрироваться */}
-          <button type="submit" className="auth__button">
+          <button 
+            type="submit" 
+            className="auth__button"
+            disabled={inputErrors.name || !formData.name || inputErrors.email || !formData.email || inputErrors.password || !formData.password}>
             {props.button}
           </button>
 
