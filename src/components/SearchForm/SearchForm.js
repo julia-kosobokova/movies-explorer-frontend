@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 function SearchForm(props) {
 
   const [search, setSearch] = React.useState("");
+  const [isShort, setIsShort] = React.useState(false);
+
+  function handleTumbler(newIsShort) {
+    setIsShort(newIsShort);
+  }
 
   function handleUpdateSearch(e) {
     setSearch(e.target.value);
@@ -13,9 +18,9 @@ function SearchForm(props) {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
 
-    props.onSearchUpdate(search);
+    props.onSearchUpdate(search, isShort);
   }
-
+  
   return (
     <div className="search">
       <div className="search__container">
@@ -37,7 +42,9 @@ function SearchForm(props) {
           <button type="submit" className="search__button" />
         </form>
         <div className="search__divider"></div>
-        <FilterCheckbox />
+        <FilterCheckbox
+          onTumblerToggle={handleTumbler}
+        />
         <div className="search__bottom"></div>
       </div>
     </div>

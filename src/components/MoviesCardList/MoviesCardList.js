@@ -7,6 +7,19 @@ function MoviesCardList(props) {
   const [filteredMovies, setFilteredMovies] = React.useState([]);
   const [visibleMoviesCount, setVisibleMoviesCount] = React.useState(moviesPerPage);
 
+  const filterMovies = React.useCallback(() => {
+    console.log(props.isShort);
+    return props.movies
+      .filter((movie) => 
+        movie.nameRU.indexOf(props.search) !== -1
+        &&
+        ((props.isShort && movie.duration <= 40)
+        ||
+        (!props.isShort)
+        )
+      );
+  }, [props.movies, props.isShort, props.search]);
+
   // Обновляем список найденных фильмов при изменении количества отобаражаемых фильмов по кнопке "Ещё"
   React.useEffect(() => {
     if (props.search === "" && !props.savedMode) {
@@ -19,10 +32,9 @@ function MoviesCardList(props) {
       return;
     }
 
-    setFilteredMovies (props.movies
-      .filter((movie) => movie.nameRU.indexOf(props.search) !== -1)
-      .slice(0, visibleMoviesCount));
-    }, [props.search, props.savedMode, props.movies, visibleMoviesCount]
+    setFilteredMovies(filterMovies()
+    .slice(0, visibleMoviesCount));
+    }, [props.search, props.savedMode, props.movies, visibleMoviesCount, filterMovies]
   );
 
   // Сбрасываем количество отображаемых фильмов при изменении поискового запроса
@@ -33,9 +45,7 @@ function MoviesCardList(props) {
 
   // Подсчет количества найденных фильмов
   function getFilteredMoviesCount() {
-    const count=props.movies
-      .filter((movie) => movie.nameRU.indexOf(props.search) !== -1)
-      .length;
+    const count=filterMovies().length;
     return count;
   }
 

@@ -6,9 +6,13 @@ import React from "react";
 function Movies(props) {
 
   const [search, setSearch] = React.useState("");
+  const [isShort, setIsShort] = React.useState(false);
 
-  function handleUpdateSearch(newSearch) {
+  function handleUpdateSearch(newSearch, newIsShort) {
     setSearch(newSearch);
+    setIsShort(newIsShort);
+
+    console.log(newIsShort);
   }
 
   return (
@@ -30,6 +34,7 @@ function Movies(props) {
           savedMode={false}
           onMovieDelete={props.onMovieDelete}
           search={search}
+          isShort={isShort}
         />
 
       </main>
