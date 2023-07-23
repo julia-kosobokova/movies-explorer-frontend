@@ -79,7 +79,7 @@ function Header(props) {
               : "header__profile header__profile_hidden"
           }
         >
-          {/* <div className="header__link"> */}
+
             <button
               className={`header__profile-button ${
                 props.activeLink==="profile"
@@ -92,7 +92,7 @@ function Header(props) {
                 : handleProfileButton
               }
             />
-          {/* </div> */}
+
         </div>
 
         <div

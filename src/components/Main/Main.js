@@ -9,10 +9,14 @@ function Main(props) {
   return (
     <>
       <Header
-        loggedIn={false}
+        loggedIn={props.loggedIn}
+        // loggedIn={false}
         activeLink="main"
         onRegisterButton={props.onRegisterButton}
         onLoginButton={props.onLoginButton}
+        onMoviesButton={props.onMoviesButton}
+        onSavedMoviesButton={props.onSavedMoviesButton}
+        onProfileButton={props.onProfileButton}
       />
 
       <main className="content">

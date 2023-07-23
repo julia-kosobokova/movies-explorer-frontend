@@ -142,21 +142,6 @@ function App() {
       });
   };
 
-  // const handleUpdateAvatar = ({ avatar }) => {
-  //   api
-  //     .updateUserAvatar(avatar)
-  //     .then(() => {
-  //       setCurrentUser({
-  //         ...currentUser,
-  //         userAvatar: avatar,
-  //       });
-  //       closeAllPopups();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
-
   // Загрузка всех фильмов с внешнего сервиса
   React.useEffect(() => {
     movieApi
@@ -214,33 +199,6 @@ function App() {
         });
       }
     });
-
-
-
-    // if (!isSaved) {
-    //   // Отправляем запрос в API и получаем обновлённые данные карточки
-    //   mainApi
-    //     .addLike(movie._id)
-    //     .then(({data: newMovie}) => {
-    //       setMovies((movies) =>
-    //         movies.map((c) => (c._id === movie._id ? newMovie : c))
-    //       );
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // } else {
-    //   mainApi
-    //     .removeLike(movie._id)
-    //     .then(({data: newMovie}) => {
-    //       setMovies((movies) =>
-    //         movies.map((c) => (c._id === movie._id ? newMovie : c))
-    //       );
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // }
   }
 
       // Удаление фильма из сохраненных
@@ -264,37 +222,6 @@ function App() {
           }
         });  
       };
-
-  // function handleCardDelete(card) {
-  //   // Проверяем, моя ли это карточка
-  //   const isOwn = card.owner._id === currentUser.id;
-
-  //   if (isOwn) {
-  //     // Отправляем запрос в API и получаем обновлённые данные карточки
-  //     api
-  //       .deleteCard(card._id)
-  //       .then(() => {
-  //         setCards((cards) =>
-  //           cards.filter((c) => (c._id === card._id ? false : true))
-  //         );
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  // }
-
-  // function handleAddPlaceSubmit(card) {
-  //   api
-  //     .saveNewCard(card)
-  //     .then(({data: newCard}) => {
-  //       setCards([newCard, ...cards]);
-  //       closeAllPopups();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
 
   // Форма регистрации пользователя
   const handleRegisterUser = ({ name, email, password }) => {
@@ -421,6 +348,10 @@ function App() {
                     <Main
                       onRegisterButton={handleRegisterButton}
                       onLoginButton={handleLoginButton}
+                      loggedIn={loggedIn}
+                      onMoviesButton={handleMoviesButton}
+                      onSavedMoviesButton={handleSavedMoviesButton}
+                      onProfileButton={handleProfileButton}
                     />
                     <Footer />
                   </>
