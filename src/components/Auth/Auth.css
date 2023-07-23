@@ -79,7 +79,7 @@
   background-color: #ffffff;
   border: none;
   border-bottom: 1px solid #e8e8e8;
-  margin: 0 0 24px;
+  margin: 0;
 }
 
 .auth__input:focus {
@@ -90,8 +90,9 @@
 
 .auth__input-error {
   font-size: 10px;
-  position: relative;
-  top: -18px;
+  line-height: 12px;
+  min-height: 12px;
+  margin: 6px 0;
 }
 
 .auth__button {

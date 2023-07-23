@@ -66,7 +66,8 @@ function Profile(props) {
               onChange={onNameChange}
               className="profile__description-value"
               value={profileData.name}
-            />
+              minLength="2"
+              maxLength="30"           />
           </div>
           <div className="profile__info">
             <p className="profile__description">E-mail</p>
