@@ -73,6 +73,12 @@
   opacity: 0.6;
   transition: opacity 0.5s linear 0.2s;
 }
+
+.profile__link_disabled:hover {
+  cursor: default;
+  opacity: 1;
+  transition: none;
+}
 .profile__link_pink {
   color: #ee3465;
   font-weight: 500;

@@ -84,8 +84,12 @@ function Profile(props) {
         <section className="profile__buttons">
           <button
             type="submit"
-            className="profile__link"
-            disabled={!isDirty()}>
+            disabled={!isDirty()}
+            className={isDirty()
+            ? "profile__link"
+            : "profile__link profile__link_disabled"
+            }
+            >
             Редактировать
           </button>
           <button
