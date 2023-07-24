@@ -29,6 +29,12 @@
   flex-grow: 1;
 }
 
+.search__input-movie {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
 .search__input-text {
   margin: 0;
   padding: 0;
@@ -45,6 +51,18 @@
   outline: none;
   border: 1px solid #2be080;
   border-radius: 9px;
+}
+
+.search__input-error {
+  font-size: 10px;
+  line-height: 1.2;
+  /* min-height: 12px; */
+  /* margin: 6px 0; */
+  color: #ee3465;
+}
+
+.search__input-error_hidden {
+  display: none;
 }
 
 .search__button {

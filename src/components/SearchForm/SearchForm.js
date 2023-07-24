@@ -24,10 +24,14 @@ function SearchForm(props) {
   return (
     <div className="search">
       <div className="search__container">
-        <form className="search__input"
+        <form
+          name="searchForm"
+          className="search__input"
           onSubmit={handleSubmitSearch}
+          noValidate={true}
         >
           <svg className="search__icon" alt="Поиск" />
+          <div className="search__input-movie">
           <input
             type="text"
             name="movie"
@@ -36,14 +40,21 @@ function SearchForm(props) {
             className="search__input-text"
             onChange={handleUpdateSearch}
           />
+          <span className={!search
+            ? "search__input-error search__input-error_hidden"
+            : "search__input-error"}>
+            Нужно ввести ключевое слово</span>
+          </div>
 
           <button type="submit" className="search__button" />
+
         </form>
         <div className="search__divider"></div>
         <FilterCheckbox
           onTumblerToggle={handleTumbler}
         />
         <div className="search__bottom"></div>
+
       </div>
     </div>
   );

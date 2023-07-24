@@ -1,25 +1,73 @@
-
 import React from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
+import { NAME_VALIDATION_RX, EMAIL_VALIDATION_RX } from "../../const";
 
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
-  const [profileData, setProfileData] = React.useState({ email: "", password: "" });
+  const [profileData, setProfileData] = React.useState({ name: "", email: "" });
+  const [inputErrors, setInputErrors] = React.useState({ name: "", email: "" });
 
   function onNameChange(event) {
+    // Обновляем стейт
     setProfileData({
       ...profileData,
       name: event.target.value,
     });
+
+     // Валидация
+     if (event.target.value==="") {
+      setInputErrors({
+        ...inputErrors,
+        name:"Заполните это поле."});
+        return;
+    }
+
+    if (!NAME_VALIDATION_RX.test(event.target.value)) {
+      setInputErrors({
+        ...inputErrors,
+        name:"Имя может содержать только латиницу, кириллицу, пробел или дефис."});
+        return;
+    }
+
+    if (event.target.value.length < 2 || event.target.value.length > 30) {
+      setInputErrors({
+        ...inputErrors,
+        name:"Имя должно быть длиной от 2 до 30 символов."});
+        return;
+    }
+
+    setInputErrors({
+      ...inputErrors,
+      name: ""});
   }
 
   function onEmailChange(event) {
+    // Обновляем стейт
     setProfileData({
       ...profileData,
       email: event.target.value,
     });
+
+    // Валидация
+    if (event.target.value==="") {
+      setInputErrors({
+        ...inputErrors,
+        email:"Заполните это поле."});
+        return;
+    }
+
+    if (!EMAIL_VALIDATION_RX.test(event.target.value)) {
+      setInputErrors({
+        ...inputErrors,
+        email:"Неправильный формат адреса электронной почты."});
+        return;
+    }
+
+    setInputErrors({
+      ...inputErrors,
+      email: ""});
   }
 
   function handleSubmit(e) {
@@ -53,8 +101,11 @@ function Profile(props) {
         onSavedMoviesButton={props.onSavedMoviesButton}
       />
       <form
+        name="profileForm"
         className="profile"
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit}
+        noValidate={true}
+      >
         <h1 className="profile__title">Привет, {currentUser.userName}!</h1>
         <section className="profile__body">
           <div className="profile__info">
@@ -64,11 +115,13 @@ function Profile(props) {
               name="name"
               required
               onChange={onNameChange}
-              className="profile__description-value"
+              className={inputErrors.name
+                ? "profile__description-value profile__description-value_error"
+                : "profile__description-value"}
               value={profileData.name}
-              minLength="2"
-              maxLength="30"           />
+            />
           </div>
+          <div className="profile__description-value-error">{inputErrors.name}</div>
           <div className="profile__info">
             <p className="profile__description">E-mail</p>
             <input
@@ -76,18 +129,21 @@ function Profile(props) {
               name="name"
               required
               onChange={onEmailChange}
-              className="profile__description-value"
+              className={inputErrors.email
+                ? "profile__description-value profile__description-value_error"
+                : "profile__description-value"}
               value={profileData.email}
-            />
+            /> 
           </div>
+          <div className="profile__description-value-error">{inputErrors.email}</div>
         </section>
         <section className="profile__buttons">
           <button
             type="submit"
-            disabled={!isDirty()}
-            className={isDirty()
-            ? "profile__link"
-            : "profile__link profile__link_disabled"
+            disabled={!isDirty() || inputErrors.name || inputErrors.email}
+            className={!isDirty() || inputErrors.name || inputErrors.email
+            ? "profile__link profile__link_disabled"
+            : "profile__link"
             }
             >
             Редактировать

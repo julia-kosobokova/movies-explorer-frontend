@@ -63,13 +63,9 @@
   flex-direction: column;
 }
 
-.auth__input_error {
+/* .auth__input-error {
   color: #ee3465;
-}
-
-.auth__input-error {
-  color: #ee3465;
-}
+} */
 
 .auth__input {
   height: 27px;
@@ -82,6 +78,10 @@
   margin: 0;
 }
 
+.auth__input_error {
+  color: #ee3465;
+}
+
 .auth__input:focus {
   outline: none;
   border: 1px solid #2be080;
@@ -90,9 +90,10 @@
 
 .auth__input-error {
   font-size: 10px;
-  line-height: 12px;
+  line-height: 1.2;
   min-height: 12px;
   margin: 6px 0;
+  color: #ee3465;
 }
 
 .auth__button {

@@ -5,7 +5,7 @@ import { NAME_VALIDATION_RX, EMAIL_VALIDATION_RX } from "../../const";
 
 function Auth(props) {
 
-  const [formData, setFormData] = React.useState({ email: "", password: "" });
+  const [formData, setFormData] = React.useState({ name: "", email: "", password: "" });
   const [inputErrors, setInputErrors] = React.useState({ name: "", email: "", password: "" });
 
   function onNameChange(event) {
@@ -126,7 +126,7 @@ function Auth(props) {
               props.hasName ? "auth__name" : "auth__name  auth__name_hidden"
             }
           >
-            <div className="auth__input-group auth__input-group_error">
+            <div className="auth__input-group">
               <label className="auth__label">Имя</label>
               <input
                 type="text"
@@ -142,7 +142,7 @@ function Auth(props) {
             </div>
           </div>
 
-          <div className="auth__input-group auth__input-group_error">
+          <div className="auth__input-group">
             <label className="auth__label">E-mail</label>
             <input
               type="email"
@@ -157,7 +157,7 @@ function Auth(props) {
             <span className="auth__input-error">{inputErrors.email}</span>
           </div>
 
-          <div className="auth__input-group auth__input-group_error">
+          <div className="auth__input-group">
             <label className="auth__label">Пароль</label>
             <input
               type="password"

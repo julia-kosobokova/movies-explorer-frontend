@@ -107,16 +107,6 @@ class MainApi {
     });
   }
 
-  // // Постановка лайка - перенесено на свой сервер: выбор для сохранения
-  // addLike(cardId) {
-  //   return fetch(this._options.baseUrl + "/cards/" + cardId + "/likes", {
-  //     method: "PUT",
-  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-  //   }).then((res) => {
-  //     return this._getResponseData(res);
-  //   });
-  // }
-
   _getResponseData(res) {
     if (!res.ok) {
       return Promise.reject(`Ошибка: ${res.status}`);
