@@ -56,9 +56,11 @@
 .search__input-error {
   font-size: 10px;
   line-height: 1.2;
-  /* min-height: 12px; */
+  min-height: 12px;
   /* margin: 6px 0; */
   color: #ee3465;
+  display: block;
+  text-align: center;
 }
 
 .search__input-error_hidden {

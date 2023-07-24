@@ -8,7 +8,6 @@ function MoviesCardList(props) {
   const [visibleMoviesCount, setVisibleMoviesCount] = React.useState(moviesPerPage);
 
   const filterMovies = React.useCallback(() => {
-    console.log(props.isShort);
     return props.movies
       .filter((movie) => 
         movie.nameRU.indexOf(props.search) !== -1
