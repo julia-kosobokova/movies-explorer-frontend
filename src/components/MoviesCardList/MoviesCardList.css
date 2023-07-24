@@ -7,6 +7,13 @@
   row-gap: 20px;
 }
 
+.movies-card-list__preloader {
+  display: block;
+}
+.movies-card-list__preloader_hidden {
+  display: none;
+}
+
 .movies-card-list__more {
   padding: 50px 40px 80px;
   height: 166px;

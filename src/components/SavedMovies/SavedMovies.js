@@ -8,7 +8,6 @@ function SavedMovies(props) {
   const [search, setSearch] = React.useState("");
 
   function handleUpdateSearch(newSearch) {
-    console.log('@@');
     setSearch(newSearch);
   }
 

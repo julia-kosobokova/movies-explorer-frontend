@@ -11,9 +11,7 @@ function Movies(props) {
   function handleUpdateSearch(newSearch, newIsShort) {
     setSearch(newSearch);
     setIsShort(newIsShort);
-
-    console.log(newSearch);
-    console.log(newIsShort);
+    props.onRequestMovies();
   }
 
   return (
@@ -36,6 +34,7 @@ function Movies(props) {
           onMovieDelete={props.onMovieDelete}
           search={search}
           isShort={isShort}
+          isLoading={props.isLoading}
         />
 
       </main>

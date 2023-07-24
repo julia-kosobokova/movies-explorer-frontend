@@ -32,6 +32,7 @@ function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [userEmail, setUserEmail] = React.useState("");
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const tokenCheck = useCallback(() => {
     // если у пользователя есть токен в localStorage,
@@ -84,45 +85,6 @@ function App() {
     return () => {};
   }, []);
 
-  // const handleEditAvatarClick = () => {
-  //   setPopupsOptions({
-  //     ...popupsOptions,
-  //     isEditAvatarPopupOpen: true,
-  //   });
-  // };
-
-  // const handleEditProfileClick = () => {
-  //   setPopupsOptions({
-  //     ...popupsOptions,
-  //     isEditProfilePopupOpen: true,
-  //   });
-  // };
-
-  // const handleAddPlaceClick = () => {
-  //   setPopupsOptions({
-  //     ...popupsOptions,
-  //     isAddPlacePopupOpen: true,
-  //   });
-  // };
-
-  // const closeAllPopups = () => {
-  //   setPopupsOptions({
-  //     isEditAvatarPopupOpen: false,
-  //     isEditProfilePopupOpen: false,
-  //     isAddPlacePopupOpen: false,
-  //     isInfoTooltipOpen: false,
-  //     isRegisterSuccessful: popupsOptions.isRegisterSuccessful, //Оставляем прежнее значение, чтобы не мигало окно ошибки регистрации
-  //     selectedCard: { name: "", link: "" },
-  //   });
-  // };
-
-  // const handleCardClick = (card) => {
-  //   setPopupsOptions({
-  //     ...popupsOptions,
-  //     selectedCard: card,
-  //   });
-  // };
-
   const handleUpdateUser = ({ name, email }) => {
     mainApi
       .saveUserInfo({
@@ -142,33 +104,41 @@ function App() {
       });
   };
 
-  // Загрузка всех фильмов с внешнего сервиса
-  React.useEffect(() => {
+  function getAllMovies() {
+    setIsLoading(true);
     movieApi
-      .getAllMovies()
-      .then((allMovies) => {
-        setMovies(
-          allMovies.map((movie) => {
-            return {
-              country: movie.country,
-              director: movie.director,
-              duration: movie.duration,
-              year: movie.year,
-              description: movie.description,
-              image: MOVIES_URL + movie.image.url,
-              trailerLink: movie.trailerLink,
-              nameRU: movie.nameRU,
-              nameEN: movie.nameEN,
-              thumbnail: MOVIES_URL + movie.image.formats.thumbnail.url,
-              movieId: movie.id,
-            };
-          })
-        );
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    .getAllMovies()
+    .then((allMovies) => {
+      setMovies(
+        allMovies.map((movie) => {
+          return {
+            country: movie.country,
+            director: movie.director,
+            duration: movie.duration,
+            year: movie.year,
+            description: movie.description,
+            image: MOVIES_URL + movie.image.url,
+            trailerLink: movie.trailerLink,
+            nameRU: movie.nameRU,
+            nameEN: movie.nameEN,
+            thumbnail: MOVIES_URL + movie.image.formats.thumbnail.url,
+            movieId: movie.id,
+          };
+        })
+      );
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
+  }
+
+  // // Загрузка всех фильмов с внешнего сервиса
+  // React.useEffect(() => {
+  //   getAllMovies();
+  // }, []);
 
   // Загрузка всех сохраненных фильмов из внутреннего сервера
   React.useEffect(() => {
@@ -368,6 +338,8 @@ function App() {
                       movies={movies}
                       onMovieSave={handleSaveMovie}
                       onMovieDelete={handleDeleteMovie}
+                      onRequestMovies={getAllMovies}
+                      isLoading={isLoading}
                     />
                     <Footer />
                   </>

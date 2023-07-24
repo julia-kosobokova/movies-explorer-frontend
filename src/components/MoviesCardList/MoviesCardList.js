@@ -1,5 +1,6 @@
 import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import Preloader from "../Preloader/Preloader";
 
 function MoviesCardList(props) {
   const [filteredMovies, setFilteredMovies] = React.useState([]);
@@ -91,6 +92,14 @@ function MoviesCardList(props) {
 
   return (
     <>
+      <div className={props.isLoading
+        ?
+        "movies-card-list__preloader"
+        :
+        "movies-card-list__preloader movies-card-list__preloader_hidden"
+        }>
+        <Preloader />
+      </div>
       <ul className="movies-card-list">
         {filteredMovies.map((movie) => (
           <MoviesCard
