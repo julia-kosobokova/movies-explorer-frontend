@@ -2,10 +2,36 @@ import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MoviesCardList(props) {
-  const moviesPerPage = 3;
-
   const [filteredMovies, setFilteredMovies] = React.useState([]);
-  const [visibleMoviesCount, setVisibleMoviesCount] = React.useState(moviesPerPage);
+  const [visibleMoviesCount, setVisibleMoviesCount] = React.useState(getMoviesCount().initial);
+
+  function getMoviesCount() {
+    if (document.documentElement.clientWidth >= 1280) {
+      return {
+        initial: 12,
+        step: 4,
+      };
+    } 
+    
+    if (document.documentElement.clientWidth >= 1024) {
+      return {
+        initial: 12,
+        step: 3,
+      };
+    } 
+    
+    if (document.documentElement.clientWidth >= 768) {
+      return {
+        initial: 8,
+        step: 2,
+      };
+    } 
+
+    return {
+      initial: 5,
+      step: 2,
+    };
+  }
 
   const filterMovies = React.useCallback(() => {
     return props.movies
@@ -18,6 +44,17 @@ function MoviesCardList(props) {
         )
       );
   }, [props.movies, props.isShort, props.search]);
+
+  // Добавляем обработчик события для пересчета количества карточек при изменении ширины окна
+  React.useEffect(() => {
+    const handleWindowResize = () => {
+      setVisibleMoviesCount(getMoviesCount().initial);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => window.removeEventListener('resize', handleWindowResize);
+  });
 
   // Обновляем список найденных фильмов при изменении количества отобаражаемых фильмов по кнопке "Ещё"
   React.useEffect(() => {
@@ -38,7 +75,7 @@ function MoviesCardList(props) {
 
   // Сбрасываем количество отображаемых фильмов при изменении поискового запроса
   React.useEffect(() => {
-    setVisibleMoviesCount(moviesPerPage);
+    setVisibleMoviesCount(getMoviesCount().initial);
   }, [props.search]
   );
 
@@ -49,7 +86,7 @@ function MoviesCardList(props) {
   }
 
   function handleMoreButton() {
-    setVisibleMoviesCount(visibleMoviesCount + moviesPerPage);
+    setVisibleMoviesCount(visibleMoviesCount + getMoviesCount().step);
   }
 
   return (

@@ -9,7 +9,6 @@ function Movies(props) {
   const [isShort, setIsShort] = React.useState(false);
 
   function handleUpdateSearch(newSearch, newIsShort) {
-    console.log('??');
     setSearch(newSearch);
     setIsShort(newIsShort);
 
