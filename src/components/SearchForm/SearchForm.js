@@ -24,9 +24,6 @@ function SearchForm(props) {
     }
     setInputError("");
 
-    console.log(search);
-    console.log(isShort);
-  
     props.onSearchUpdate(search, isShort);
 }
 

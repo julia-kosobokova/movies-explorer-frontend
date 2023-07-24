@@ -104,7 +104,11 @@ function App() {
       });
   };
 
-  function getAllMovies() {
+  function loadAllMovies() {
+    if (movies.length > 0) {
+      return;
+    }
+
     setIsLoading(true);
     movieApi
     .getAllMovies()
@@ -209,19 +213,9 @@ function App() {
           userEmail: email,
           userPassword: password,
         });
-        // setPopupsOptions({
-        //   ...popupsOptions,
-        //   isInfoTooltipOpen: true,
-        //   isRegisterSuccessful: true,
-        // });
       })
       .catch((err) => {
         console.log(err);
-        // setPopupsOptions({
-        //   ...popupsOptions,
-        //   isInfoTooltipOpen: true,
-        //   isRegisterSuccessful: false,
-        // });
       });
   };
 
@@ -338,7 +332,7 @@ function App() {
                       movies={movies}
                       onMovieSave={handleSaveMovie}
                       onMovieDelete={handleDeleteMovie}
-                      onRequestMovies={getAllMovies}
+                      onRequestMovies={loadAllMovies}
                       isLoading={isLoading}
                     />
                     <Footer />
