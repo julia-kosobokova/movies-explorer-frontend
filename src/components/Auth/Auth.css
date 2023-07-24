@@ -113,6 +113,17 @@
   transition: opacity 0.5s linear 0.2s;
 }
 
+.auth__button_disabled {
+  background-color: #e8e8e8;
+  color: #000;
+  cursor: default;
+}
+
+.auth__button_disabled:hover {
+  opacity: 1;
+  transition: none;
+}
+
 .auth__footer {
   margin: 0 auto;
   padding: 14px 0px 0;

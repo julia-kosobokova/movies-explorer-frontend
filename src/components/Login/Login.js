@@ -4,6 +4,7 @@ function Login(props) {
   
   return (
     <Auth
+      activeLink="login"
       title="Рады видеть!"
       button="Войти"
       footerText="Ещё не зарегистрированы?"

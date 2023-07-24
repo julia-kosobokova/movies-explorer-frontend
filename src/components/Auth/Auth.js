@@ -175,8 +175,10 @@ function Auth(props) {
           {/* Кнопка Войти / Зарегистрироваться */}
           <button 
             type="submit" 
-            className="auth__button"
-            disabled={inputErrors.name || !formData.name || inputErrors.email || !formData.email || inputErrors.password || !formData.password}>
+            disabled={(props.activeLink!=="login" && (inputErrors.name || !formData.name)) || inputErrors.email || !formData.email || inputErrors.password || !formData.password}
+            className={(props.activeLink!=="login" && (inputErrors.name || !formData.name)) || inputErrors.email || !formData.email || inputErrors.password || !formData.password
+              ? "auth__button auth__button_disabled"
+              : "auth__button"}>
             {props.button}
           </button>
 
