@@ -37,7 +37,7 @@ function MoviesCardList(props) {
   const filterMovies = React.useCallback(() => {
     return props.movies
       .filter((movie) => 
-        movie.nameRU.indexOf(props.search) !== -1
+        movie.nameRU.toLowerCase().indexOf(props.search.toLowerCase()) !== -1
         &&
         ((props.isShort && movie.duration <= 40)
         ||
