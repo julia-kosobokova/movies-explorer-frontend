@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 
 import { mainApi } from "../../utils/MainApi";
 
@@ -369,6 +369,8 @@ function App() {
               />
 
               <Route path="/error" element={<Error />} />
+
+              <Route path="*" element={<Navigate to="/error" replace />} />
             </Routes>
           </div>
         </div>
