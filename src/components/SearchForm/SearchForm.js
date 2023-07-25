@@ -19,7 +19,7 @@ function SearchForm(props) {
     e.preventDefault();
 
     if (search==="") {
-      setInputError("Нужно ввести ключевое слово.");
+      setInputError("Нужно ввести ключевое слово");
       return;
     }
     setInputError("");
@@ -55,11 +55,13 @@ function SearchForm(props) {
           <FilterCheckbox onTumblerToggle={handleTumbler} />
           <div className="search__bottom"></div>
         </div>
+
+        <span className="search__input-error">
+          {inputError}
+        </span>
+
       </div>
 
-      <span className="search__input-error">
-        {inputError}
-      </span>
     </>
   );
 }

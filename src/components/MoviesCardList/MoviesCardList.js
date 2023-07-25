@@ -86,12 +86,18 @@ function MoviesCardList(props) {
     return count;
   }
 
+  // Обработка кнопки Еще
   function handleMoreButton() {
     setVisibleMoviesCount(visibleMoviesCount + getMoviesCount().step);
   }
 
   return (
     <>
+      <span className={getFilteredMoviesCount()===0 && props.search !== ""
+        ? "movies-card-list__not-found"
+        : "movies-card-list__not-found movies-card-list__not-found_hidden"}>
+        Ничего не найдено
+      </span>
       <div className={props.isLoading
         ?
         "movies-card-list__preloader"
