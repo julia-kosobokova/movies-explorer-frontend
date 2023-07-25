@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
 import { NAME_VALIDATION_RX, EMAIL_VALIDATION_RX } from "../../const";
@@ -9,6 +9,17 @@ function Profile(props) {
 
   const [profileData, setProfileData] = React.useState({ name: "", email: "" });
   const [inputErrors, setInputErrors] = React.useState({ name: "", email: "" });
+
+  // Попап сообщения
+  const [tooltipIsVisible, setTooltipIsVisible] = useState(false);
+
+  const showTooltip = () => {
+    setTooltipIsVisible(true);
+  };
+
+  const hideTooltip = () => {
+    setTooltipIsVisible(false);
+  };
 
   function onNameChange(event) {
     // Обновляем стейт
@@ -79,8 +90,10 @@ function Profile(props) {
     props.onUpdateUser({
       name: profileData.name,
       email: profileData.email,
+    })
+    .then(() => {
+      showTooltip();
     });
-
   }
 
   React.useEffect(() => {
@@ -160,8 +173,7 @@ function Profile(props) {
       </form>
 
       <InfoTooltip 
-      isVisible={false}
-      // {menuIsVisible} onClose={hideMenu} onProfileButton={props.onProfileButton} activeLink={props.activeLink} 
+      isVisible={tooltipIsVisible} onClose={hideTooltip}
       />
 
     </>

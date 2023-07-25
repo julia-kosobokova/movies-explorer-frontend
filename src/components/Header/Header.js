@@ -5,7 +5,7 @@ import Menu from "../Menu/Menu";
 import { useState } from "react";
 
 function Header(props) {
-  let [menuIsVisible, setMenuIsVisible] = useState(false);
+  const [menuIsVisible, setMenuIsVisible] = useState(false);
 
   const showMenu = () => {
     setMenuIsVisible(true);

@@ -4,6 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 .info-tooltip_hidden {
@@ -24,23 +26,15 @@
 .info-tooltip__popup {
 position: relative;
 margin: 0 auto;
-/* top: 0; */
-/* left: 0; */
 width: 300px;
 height: 200px;
 background-color: white;
 border-radius: 10px;
-/* display: flex;
-flex-direction: column; */
 z-index: 100;
 }
 
-
-
-
-
 .info-tooltip__close-button {
-position: fixed;
+position: absolute;
 top: 13.44px;
 right: 13.44px;
 margin: 0;
@@ -65,7 +59,7 @@ transition: opacity 0.5s linear 0.2s;
     line-height: 1.2;
     font-weight: 500;
     text-align: center;
-    margin-top: 43px;
+    margin-top: 63px;
     padding: 0;
     color: #2be080;
 }

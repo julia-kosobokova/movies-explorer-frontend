@@ -49,7 +49,6 @@ function App() {
             // авторизуем пользователя
             setLoggedIn(true);
             setUserEmail(res.data.email);
-            // navigate("/movies", { replace: true });
           }
         })
         .catch((err) => {
@@ -87,7 +86,7 @@ function App() {
   }, []);
 
   const handleUpdateUser = ({ name, email }) => {
-    mainApi
+    return mainApi
       .saveUserInfo({
         name: name,
         email: email,
@@ -98,7 +97,6 @@ function App() {
           userName: name,
           userEmail: email,
         });
-        // closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
