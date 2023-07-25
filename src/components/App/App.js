@@ -31,7 +31,6 @@ function App() {
 
   const [movies, setMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
-  const [userEmail, setUserEmail] = React.useState("");
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -48,14 +47,13 @@ function App() {
           if (res) {
             // авторизуем пользователя
             setLoggedIn(true);
-            setUserEmail(res.data.email);
           }
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, [navigate]);
+  }, []);
 
   React.useEffect(() => {
     tokenCheck();
@@ -110,38 +108,33 @@ function App() {
 
     setIsLoading(true);
     movieApi
-    .getAllMovies()
-    .then((allMovies) => {
-      setMovies(
-        allMovies.map((movie) => {
-          return {
-            country: movie.country,
-            director: movie.director,
-            duration: movie.duration,
-            year: movie.year,
-            description: movie.description,
-            image: MOVIES_URL + movie.image.url,
-            trailerLink: movie.trailerLink,
-            nameRU: movie.nameRU,
-            nameEN: movie.nameEN,
-            thumbnail: MOVIES_URL + movie.image.formats.thumbnail.url,
-            movieId: movie.id,
-          };
-        })
-      );
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      setIsLoading(false);
-    });
+      .getAllMovies()
+      .then((allMovies) => {
+        setMovies(
+          allMovies.map((movie) => {
+            return {
+              country: movie.country,
+              director: movie.director,
+              duration: movie.duration,
+              year: movie.year,
+              description: movie.description,
+              image: MOVIES_URL + movie.image.url,
+              trailerLink: movie.trailerLink,
+              nameRU: movie.nameRU,
+              nameEN: movie.nameEN,
+              thumbnail: MOVIES_URL + movie.image.formats.thumbnail.url,
+              movieId: movie.id,
+            };
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
-
-  // // Загрузка всех фильмов с внешнего сервиса
-  // React.useEffect(() => {
-  //   getAllMovies();
-  // }, []);
 
   // Загрузка всех сохраненных фильмов из внутреннего сервера
   React.useEffect(() => {
@@ -174,27 +167,31 @@ function App() {
     });
   }
 
-      // Удаление фильма из сохраненных
-      function handleDeleteMovie(movie) {
-        // Проверяем, есть ли фильм в списке сохраненных
-        mainApi.findMovies().then((res) => {
-          const savedMovies = res.data;
-          const isSaved = savedMovies.some(
-            (savedMovie) => savedMovie.movieId === movie.movieId
+  // Удаление фильма из сохраненных
+  function handleDeleteMovie(movie) {
+    // Проверяем, есть ли фильм в списке сохраненных
+    mainApi.findMovies().then((res) => {
+      const savedMovies = res.data;
+      const isSaved = savedMovies.some(
+        (savedMovie) => savedMovie.movieId === movie.movieId
+      );
+      if (isSaved) {
+        // Ищем указанный фильм в списке сохраненных
+        const movieToDelete = savedMovies.find(
+          (savedMovie) => savedMovie.movieId === movie.movieId
+        );
+        // Отправляем запрос в API на удаление фильма
+        mainApi.deleteMovie(movieToDelete._id).then(() => {
+          // Собираем список всех сохраненных фильмов, кроме только что удаленного
+          const leftMovies = savedMovies.filter(
+            (savedMovie) => savedMovie.movieId !== movie.movieId
           );
-          if (isSaved) {
-            // Ищем указанный фильм в списке сохраненных
-            const movieToDelete = savedMovies.find(savedMovie => savedMovie.movieId === movie.movieId);
-            // Отправляем запрос в API на удаление фильма
-            mainApi.deleteMovie(movieToDelete._id).then(() => {
-              // Собираем список всех сохраненных фильмов, кроме только что удаленного
-              const leftMovies = savedMovies.filter((savedMovie) => savedMovie.movieId !== movie.movieId);
-              // Сохраняем список сохраненных фильмов в стейт
-              setSavedMovies(leftMovies);
-            });
-          }
-        });  
-      };
+          // Сохраняем список сохраненных фильмов в стейт
+          setSavedMovies(leftMovies);
+        });
+      }
+    });
+  }
 
   // Форма регистрации пользователя
   const handleRegisterUser = ({ name, email, password }) => {
@@ -239,7 +236,6 @@ function App() {
           setLoggedIn(true);
           navigate("/movies", { replace: true });
         }
-        // closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
