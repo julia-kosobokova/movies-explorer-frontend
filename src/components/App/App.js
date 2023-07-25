@@ -18,6 +18,7 @@ import Error from "../Error/Error";
 import { movieApi } from "../../utils/MovieApi";
 import { MOVIES_URL } from "../../const";
 import { SavedMoviesContext } from "../../contexts/SavedMoviesContext";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const navigate = useNavigate();
@@ -325,45 +326,51 @@ function App() {
               <Route
                 path="/movies"
                 element={
-                  <>
-                    <Movies
-                      onSavedMoviesButton={handleSavedMoviesButton}
-                      onProfileButton={handleProfileButton}
-                      movies={movies}
-                      onMovieSave={handleSaveMovie}
-                      onMovieDelete={handleDeleteMovie}
-                      onRequestMovies={loadAllMovies}
-                      isLoading={isLoading}
-                    />
-                    <Footer />
-                  </>
+                  <ProtectedRoute loggedIn={loggedIn}>
+                    <>
+                      <Movies
+                        onSavedMoviesButton={handleSavedMoviesButton}
+                        onProfileButton={handleProfileButton}
+                        movies={movies}
+                        onMovieSave={handleSaveMovie}
+                        onMovieDelete={handleDeleteMovie}
+                        onRequestMovies={loadAllMovies}
+                        isLoading={isLoading}
+                      />
+                      <Footer />
+                    </>
+                  </ProtectedRoute>
                 }
               />
 
               <Route
                 path="/saved-movies"
                 element={
-                  <>
-                    <SavedMovies
-                      onMoviesButton={handleMoviesButton}
-                      onProfileButton={handleProfileButton}
-                      movies={savedMovies}
-                      onMovieDelete={handleDeleteMovie}
-                    />
-                    <Footer />
-                  </>
+                  <ProtectedRoute loggedIn={loggedIn}>
+                    <>
+                      <SavedMovies
+                        onMoviesButton={handleMoviesButton}
+                        onProfileButton={handleProfileButton}
+                        movies={savedMovies}
+                        onMovieDelete={handleDeleteMovie}
+                      />
+                      <Footer />
+                    </>
+                  </ProtectedRoute>
                 }
               />
 
               <Route
                 path="/profile"
                 element={
-                  <Profile
-                    onMoviesButton={handleMoviesButton}
-                    onSavedMoviesButton={handleSavedMoviesButton}
-                    onUpdateUser={handleUpdateUser}
-                    onExitButton={signOut}
-                  />
+                  <ProtectedRoute loggedIn={loggedIn}>
+                    <Profile
+                      onMoviesButton={handleMoviesButton}
+                      onSavedMoviesButton={handleSavedMoviesButton}
+                      onUpdateUser={handleUpdateUser}
+                      onExitButton={signOut}
+                    />
+                  </ProtectedRoute>
                 }
               />
 

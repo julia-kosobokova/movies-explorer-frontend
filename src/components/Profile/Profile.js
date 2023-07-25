@@ -2,6 +2,7 @@ import React from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import Header from "../Header/Header";
 import { NAME_VALIDATION_RX, EMAIL_VALIDATION_RX } from "../../const";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
@@ -79,6 +80,7 @@ function Profile(props) {
       name: profileData.name,
       email: profileData.email,
     });
+
   }
 
   React.useEffect(() => {
@@ -156,6 +158,12 @@ function Profile(props) {
           </button>
         </section>
       </form>
+
+      <InfoTooltip 
+      isVisible={false}
+      // {menuIsVisible} onClose={hideMenu} onProfileButton={props.onProfileButton} activeLink={props.activeLink} 
+      />
+
     </>
   );
 }
