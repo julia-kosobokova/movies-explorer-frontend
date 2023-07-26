@@ -205,7 +205,7 @@ function App() {
         email: email,
         password: password,
       })
-      .then(() => {
+      .then((data) => {
         // closeAllPopups();
         setCurrentUser({
           ...currentUser,
@@ -213,8 +213,7 @@ function App() {
           userEmail: email,
           userPassword: password,
         });
-        setLoggedIn(true);
-        navigate('/movies', {replace: true});
+        handleLoginUser({email, password});
       })
       .catch((err) => {
         setServerError(err);
