@@ -85,6 +85,7 @@ function App() {
   }, []);
 
   const handleUpdateUser = ({ name, email }) => {
+    setServerError(undefined);
     return mainApi
       .saveUserInfo({
         name: name,
@@ -98,7 +99,7 @@ function App() {
         });
       })
       .catch((err) => {
-        console.log(err);
+        setServerError(err);
       });
   };
 
@@ -197,6 +198,7 @@ function App() {
 
   // Форма регистрации пользователя
   const handleRegisterUser = ({ name, email, password }) => {
+    setServerError(undefined);
     mainApi
       .signup({
         name: name,
@@ -213,12 +215,13 @@ function App() {
         });
       })
       .catch((err) => {
-        console.log(err);
+        setServerError(err);
       });
   };
 
   // Форма входа пользователя
   const handleLoginUser = ({ email, password }) => {
+    setServerError(undefined);
     mainApi
       .signin({
         email: email,
@@ -240,7 +243,7 @@ function App() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        setServerError(err);
       });
   };
 
@@ -288,6 +291,7 @@ function App() {
                   <Register
                     onRegisterUser={handleRegisterUser}
                     onLoginButton={handleLoginButton}
+                    serverError={serverError}
                   />
                 }
               />
@@ -298,6 +302,7 @@ function App() {
                   <Login
                     onLoginUser={handleLoginUser}
                     onRegisterButton={handleRegisterButton}
+                    serverError={serverError}
                   />
                 }
               />
@@ -366,6 +371,7 @@ function App() {
                       onSavedMoviesButton={handleSavedMoviesButton}
                       onUpdateUser={handleUpdateUser}
                       onExitButton={signOut}
+                      serverError={serverError}
                     />
                   </ProtectedRoute>
                 }

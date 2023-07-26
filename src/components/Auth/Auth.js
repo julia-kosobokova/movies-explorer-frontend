@@ -173,6 +173,16 @@ function Auth(props) {
           </div>
 
           {/* Кнопка Войти / Зарегистрироваться */}
+          <div className="auth__button-container">
+          <div
+            className={
+              props.serverError !== undefined
+                ? "auth__server-error"
+                : "auth__server-error movies-card-list__server-error_hidden"
+            }
+          >
+            {props.serverError}
+          </div>
           <button 
             type="submit" 
             disabled={(props.activeLink!=="login" && (inputErrors.name || !formData.name)) || inputErrors.email || !formData.email || inputErrors.password || !formData.password}
@@ -181,6 +191,7 @@ function Auth(props) {
               : "auth__button"}>
             {props.button}
           </button>
+          </div>
 
           <p className="auth__footer">
             {props.footerText}{" "}

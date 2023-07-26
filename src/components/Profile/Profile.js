@@ -13,8 +13,10 @@ function Profile(props) {
   // Попап сообщения
   const [tooltipIsVisible, setTooltipIsVisible] = useState(false);
 
-  const showTooltip = () => {
+  const showTooltip = (props) => {
+    if (props.serverError !== undefined) {
     setTooltipIsVisible(true);
+    }
   };
 
   const hideTooltip = () => {
@@ -130,13 +132,17 @@ function Profile(props) {
               name="name"
               required
               onChange={onNameChange}
-              className={inputErrors.name
-                ? "profile__description-value profile__description-value_error"
-                : "profile__description-value"}
+              className={
+                inputErrors.name
+                  ? "profile__description-value profile__description-value_error"
+                  : "profile__description-value"
+              }
               value={profileData.name}
             />
           </div>
-          <div className="profile__description-value-error">{inputErrors.name}</div>
+          <div className="profile__description-value-error">
+            {inputErrors.name}
+          </div>
           <div className="profile__info">
             <p className="profile__description">E-mail</p>
             <input
@@ -144,38 +150,50 @@ function Profile(props) {
               name="name"
               required
               onChange={onEmailChange}
-              className={inputErrors.email
-                ? "profile__description-value profile__description-value_error"
-                : "profile__description-value"}
+              className={
+                inputErrors.email
+                  ? "profile__description-value profile__description-value_error"
+                  : "profile__description-value"
+              }
               value={profileData.email}
-            /> 
+            />
           </div>
-          <div className="profile__description-value-error">{inputErrors.email}</div>
+          <div className="profile__description-value-error">
+            {inputErrors.email}
+          </div>
         </section>
         <section className="profile__buttons">
+          <div
+            className={
+              props.serverError !== undefined
+                ? "profile__server-error"
+                : "profile__server-error movies-card-list__server-error_hidden"
+            }
+          >
+            {props.serverError}
+          </div>
           <button
             type="submit"
             disabled={!isDirty() || inputErrors.name || inputErrors.email}
-            className={!isDirty() || inputErrors.name || inputErrors.email
-            ? "profile__link profile__link_disabled"
-            : "profile__link"
+            className={
+              !isDirty() || inputErrors.name || inputErrors.email
+                ? "profile__link profile__link_disabled"
+                : "profile__link"
             }
-            >
+          >
             Редактировать
           </button>
           <button
             type="button"
             className="profile__link profile__link_pink"
-            onClick={props.onExitButton}>
+            onClick={props.onExitButton}
+          >
             Выйти из аккаунта
           </button>
         </section>
       </form>
 
-      <InfoTooltip 
-      isVisible={tooltipIsVisible} onClose={hideTooltip}
-      />
-
+      <InfoTooltip isVisible={tooltipIsVisible} onClose={hideTooltip} />
     </>
   );
 }

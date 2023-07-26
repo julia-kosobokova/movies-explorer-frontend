@@ -11,6 +11,7 @@ function Register(props) {
       footerLink="Войти"
       onAuthUser={props.onRegisterUser}
       onAuthButton={props.onLoginButton}
+      serverError={props.serverError}
     />
   );
 }
