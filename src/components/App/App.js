@@ -213,6 +213,8 @@ function App() {
           userEmail: email,
           userPassword: password,
         });
+        setLoggedIn(true);
+        navigate('/movies', {replace: true});
       })
       .catch((err) => {
         setServerError(err);
