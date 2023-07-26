@@ -93,7 +93,7 @@ function MoviesCardList(props) {
 
   return (
     <>
-      <span className={getFilteredMoviesCount()===0 && props.search !== ""
+      <span className={getFilteredMoviesCount()===0 && props.search !== "" && !props.isLoading && props.serverError === undefined
         ? "movies-card-list__not-found"
         : "movies-card-list__not-found movies-card-list__not-found_hidden"}>
         Ничего не найдено
@@ -105,6 +105,13 @@ function MoviesCardList(props) {
         "movies-card-list__preloader movies-card-list__preloader_hidden"
         }>
         <Preloader />
+      </div>
+      <div className={
+        props.serverError !== undefined
+        ? "movies-card-list__server-error"
+        : "movies-card-list__server-error movies-card-list__server-error_hidden"
+      }>
+        Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.
       </div>
       <ul className="movies-card-list">
         {filteredMovies.map((movie) => (

@@ -33,6 +33,7 @@ function App() {
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [serverError, setServerError] = React.useState();
 
   const tokenCheck = useCallback(() => {
     // если у пользователя есть токен в localStorage,
@@ -107,6 +108,7 @@ function App() {
     }
 
     setIsLoading(true);
+    setServerError(undefined);
     movieApi
       .getAllMovies()
       .then((allMovies) => {
@@ -129,7 +131,7 @@ function App() {
         );
       })
       .catch((err) => {
-        console.log(err);
+        setServerError(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -330,6 +332,7 @@ function App() {
                         onMovieDelete={handleDeleteMovie}
                         onRequestMovies={loadAllMovies}
                         isLoading={isLoading}
+                        serverError={serverError}
                       />
                       <Footer />
                     </>

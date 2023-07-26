@@ -35,6 +35,7 @@ function Movies(props) {
           search={search}
           isShort={isShort}
           isLoading={props.isLoading}
+          serverError={props.serverError}
         />
 
       </main>

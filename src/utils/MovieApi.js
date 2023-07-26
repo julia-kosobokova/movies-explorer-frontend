@@ -5,14 +5,14 @@ class MovieApi {
       this._options = options;
   }
 
-  //Загрузка информации о пользователе с сервера
-  getUserInfo() {
-    return fetch(this._options.baseUrl + "/users/me", {
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-    }).then((res) => {
-      return this._getResponseData(res);
-    });
-  }
+  // //Загрузка информации о пользователе с сервера
+  // getUserInfo() {
+  //   return fetch(this._options.baseUrl + "/users/me", {
+  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+  //   }).then((res) => {
+  //     return this._getResponseData(res);
+  //   });
+  // }
 
   // Загрузка фильмов с сервера
   getAllMovies() {
@@ -24,19 +24,19 @@ class MovieApi {
     });
   }
 
-  // Сохранение профиля
-  saveUserInfo(userInfo) {
-    return fetch(this._options.baseUrl + "/users/me", {
-      method: "PATCH",
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-      body: JSON.stringify({
-        name: userInfo.name,
-        about: userInfo.description,
-      }),
-    }).then((res) => {
-      return this._getResponseData(res);
-    });
-  }
+  // // Сохранение профиля
+  // saveUserInfo(userInfo) {
+  //   return fetch(this._options.baseUrl + "/users/me", {
+  //     method: "PATCH",
+  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+  //     body: JSON.stringify({
+  //       name: userInfo.name,
+  //       about: userInfo.description,
+  //     }),
+  //   }).then((res) => {
+  //     return this._getResponseData(res);
+  //   });
+  // }
 
   // // Добавление новой карточки - перенесено на свой сервер: сохранение фильма
   // saveNewCard(card) {
@@ -52,15 +52,15 @@ class MovieApi {
   //   });
   // }
 
-  // Удаление карточки
-  deleteCard(cardId) {
-    return fetch(this._options.baseUrl + "/cards/" + cardId, {
-      method: "DELETE",
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-    }).then((res) => {
-      return this._getResponseData(res);
-    });
-  }
+  // // Удаление карточки
+  // deleteCard(cardId) {
+  //   return fetch(this._options.baseUrl + "/cards/" + cardId, {
+  //     method: "DELETE",
+  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+  //   }).then((res) => {
+  //     return this._getResponseData(res);
+  //   });
+  // }
 
   // // Постановка лайка - перенесено на свой сервер: выбор для сохранения
   // addLike(cardId) {
@@ -72,15 +72,15 @@ class MovieApi {
   //   });
   // }
 
-  // Снятие лайка
-  removeLike(cardId) {
-    return fetch(this._options.baseUrl + "/cards/" + cardId + "/likes", {
-      method: "DELETE",
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-    }).then((res) => {
-      return this._getResponseData(res);
-    });
-  }
+  // // Снятие лайка
+  // removeLike(cardId) {
+  //   return fetch(this._options.baseUrl + "/cards/" + cardId + "/likes", {
+  //     method: "DELETE",
+  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+  //   }).then((res) => {
+  //     return this._getResponseData(res);
+  //   });
+  // }
 
   // Обновление аватара пользователя
   // updateUserAvatar(avatar) {
@@ -106,7 +106,6 @@ class MovieApi {
 export const movieApi = new MovieApi({
 baseUrl: MOVIES_URL,
   headers: {
-    // "Authorization": `Bearer ${localStorage.getItem('token')}`,
     "Content-Type": "application/json",
   },
 });
