@@ -99,7 +99,7 @@ class MainApi {
   }
 
   deleteMovie(movieId) {
-    return fetch(this._options.baseUrl + "/saved-movies/" + movieId, {
+    return fetch(this._options.baseUrl + "/movies/" + movieId, {
       method: "DELETE",
       headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
     }).then((res) => {
