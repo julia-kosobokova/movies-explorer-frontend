@@ -10,7 +10,6 @@ function Main(props) {
     <>
       <Header
         loggedIn={props.loggedIn}
-        // loggedIn={false}
         activeLink="main"
         onRegisterButton={props.onRegisterButton}
         onLoginButton={props.onLoginButton}

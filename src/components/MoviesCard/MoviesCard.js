@@ -3,7 +3,7 @@ import { SavedMoviesContext } from "../../contexts/SavedMoviesContext";
 
 function MoviesCard(props) {
   const savedMovies = React.useContext(SavedMoviesContext);
-  
+
   // Есть ли текущий фильм в списке сохраненных?
   const [isSaved, setIsSaved] = React.useState(false);
 

@@ -2,14 +2,17 @@ import { BASE_URL } from "../const";
 
 class MainApi {
   constructor(options) {
-      this._options = options;
+    this._options = options;
   }
 
   // Сохранение профиля
   saveUserInfo(userInfo) {
     return fetch(this._options.baseUrl + "/users/me", {
       method: "PATCH",
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+      headers: {
+        ...this._options.headers,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
       body: JSON.stringify({
         name: userInfo.name,
         email: userInfo.email,
@@ -25,7 +28,7 @@ class MainApi {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     }).then((res) => {
       return this._getResponseData(res);
@@ -65,14 +68,17 @@ class MainApi {
     });
   }
 
-    //Загрузка информации о пользователе с сервера
-    getUserInfo() {
-      return fetch(this._options.baseUrl + "/users/me", {
-        headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-      }).then((res) => {
-        return this._getResponseData(res);
-      });
-    }
+  //Загрузка информации о пользователе с сервера
+  getUserInfo() {
+    return fetch(this._options.baseUrl + "/users/me", {
+      headers: {
+        ...this._options.headers,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((res) => {
+      return this._getResponseData(res);
+    });
+  }
 
   // Поиск всех сохраненных текущим пользователем фильмов
   findMovies() {
@@ -80,7 +86,7 @@ class MainApi {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     }).then((res) => {
       return this._getResponseData(res);
@@ -91,7 +97,10 @@ class MainApi {
   createMovie(movie) {
     return fetch(this._options.baseUrl + "/movies", {
       method: "POST",
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+      headers: {
+        ...this._options.headers,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
       body: JSON.stringify(movie),
     }).then((res) => {
       return this._getResponseData(res);
@@ -101,7 +110,10 @@ class MainApi {
   deleteMovie(movieId) {
     return fetch(this._options.baseUrl + "/movies/" + movieId, {
       method: "DELETE",
-      headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
+      headers: {
+        ...this._options.headers,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     }).then((res) => {
       return this._getResponseData(res);
     });
@@ -116,9 +128,9 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-    baseUrl: BASE_URL,
-    headers: {
-      "Authorization": `Bearer ${localStorage.getItem('token')}`,
-      "Content-Type": "application/json",
-    },
-  });
+  baseUrl: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+    "Content-Type": "application/json",
+  },
+});

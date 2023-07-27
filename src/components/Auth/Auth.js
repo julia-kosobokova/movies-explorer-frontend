@@ -4,9 +4,16 @@ import logo from "../../images/header-logo.svg";
 import { NAME_VALIDATION_RX, EMAIL_VALIDATION_RX } from "../../const";
 
 function Auth(props) {
-
-  const [formData, setFormData] = React.useState({ name: "", email: "", password: "" });
-  const [inputErrors, setInputErrors] = React.useState({ name: "", email: "", password: "" });
+  const [formData, setFormData] = React.useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [inputErrors, setInputErrors] = React.useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
   function onNameChange(event) {
     // Обновляем стейт
@@ -16,32 +23,36 @@ function Auth(props) {
     });
 
     // Валидация
-    if (event.target.value==="") {
+    if (event.target.value === "") {
       setInputErrors({
         ...inputErrors,
-        name:"Заполните это поле."});
-        return;
+        name: "Заполните это поле.",
+      });
+      return;
     }
 
     if (!NAME_VALIDATION_RX.test(event.target.value)) {
       setInputErrors({
         ...inputErrors,
-        name:"Имя может содержать только латиницу, кириллицу, пробел или дефис."});
-        return;
+        name: "Имя может содержать только латиницу, кириллицу, пробел или дефис.",
+      });
+      return;
     }
 
     if (event.target.value.length < 2 || event.target.value.length > 30) {
       setInputErrors({
         ...inputErrors,
-        name:"Имя должно быть длиной от 2 до 30 символов."});
-        return;
+        name: "Имя должно быть длиной от 2 до 30 символов.",
+      });
+      return;
     }
 
     setInputErrors({
       ...inputErrors,
-      name: ""});
+      name: "",
+    });
   }
-  
+
   function onEmailChange(event) {
     // Обновляем стейт
     setFormData({
@@ -50,23 +61,26 @@ function Auth(props) {
     });
 
     // Валидация
-    if (event.target.value==="") {
+    if (event.target.value === "") {
       setInputErrors({
         ...inputErrors,
-        email:"Заполните это поле."});
-        return;
+        email: "Заполните это поле.",
+      });
+      return;
     }
 
     if (!EMAIL_VALIDATION_RX.test(event.target.value)) {
       setInputErrors({
         ...inputErrors,
-        email:"Неправильный формат адреса электронной почты."});
-        return;
+        email: "Неправильный формат адреса электронной почты.",
+      });
+      return;
     }
 
     setInputErrors({
       ...inputErrors,
-      email: ""});
+      email: "",
+    });
   }
 
   function onPasswordChange(event) {
@@ -77,16 +91,18 @@ function Auth(props) {
     });
 
     // Валидация
-    if (event.target.value==="") {
+    if (event.target.value === "") {
       setInputErrors({
         ...inputErrors,
-        password:"Заполните это поле."});
-        return;
+        password: "Заполните это поле.",
+      });
+      return;
     }
 
     setInputErrors({
       ...inputErrors,
-      password: ""});
+      password: "",
+    });
   }
 
   function handleSubmit(e) {
@@ -131,11 +147,13 @@ function Auth(props) {
               <input
                 type="text"
                 name="name"
-                required={ props.hasName ? true : false }
+                required={props.hasName ? true : false}
                 onChange={onNameChange}
-                className={inputErrors.name
-                  ? "auth__input auth__input_error"
-                  : "auth__input"}
+                className={
+                  inputErrors.name
+                    ? "auth__input auth__input_error"
+                    : "auth__input"
+                }
                 value={formData.name}
               />
               <span className="auth__input-error">{inputErrors.name}</span>
@@ -149,9 +167,11 @@ function Auth(props) {
               name="email"
               required
               onChange={onEmailChange}
-              className={inputErrors.email
-                ? "auth__input auth__input_error"
-                : "auth__input"}
+              className={
+                inputErrors.email
+                  ? "auth__input auth__input_error"
+                  : "auth__input"
+              }
               value={formData.email}
             />
             <span className="auth__input-error">{inputErrors.email}</span>
@@ -164,9 +184,11 @@ function Auth(props) {
               name="password"
               required
               onChange={onPasswordChange}
-              className={inputErrors.password
-                ? "auth__input auth__input_error"
-                : "auth__input"}
+              className={
+                inputErrors.password
+                  ? "auth__input auth__input_error"
+                  : "auth__input"
+              }
               value={formData.password}
             />
             <span className="auth__input-error">{inputErrors.password}</span>
@@ -174,23 +196,38 @@ function Auth(props) {
 
           {/* Кнопка Войти / Зарегистрироваться */}
           <div className="auth__button-container">
-          <div
-            className={
-              props.serverError !== undefined
-                ? "auth__server-error"
-                : "auth__server-error movies-card-list__server-error_hidden"
-            }
-          >
-            {props.serverError}
-          </div>
-          <button 
-            type="submit" 
-            disabled={(props.activeLink!=="login" && (inputErrors.name || !formData.name)) || inputErrors.email || !formData.email || inputErrors.password || !formData.password}
-            className={(props.activeLink!=="login" && (inputErrors.name || !formData.name)) || inputErrors.email || !formData.email || inputErrors.password || !formData.password
-              ? "auth__button auth__button_disabled"
-              : "auth__button"}>
-            {props.button}
-          </button>
+            <div
+              className={
+                props.serverError !== undefined
+                  ? "auth__server-error"
+                  : "auth__server-error movies-card-list__server-error_hidden"
+              }
+            >
+              {props.serverError}
+            </div>
+            <button
+              type="submit"
+              disabled={
+                (props.activeLink !== "login" &&
+                  (inputErrors.name || !formData.name)) ||
+                inputErrors.email ||
+                !formData.email ||
+                inputErrors.password ||
+                !formData.password
+              }
+              className={
+                (props.activeLink !== "login" &&
+                  (inputErrors.name || !formData.name)) ||
+                inputErrors.email ||
+                !formData.email ||
+                inputErrors.password ||
+                !formData.password
+                  ? "auth__button auth__button_disabled"
+                  : "auth__button"
+              }
+            >
+              {props.button}
+            </button>
           </div>
 
           <p className="auth__footer">

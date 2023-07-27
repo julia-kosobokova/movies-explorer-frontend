@@ -1,7 +1,6 @@
 import Auth from "../Auth/Auth";
 
 function Login(props) {
-  
   return (
     <Auth
       activeLink="login"

@@ -213,7 +213,7 @@ function App() {
           userEmail: email,
           userPassword: password,
         });
-        handleLoginUser({email, password});
+        handleLoginUser({ email, password });
       })
       .catch((err) => {
         setServerError(err);
@@ -380,7 +380,10 @@ function App() {
 
               <Route path="/error" element={<Error />} />
 
-              <Route path="*" element={<Navigate to="/error" replace={false} />} />
+              <Route
+                path="*"
+                element={<Navigate to="/error" replace={false} />}
+              />
             </Routes>
           </div>
         </div>

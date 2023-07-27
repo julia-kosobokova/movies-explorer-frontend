@@ -2,98 +2,18 @@ import { MOVIES_URL } from "../const";
 
 class MovieApi {
   constructor(options) {
-      this._options = options;
+    this._options = options;
   }
-
-  // //Загрузка информации о пользователе с сервера
-  // getUserInfo() {
-  //   return fetch(this._options.baseUrl + "/users/me", {
-  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-  //   }).then((res) => {
-  //     return this._getResponseData(res);
-  //   });
-  // }
 
   // Загрузка фильмов с сервера
   getAllMovies() {
     console.log(this._options.headers);
     return fetch(this._options.baseUrl + "/beatfilm-movies", {
-      headers: {...this._options.headers},
+      headers: { ...this._options.headers },
     }).then((res) => {
       return this._getResponseData(res);
     });
   }
-
-  // // Сохранение профиля
-  // saveUserInfo(userInfo) {
-  //   return fetch(this._options.baseUrl + "/users/me", {
-  //     method: "PATCH",
-  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-  //     body: JSON.stringify({
-  //       name: userInfo.name,
-  //       about: userInfo.description,
-  //     }),
-  //   }).then((res) => {
-  //     return this._getResponseData(res);
-  //   });
-  // }
-
-  // // Добавление новой карточки - перенесено на свой сервер: сохранение фильма
-  // saveNewCard(card) {
-  //   return fetch(this._options.baseUrl + "/cards", {
-  //     method: "POST",
-  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-  //     body: JSON.stringify({
-  //       name: card.name,
-  //       link: card.link,
-  //     }),
-  //   }).then((res) => {
-  //     return this._getResponseData(res);
-  //   });
-  // }
-
-  // // Удаление карточки
-  // deleteCard(cardId) {
-  //   return fetch(this._options.baseUrl + "/cards/" + cardId, {
-  //     method: "DELETE",
-  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-  //   }).then((res) => {
-  //     return this._getResponseData(res);
-  //   });
-  // }
-
-  // // Постановка лайка - перенесено на свой сервер: выбор для сохранения
-  // addLike(cardId) {
-  //   return fetch(this._options.baseUrl + "/cards/" + cardId + "/likes", {
-  //     method: "PUT",
-  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-  //   }).then((res) => {
-  //     return this._getResponseData(res);
-  //   });
-  // }
-
-  // // Снятие лайка
-  // removeLike(cardId) {
-  //   return fetch(this._options.baseUrl + "/cards/" + cardId + "/likes", {
-  //     method: "DELETE",
-  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-  //   }).then((res) => {
-  //     return this._getResponseData(res);
-  //   });
-  // }
-
-  // Обновление аватара пользователя
-  // updateUserAvatar(avatar) {
-  //   return fetch(this._options.baseUrl + "/users/me/avatar", {
-  //     method: "PATCH",
-  //     headers: {...this._options.headers, "Authorization": `Bearer ${localStorage.getItem('token')}`,},
-  //     body: JSON.stringify({
-  //       avatar,
-  //     }),
-  //   }).then((res) => {
-  //     return this._getResponseData(res);
-  //   });
-  // }
 
   _getResponseData(res) {
     if (!res.ok) {
@@ -104,7 +24,7 @@ class MovieApi {
 }
 
 export const movieApi = new MovieApi({
-baseUrl: MOVIES_URL,
+  baseUrl: MOVIES_URL,
   headers: {
     "Content-Type": "application/json",
   },

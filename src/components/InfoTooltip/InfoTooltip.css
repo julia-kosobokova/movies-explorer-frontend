@@ -1,65 +1,65 @@
 .info-tooltip {
-    position: fixed;
-    z-index: 99;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+  position: fixed;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .info-tooltip_hidden {
-    display: none;
+  display: none;
 }
 
 .info-tooltip__overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    opacity: 0.3;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.3;
+  z-index: 1;
 }
 
 .info-tooltip__popup {
-position: relative;
-margin: 0 auto;
-width: 300px;
-height: 200px;
-background-color: white;
-border-radius: 10px;
-z-index: 100;
+  position: relative;
+  margin: 0 auto;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 100;
 }
 
 .info-tooltip__close-button {
-position: absolute;
-top: 13.44px;
-right: 13.44px;
-margin: 0;
-padding: 0;
-width: 24px;
-height: 24px;
-background: none;
-border: none;
-background-image: url(../../images/close.svg);
-background-repeat: no-repeat;
-background-position: center;
-cursor: pointer;
+  position: absolute;
+  top: 13.44px;
+  right: 13.44px;
+  margin: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  background-image: url(../../images/close.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
 }
 
 .info-tooltip__close-button:hover {
-opacity: 0.8;
-transition: opacity 0.5s linear 0.2s;
+  opacity: 0.8;
+  transition: opacity 0.5s linear 0.2s;
 }
 
 .info-tooltip__text {
-    font-size: 24px;
-    line-height: 1.2;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 63px;
-    padding: 0;
-    color: #2be080;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 63px;
+  padding: 0;
+  color: #2be080;
 }

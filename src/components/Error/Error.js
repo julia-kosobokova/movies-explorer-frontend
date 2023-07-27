@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 function Error() {
   const navigate = useNavigate();
 
-  function handleBackButton (e) {
+  function handleBackButton(e) {
     e.preventDefault();
     navigate(-2);
   }

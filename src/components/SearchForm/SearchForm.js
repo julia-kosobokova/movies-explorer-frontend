@@ -18,14 +18,14 @@ function SearchForm(props) {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
 
-    if (search==="") {
+    if (search === "") {
       setInputError("Нужно ввести ключевое слово");
       return;
     }
     setInputError("");
 
     props.onSearchUpdate(search, isShort);
-}
+  }
 
   return (
     <>
@@ -56,12 +56,8 @@ function SearchForm(props) {
           <div className="search__bottom"></div>
         </div>
 
-        <span className="search__input-error">
-          {inputError}
-        </span>
-
+        <span className="search__input-error">{inputError}</span>
       </div>
-
     </>
   );
 }

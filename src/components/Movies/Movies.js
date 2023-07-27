@@ -4,7 +4,6 @@ import Header from "../Header/Header";
 import React from "react";
 
 function Movies(props) {
-
   const [search, setSearch] = React.useState("");
   const [isShort, setIsShort] = React.useState(false);
 
@@ -24,9 +23,7 @@ function Movies(props) {
       />
 
       <main className="movies">
-        <SearchForm
-          onSearchUpdate={handleUpdateSearch}
-        />
+        <SearchForm onSearchUpdate={handleUpdateSearch} />
         <MoviesCardList
           movies={props.movies}
           onMovieSave={props.onMovieSave}
@@ -37,7 +34,6 @@ function Movies(props) {
           isLoading={props.isLoading}
           serverError={props.serverError}
         />
-
       </main>
     </>
   );

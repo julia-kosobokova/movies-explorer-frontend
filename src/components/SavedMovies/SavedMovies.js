@@ -4,7 +4,6 @@ import Header from "../Header/Header";
 import React from "react";
 
 function SavedMovies(props) {
-
   const [search, setSearch] = React.useState("");
 
   function handleUpdateSearch(newSearch) {
@@ -21,9 +20,7 @@ function SavedMovies(props) {
       />
 
       <main className="saved-movies">
-        <SearchForm
-          onSearchUpdate={handleUpdateSearch}
-        />
+        <SearchForm onSearchUpdate={handleUpdateSearch} />
         <MoviesCardList
           savedMode={true}
           movies={props.movies}

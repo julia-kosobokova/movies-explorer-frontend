@@ -15,7 +15,7 @@ function Profile(props) {
 
   const showTooltip = (props) => {
     if (props.serverError !== undefined) {
-    setTooltipIsVisible(true);
+      setTooltipIsVisible(true);
     }
   };
 
@@ -30,31 +30,35 @@ function Profile(props) {
       name: event.target.value,
     });
 
-     // Валидация
-     if (event.target.value==="") {
+    // Валидация
+    if (event.target.value === "") {
       setInputErrors({
         ...inputErrors,
-        name:"Заполните это поле."});
-        return;
+        name: "Заполните это поле.",
+      });
+      return;
     }
 
     if (!NAME_VALIDATION_RX.test(event.target.value)) {
       setInputErrors({
         ...inputErrors,
-        name:"Имя может содержать только латиницу, кириллицу, пробел или дефис."});
-        return;
+        name: "Имя может содержать только латиницу, кириллицу, пробел или дефис.",
+      });
+      return;
     }
 
     if (event.target.value.length < 2 || event.target.value.length > 30) {
       setInputErrors({
         ...inputErrors,
-        name:"Имя должно быть длиной от 2 до 30 символов."});
-        return;
+        name: "Имя должно быть длиной от 2 до 30 символов.",
+      });
+      return;
     }
 
     setInputErrors({
       ...inputErrors,
-      name: ""});
+      name: "",
+    });
   }
 
   function onEmailChange(event) {
@@ -65,23 +69,26 @@ function Profile(props) {
     });
 
     // Валидация
-    if (event.target.value==="") {
+    if (event.target.value === "") {
       setInputErrors({
         ...inputErrors,
-        email:"Заполните это поле."});
-        return;
+        email: "Заполните это поле.",
+      });
+      return;
     }
 
     if (!EMAIL_VALIDATION_RX.test(event.target.value)) {
       setInputErrors({
         ...inputErrors,
-        email:"Неправильный формат адреса электронной почты."});
-        return;
+        email: "Неправильный формат адреса электронной почты.",
+      });
+      return;
     }
 
     setInputErrors({
       ...inputErrors,
-      email: ""});
+      email: "",
+    });
   }
 
   function handleSubmit(e) {
@@ -89,13 +96,14 @@ function Profile(props) {
     e.preventDefault();
 
     // Передаём значения управляемых компонентов во внешний обработчик
-    props.onUpdateUser({
-      name: profileData.name,
-      email: profileData.email,
-    })
-    .then(() => {
-      showTooltip();
-    });
+    props
+      .onUpdateUser({
+        name: profileData.name,
+        email: profileData.email,
+      })
+      .then(() => {
+        showTooltip();
+      });
   }
 
   React.useEffect(() => {
@@ -106,7 +114,10 @@ function Profile(props) {
   }, [currentUser]);
 
   function isDirty() {
-    return (profileData.name!==currentUser.userName) || (profileData.email!==currentUser.userEmail);
+    return (
+      profileData.name !== currentUser.userName ||
+      profileData.email !== currentUser.userEmail
+    );
   }
 
   return (
