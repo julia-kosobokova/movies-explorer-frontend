@@ -1,7 +1,7 @@
 import React from "react";
 
 function FilterCheckbox(props) {
-  const [isOn, setIsOn] = React.useState(false);
+  const [isOn, setIsOn] = React.useState(props.isOn ? props.isOn : false);
 
   function handleTumbler() {
     let newIsOn;

@@ -2,14 +2,21 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
 import React from "react";
+import { MOVIES_STORAGE_KEYS } from "../../const";
 
 function Movies(props) {
-  const [search, setSearch] = React.useState("");
-  const [isShort, setIsShort] = React.useState(false);
+  const savedSearch = localStorage.getItem(MOVIES_STORAGE_KEYS.search);
+  const savedIsShort = JSON.parse(localStorage.getItem(MOVIES_STORAGE_KEYS.isShort));
+
+  const [search, setSearch] = React.useState(savedSearch ? savedSearch : "");
+  const [isShort, setIsShort] = React.useState(savedIsShort ? savedIsShort : false);
 
   function handleUpdateSearch(newSearch, newIsShort) {
     setSearch(newSearch);
     setIsShort(newIsShort);
+
+    localStorage.setItem(MOVIES_STORAGE_KEYS.isShort, newIsShort);
+
     props.onRequestMovies();
   }
 
@@ -23,7 +30,10 @@ function Movies(props) {
       />
 
       <main className="movies">
-        <SearchForm onSearchUpdate={handleUpdateSearch} />
+        <SearchForm 
+          onSearchUpdate={handleUpdateSearch} 
+          isShort={isShort}
+        />
         <MoviesCardList
           movies={props.movies}
           onMovieSave={props.onMovieSave}

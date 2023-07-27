@@ -3,7 +3,7 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 function SearchForm(props) {
   const [search, setSearch] = React.useState("");
-  const [isShort, setIsShort] = React.useState(false);
+  const [isShort, setIsShort] = React.useState(props.isShort !== undefined ? props.isShort : false);
   const [inputError, setInputError] = React.useState("");
 
   function handleTumbler(newIsShort) {
@@ -52,7 +52,10 @@ function SearchForm(props) {
           </form>
 
           <div className="search__divider"></div>
-          <FilterCheckbox onTumblerToggle={handleTumbler} />
+          <FilterCheckbox 
+            onTumblerToggle={handleTumbler} 
+            isOn={isShort}
+          />
           <div className="search__bottom"></div>
         </div>
 
