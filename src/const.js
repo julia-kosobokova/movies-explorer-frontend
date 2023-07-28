@@ -9,4 +9,5 @@ export const EMAIL_VALIDATION_RX = /[a-z0-9]+@[a-z0-9]+\.[a-z]{2,}/;
 export const MOVIES_STORAGE_KEYS = {
     search: "lastMoviesSearch",
     isShort: "lastMoviesIsShort",
+    moviesFound: "lastMoviesFound",
 };

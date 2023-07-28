@@ -21,6 +21,10 @@ function Movies(props) {
     props.onRequestMovies();
   }
 
+  function handleMoviesFound(moviesFound) {
+    localStorage.setItem(MOVIES_STORAGE_KEYS.moviesFound, JSON.stringify(moviesFound));
+  }
+
   return (
     <>
       <Header
@@ -45,6 +49,7 @@ function Movies(props) {
           isShort={isShort}
           isLoading={props.isLoading}
           serverError={props.serverError}
+          onMoviesFound={handleMoviesFound}
         />
       </main>
     </>

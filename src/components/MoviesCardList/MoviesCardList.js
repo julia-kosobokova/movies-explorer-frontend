@@ -56,24 +56,33 @@ function MoviesCardList(props) {
   });
 
   // Обновляем список найденных фильмов при изменении количества отобаражаемых фильмов по кнопке "Ещё"
+  const storeMoviesFound = React.useCallback((moviesFound) => {
+    setFilteredMovies(moviesFound);
+    if (props.onMoviesFound !== undefined) {
+      props.onMoviesFound(moviesFound);
+    }
+  }, [props, setFilteredMovies,]);
+
   React.useEffect(() => {
     if (props.search === "" && !props.savedMode) {
-      setFilteredMovies([]);
+      storeMoviesFound([]);
       return;
     }
 
     if (props.search === "" && props.savedMode) {
-      setFilteredMovies(props.movies);
+      storeMoviesFound(props.movies);
       return;
     }
 
-    setFilteredMovies(filterMovies().slice(0, visibleMoviesCount));
+    storeMoviesFound(filterMovies().slice(0, visibleMoviesCount));
   }, [
     props.search,
     props.savedMode,
     props.movies,
+    props.onMoviesFound,
     visibleMoviesCount,
     filterMovies,
+    storeMoviesFound,
   ]);
 
   // Сбрасываем количество отображаемых фильмов при изменении поискового запроса
