@@ -35,6 +35,15 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [serverError, setServerError] = React.useState();
 
+  // Выход пользователя
+  const signOut = React.useCallback(() => {
+    localStorage.removeItem("token");
+    resetMoviesFound();
+    setLoggedIn(false);
+
+    navigate("/", { replace: true });
+  }, [navigate]);
+
   const tokenCheck = useCallback(() => {
     // если у пользователя есть токен в localStorage,
     // эта функция проверит валидность токена
@@ -51,10 +60,11 @@ function App() {
           }
         })
         .catch((err) => {
+          signOut();
           console.log(err);
         });
     }
-  }, []);
+  }, [signOut]);
 
   React.useEffect(() => {
     tokenCheck();
@@ -255,15 +265,6 @@ function App() {
     localStorage.removeItem(MOVIES_STORAGE_KEYS.isShort);
     localStorage.removeItem(MOVIES_STORAGE_KEYS.moviesFound);
     localStorage.removeItem(MOVIES_STORAGE_KEYS.search);
-  }
-
-  // Выход пользователя
-  function signOut() {
-    localStorage.removeItem("token");
-    resetMoviesFound();
-    setLoggedIn(false);
-
-    navigate("/", { replace: true });
   }
 
   // Переход в форму регистрации
