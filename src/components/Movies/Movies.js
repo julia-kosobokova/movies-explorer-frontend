@@ -16,6 +16,7 @@ function Movies(props) {
     setIsShort(newIsShort);
 
     localStorage.setItem(MOVIES_STORAGE_KEYS.isShort, newIsShort);
+    localStorage.setItem(MOVIES_STORAGE_KEYS.search, newSearch);
 
     props.onRequestMovies();
   }
@@ -33,6 +34,7 @@ function Movies(props) {
         <SearchForm 
           onSearchUpdate={handleUpdateSearch} 
           isShort={isShort}
+          search={search}
         />
         <MoviesCardList
           movies={props.movies}

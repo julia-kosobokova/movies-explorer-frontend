@@ -2,7 +2,7 @@ import React from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 function SearchForm(props) {
-  const [search, setSearch] = React.useState("");
+  const [search, setSearch] = React.useState(props.search !== undefined ? props.search : "");
   const [isShort, setIsShort] = React.useState(props.isShort !== undefined ? props.isShort : false);
   const [inputError, setInputError] = React.useState("");
 
@@ -46,6 +46,7 @@ function SearchForm(props) {
               required
               className="search__input-text"
               onChange={handleUpdateSearch}
+              value={search}
             />
 
             <button type="submit" className="search__button" />
