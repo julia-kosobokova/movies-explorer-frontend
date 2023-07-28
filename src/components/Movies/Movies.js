@@ -7,7 +7,7 @@ import { MOVIES_STORAGE_KEYS } from "../../const";
 function Movies(props) {
   const savedSearch = localStorage.getItem(MOVIES_STORAGE_KEYS.search);
   const savedIsShort = JSON.parse(localStorage.getItem(MOVIES_STORAGE_KEYS.isShort));
-  const savedMoviesFound = JSON.parse(localStorage.getItem(MOVIES_STORAGE_KEYS.moviesFound));
+  const savedMoviesFound = JSON.parse(localStorage.getItem(MOVIES_STORAGE_KEYS.moviesFound)) || [];
 
   const [search, setSearch] = React.useState(savedSearch !== undefined ? savedSearch : "");
   const [isShort, setIsShort] = React.useState(savedIsShort !== undefined ? savedIsShort : false);

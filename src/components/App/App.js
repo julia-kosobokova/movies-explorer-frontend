@@ -16,7 +16,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import Error from "../Error/Error";
 import { movieApi } from "../../utils/MovieApi";
-import { MOVIES_URL } from "../../const";
+import { MOVIES_STORAGE_KEYS, MOVIES_URL } from "../../const";
 import { SavedMoviesContext } from "../../contexts/SavedMoviesContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
@@ -248,10 +248,18 @@ function App() {
       });
   };
 
+  function resetMoviesFound() {
+    localStorage.removeItem(MOVIES_STORAGE_KEYS.isShort);
+    localStorage.removeItem(MOVIES_STORAGE_KEYS.moviesFound);
+    localStorage.removeItem(MOVIES_STORAGE_KEYS.search);
+  }
+
   // Выход пользователя
   function signOut() {
     localStorage.removeItem("token");
+    resetMoviesFound();
     setLoggedIn(false);
+
     navigate("/", { replace: true });
   }
 
