@@ -13,10 +13,8 @@ function Profile(props) {
   // Попап сообщения
   const [tooltipIsVisible, setTooltipIsVisible] = useState(false);
 
-  const showTooltip = (props) => {
-    if (props.serverError !== undefined) {
-      setTooltipIsVisible(true);
-    }
+  const showTooltip = () => {
+    setTooltipIsVisible(true);
   };
 
   const hideTooltip = () => {
@@ -91,7 +89,7 @@ function Profile(props) {
     });
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     // Запрещаем браузеру переходить по адресу формы
     e.preventDefault();
 
@@ -101,8 +99,10 @@ function Profile(props) {
         name: profileData.name,
         email: profileData.email,
       })
-      .then(() => {
-        showTooltip();
+      .then((result) => {
+        if (result) {
+          showTooltip();
+        }
       });
   }
 
