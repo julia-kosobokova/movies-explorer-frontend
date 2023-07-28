@@ -1,6 +1,7 @@
 import React from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
+import { MOVIES_LIST_COUNTS_FOR_SCREEN_SIZE, SCREEN_SIZE, SHORT_MOVIE_DURATION_IN_SECONDS } from "../../const";
 
 function MoviesCardList(props) {
   const [filteredMovies, setFilteredMovies] = React.useState([]);
@@ -9,31 +10,19 @@ function MoviesCardList(props) {
   );
 
   function getMoviesCount() {
-    if (document.documentElement.clientWidth >= 1280) {
-      return {
-        initial: 12,
-        step: 4,
-      };
+    if (document.documentElement.clientWidth >= SCREEN_SIZE.large) {
+      return MOVIES_LIST_COUNTS_FOR_SCREEN_SIZE.large;
     }
 
-    if (document.documentElement.clientWidth >= 1024) {
-      return {
-        initial: 12,
-        step: 3,
-      };
+    if (document.documentElement.clientWidth >= SCREEN_SIZE.medium) {
+      return MOVIES_LIST_COUNTS_FOR_SCREEN_SIZE.medium;
     }
 
-    if (document.documentElement.clientWidth >= 768) {
-      return {
-        initial: 8,
-        step: 2,
-      };
+    if (document.documentElement.clientWidth >= SCREEN_SIZE.small) {
+      return MOVIES_LIST_COUNTS_FOR_SCREEN_SIZE.small;
     }
 
-    return {
-      initial: 5,
-      step: 2,
-    };
+    return MOVIES_LIST_COUNTS_FOR_SCREEN_SIZE.tiny;
   }
 
   const filterMovies = React.useCallback(() => {
@@ -46,7 +35,7 @@ function MoviesCardList(props) {
     return movies.filter(
       (movie) =>
         movie.nameRU.toLowerCase().indexOf(props.search.toLowerCase()) !== -1 &&
-        ((props.isShort && movie.duration <= 40) || !props.isShort)
+        ((props.isShort && movie.duration <= SHORT_MOVIE_DURATION_IN_SECONDS) || !props.isShort)
     );
   }, [props.movies, props.isShort, props.search, props.moviesFound]);
 
