@@ -7,9 +7,10 @@ import { MOVIES_STORAGE_KEYS } from "../../const";
 function Movies(props) {
   const savedSearch = localStorage.getItem(MOVIES_STORAGE_KEYS.search);
   const savedIsShort = JSON.parse(localStorage.getItem(MOVIES_STORAGE_KEYS.isShort));
+  const savedMoviesFound = JSON.parse(localStorage.getItem(MOVIES_STORAGE_KEYS.moviesFound));
 
-  const [search, setSearch] = React.useState(savedSearch ? savedSearch : "");
-  const [isShort, setIsShort] = React.useState(savedIsShort ? savedIsShort : false);
+  const [search, setSearch] = React.useState(savedSearch !== undefined ? savedSearch : "");
+  const [isShort, setIsShort] = React.useState(savedIsShort !== undefined ? savedIsShort : false);
 
   function handleUpdateSearch(newSearch, newIsShort) {
     setSearch(newSearch);
@@ -21,8 +22,9 @@ function Movies(props) {
     props.onRequestMovies();
   }
 
-  function handleMoviesFound(moviesFound) {
-    localStorage.setItem(MOVIES_STORAGE_KEYS.moviesFound, JSON.stringify(moviesFound));
+  function handleMoviesFound(newMoviesFound) {
+    localStorage.setItem(MOVIES_STORAGE_KEYS.moviesFound, JSON.stringify(newMoviesFound));
+    // setMoviesFound(newMoviesFound);
   }
 
   return (
@@ -50,6 +52,7 @@ function Movies(props) {
           isLoading={props.isLoading}
           serverError={props.serverError}
           onMoviesFound={handleMoviesFound}
+          moviesFound={savedMoviesFound}
         />
       </main>
     </>

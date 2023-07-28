@@ -4,7 +4,7 @@ import Preloader from "../Preloader/Preloader";
 
 function MoviesCardList(props) {
   const [filteredMovies, setFilteredMovies] = React.useState([]);
-  const [visibleMoviesCount, setVisibleMoviesCount] = React.useState(
+  const [numberOfMoviesToShow, setNumberOfMoviesToShow] = React.useState(
     getMoviesCount().initial
   );
 
@@ -44,10 +44,21 @@ function MoviesCardList(props) {
     );
   }, [props.movies, props.isShort, props.search]);
 
+  // Подсчет количества найденных фильмов
+  const getFilteredMoviesCount = React.useCallback(() => {
+    const count = filterMovies().length;
+    return count;
+  }, [filterMovies]);
+
+  // Обработка кнопки Еще
+  function handleMoreButton() {
+    setNumberOfMoviesToShow(numberOfMoviesToShow + getMoviesCount().step);
+  }
+
   // Добавляем обработчик события для пересчета количества карточек при изменении ширины окна
   React.useEffect(() => {
     const handleWindowResize = () => {
-      setVisibleMoviesCount(getMoviesCount().initial);
+      setNumberOfMoviesToShow(getMoviesCount().initial);
     };
 
     window.addEventListener("resize", handleWindowResize);
@@ -57,11 +68,12 @@ function MoviesCardList(props) {
 
   // Обновляем список найденных фильмов при изменении количества отобаражаемых фильмов по кнопке "Ещё"
   const storeMoviesFound = React.useCallback((moviesFound) => {
-    setFilteredMovies(moviesFound);
+    setFilteredMovies(moviesFound.slice(0, numberOfMoviesToShow));
+    
     if (props.onMoviesFound !== undefined) {
       props.onMoviesFound(moviesFound);
     }
-  }, [props, setFilteredMovies,]);
+  }, [props, setFilteredMovies, numberOfMoviesToShow]);
 
   React.useEffect(() => {
     if (props.search === "" && !props.savedMode) {
@@ -74,32 +86,30 @@ function MoviesCardList(props) {
       return;
     }
 
-    storeMoviesFound(filterMovies().slice(0, visibleMoviesCount));
+    const hasMoviesLoaded = props.movies && props.movies.length > 0;
+    const hasMoviesFound = props.moviesFound && props.moviesFound.length > 0;
+    if (!hasMoviesLoaded && hasMoviesFound) {
+      // использовать сохраненные результаты поиска
+      storeMoviesFound(props.moviesFound);
+      return;
+    }
+
+    storeMoviesFound(filterMovies());
   }, [
     props.search,
     props.savedMode,
     props.movies,
     props.onMoviesFound,
-    visibleMoviesCount,
+    props.moviesFound,
+    numberOfMoviesToShow,
     filterMovies,
     storeMoviesFound,
   ]);
 
   // Сбрасываем количество отображаемых фильмов при изменении поискового запроса
   React.useEffect(() => {
-    setVisibleMoviesCount(getMoviesCount().initial);
+    setNumberOfMoviesToShow(getMoviesCount().initial);
   }, [props.search]);
-
-  // Подсчет количества найденных фильмов
-  function getFilteredMoviesCount() {
-    const count = filterMovies().length;
-    return count;
-  }
-
-  // Обработка кнопки Еще
-  function handleMoreButton() {
-    setVisibleMoviesCount(visibleMoviesCount + getMoviesCount().step);
-  }
 
   return (
     <>
