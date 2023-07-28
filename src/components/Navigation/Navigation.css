@@ -37,7 +37,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .nav__button:hover {
@@ -46,7 +46,7 @@
 }
 
 .nav__button_active-page {
-  font-weight: 400;
+  font-weight: 500;
   cursor: default;
 }
 
