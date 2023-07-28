@@ -37,12 +37,18 @@ function MoviesCardList(props) {
   }
 
   const filterMovies = React.useCallback(() => {
-    return props.movies.filter(
+    const hasMoviesLoaded = props.movies && props.movies.length > 0;
+    const hasMoviesFound = props.moviesFound && props.moviesFound.length > 0;
+
+    const movies = hasMoviesFound && !hasMoviesLoaded 
+      ? props.moviesFound
+      : props.movies;
+    return movies.filter(
       (movie) =>
         movie.nameRU.toLowerCase().indexOf(props.search.toLowerCase()) !== -1 &&
         ((props.isShort && movie.duration <= 40) || !props.isShort)
     );
-  }, [props.movies, props.isShort, props.search]);
+  }, [props.movies, props.isShort, props.search, props.moviesFound]);
 
   // Подсчет количества найденных фильмов
   const getFilteredMoviesCount = React.useCallback(() => {
