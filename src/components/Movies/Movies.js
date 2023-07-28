@@ -24,7 +24,6 @@ function Movies(props) {
 
   function handleMoviesFound(newMoviesFound) {
     localStorage.setItem(MOVIES_STORAGE_KEYS.moviesFound, JSON.stringify(newMoviesFound));
-    // setMoviesFound(newMoviesFound);
   }
 
   return (
