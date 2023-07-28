@@ -91,15 +91,18 @@ function App() {
         name: name,
         email: email,
       })
-      .then(() => {
+      .then((result) => {
         setCurrentUser({
           ...currentUser,
           userName: name,
           userEmail: email,
         });
+
+        return true;
       })
       .catch((err) => {
         setServerError(err);
+        return false;
       });
   };
 
