@@ -257,11 +257,13 @@ function App() {
 
   // Переход в форму регистрации
   function handleRegisterButton() {
+    setServerError(undefined);
     navigate("/signup", { replace: true });
   }
 
   // Переход в форму входа
   function handleLoginButton() {
+    setServerError(undefined);
     navigate("/signin", { replace: true });
   }
 
