@@ -8,23 +8,27 @@ function SearchForm(props) {
 
   function handleTumbler(newIsShort) {
     setIsShort(newIsShort);
+    doSearch(search, newIsShort);
   }
 
   function handleUpdateSearch(e) {
     setSearch(e.target.value);
   }
 
-  function handleSubmitSearch(e) {
-    // Запрещаем браузеру переходить по адресу формы
-    e.preventDefault();
-
-    if (search === "") {
+  function doSearch(newSearch, newIsShort) {
+    if (newSearch === "") {
       setInputError("Нужно ввести ключевое слово");
       return;
     }
     setInputError("");
 
-    props.onSearchUpdate(search, isShort);
+    props.onSearchUpdate(newSearch, newIsShort);
+  }
+
+  function handleSubmitSearch(e) {
+    // Запрещаем браузеру переходить по адресу формы
+    e.preventDefault();
+    doSearch(search, isShort);
   }
 
   return (
