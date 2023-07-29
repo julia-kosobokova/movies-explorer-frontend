@@ -112,8 +112,10 @@ function MoviesCardList(props) {
         className={
           getFilteredMoviesCount() === 0 &&
           props.search !== "" &&
+          props.search !== undefined &&
+          props.search !== null &&
           !props.isLoading &&
-          props.serverError === undefined
+          props.serverError === undefined 
             ? "movies-card-list__not-found"
             : "movies-card-list__not-found movies-card-list__not-found_hidden"
         }
