@@ -1,6 +1,6 @@
 import Auth from "../Auth/Auth";
 
-function Register() {
+function Register(props) {
   return (
     <Auth
       hasName={true}
@@ -8,6 +8,9 @@ function Register() {
       button="Зарегистрироваться"
       footerText="Уже зарегистрированы?"
       footerLink="Войти"
+      onAuthUser={props.onRegisterUser}
+      onAuthButton={props.onLoginButton}
+      serverError={props.serverError}
     />
   );
 }
